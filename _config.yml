@@ -9,18 +9,18 @@ kramdown:
 permalink:        pretty
 
 # Setup
-title:            Data Carpentry for Biologists
-description:      'Teaching the tools to get computers to do cool science'
-url:              http://www.datacarpentry.org/semester-biology
-baseurl:          /semester-biology
-email:            datacarpentrysemester@weecology.org
-feedbackurl:      docs.google.com/forms/d/1y35uJukuZ9MPKQWWqw0Y8R4VOiaOtFJezDY_t_kJfTs/
+title:            Introduction to Computational Genomics
+description:      'From keyboards to genomes'
+url:              https://owensgl.github.io
+baseurl:          /intro-genomics
+email:            grego@uvic.ca
+feedbackurl:      
 author:
   name:           'Ethan White'
   url:            https://twitter.com/ethanwhite
 
 github:
-  repo:           https://github.com/datacarpentry/semester-biology
+  repo:           https://github.com/owensgl/intro-genomics
   #               Be sure the 'Issues' feature is activated in 'Settings'
 
 plugins:
