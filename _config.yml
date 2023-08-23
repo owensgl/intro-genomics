@@ -17,7 +17,7 @@ email:            grego@uvic.ca
 feedbackurl:      
 author:
   name:           'Greg Owens'
-  url:            
+  url:            https://owensgl.github.io/
 
 github:
   repo:           https://github.com/owensgl/intro-genomics
