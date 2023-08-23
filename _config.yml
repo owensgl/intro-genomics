@@ -16,8 +16,8 @@ baseurl:          /intro-genomics
 email:            grego@uvic.ca
 feedbackurl:      
 author:
-  name:           'Ethan White'
-  url:            https://twitter.com/ethanwhite
+  name:           'Greg Owens'
+  url:            
 
 github:
   repo:           https://github.com/owensgl/intro-genomics
