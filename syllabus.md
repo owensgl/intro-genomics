@@ -2,7 +2,7 @@
 layout: page
 title: Syllabus
 catalog: BIO 470
-credits: 3
+credits: 1.5
 semester: Spring 2024
 professor: Dr. Gregory Owens (he/him)
 office: Cunningham 040
