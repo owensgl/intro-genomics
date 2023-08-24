@@ -8,7 +8,7 @@ professor: Dr. Gregory Owens (he/him)
 office: Cunningham 040
 email: grego@uvic.ca
 schedule: ['Tuesdays, 1:30-2:20 pm PT', 'Wednesdays, 2:30-5:20 pm PT']
-location: Cunningham 146 (Tuesday), Clearihue A035 (Wednesday)
+location: ['Cunningham 146 (Tuesday)', 'Clearihue A035 (Wednesday)']
 ---
 
 ## Course
