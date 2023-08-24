@@ -1,19 +1,14 @@
 ---
 layout: page
 title: Syllabus
-catalog: ALS 6501
+catalog: BIO 470
 credits: 3
-semester: Fall 2023
-professor: Dr. Ethan White (he/him)
-office: Room 1 Building 150
-email: ethanwhite@ufl.edu
-phone: 352-294-2081
-schedule: ['Tuesdays, 9:35-10:25 am ET', 'Fridays, 11:45-1:40 pm ET']
-location: Newins-Ziegler Hall (NZH) 222
-office_hours: "TBD"
-office_hours_location: "TBD"
-TA: Virnaliz Cruz
-TA_email: virnaliz.cruzher@ufl.edu
+semester: Spring 2024
+professor: Dr. Gregory Owens (he/him)
+office: Cunningham 040
+email: grego@uvic.ca
+schedule: ['Tuesdays, 1:30-2:20 pm PT', 'Wednesdays, 2:30-5:20 pm PT']
+location: Cunningham 146 (Tuesday), Clearihue A035 (Wednesday)
 ---
 
 ## Course
@@ -31,7 +26,6 @@ Office: {{ page.office }}
 Email:
 [{{ page.email }}](mailto:{{ page.email }})
 
-Phone: {{ page.phone }}
 
 
 ### Location
@@ -48,20 +42,7 @@ Phone: {{ page.phone }}
 
 ### Office Hours
 
-Times: {{ page.office_hours }}
-
-Location: {{ page.office_hours_location }}
-
-Or by appointment. *Note: my schedule gets very busy during the semester so
-please try to schedule appointments as far in advance as possible. In general it
-will be very difficult to set up appointments less than 24 hours in advance.*
-
-
-### Teaching Assistant
-
-{{ page.TA }}
-
-Email: [{{ page.TA_email }}](mailto:{{ page.TA_email }})
+By appointment. Email me and we can find a time. 
 
 
 ### Website
@@ -74,71 +55,53 @@ periodically for updates.
 
 ### Course Communications
 
-Canvas: Messages in canvas are the preferred method for course communication
+Brightspace: Messages in brightspace will be the primary way I contact you.
 
 Email: [{{ page.email }}](mailto:{{ page.email }})
 
 
 ### Required Texts
 
-There is no required text book for this class.
+There is no required text book for this class. All primary literature will be available on Brightspace.
 
-All needed material is openly available on the course website. If you are
-interested in additional reading on the topics we are covering I highly
-recommend [R for Data Science](https://r4ds.had.co.nz/), which is freely
-available on the web.
+All needed material is openly available on the course website. Additional texts will be linked in individual 
+lessons if you're interested in the material.
 
 
 ### Course Description
 
-An introduction to data management, manipulation, and analysis, with an emphasis
-on biological problems. Class consists of short introductions to new concepts
-followed by hands on computing exercises using R and SQLite, but the concepts
-apply to programming languages and databases more generally. No background in
-computing is required.
+An introduction to computational genomics. Class consists of a short introduction
+to commandline programming and R, and then include practical excercises in genomics.
+No background in computing is required.
 
 
 ### Prerequisite Knowledge and Skills
 
-Knowledge of basic biology to provide context for exercises.
+Knowledge of basic biology and genetics. Completion of Biol 230. 
 
 
 ### Purpose of Course
 
-In this course you will learn all of the fundamental aspects of computer
-programming that are necessary for conducting biological research. By the end of
-the course you will be able to use these tools to import data into R, perform
-analysis on that data, and export the results to graphs, text files, and
-databases. By learning how to get the computer to do your work for you, you will
-be able to do more science faster.
+In this course you will learn the fundamentals of how genomic data is generated 
+and analyzed. You will have practical examples of code to run specific genomic 
+techniques and have the skills to visualize the results. You will also have better
+ideas on how to plan future genomic projects.
 
 
 ### Course Objectives and Goals
 
 Students completing this course will be able to:
 
-* Create well structured data
-* Extract information from data
-* Write computer programs in R
-* Automate data analysis
-* Apply these tools to address biological questions
-* Apply general data management and analysis concepts to other programming
-  languages and database management systems
-
-
-### How this course relates to the Student Learning Outcomes in Wildlife Ecology and Conservation
-
-This course contributes to the 'Quantitative Skills' and 'Conducting and
-Analyzing Independent/Original Research' Student Learning Outcomes specified in
-the
-[Ph.D. and MS in Wildlife Ecology and Conservation Academic Assessment Plans](https://fora.aa.ufl.edu/docs/1//16Apr13//CALS_WIE_PHD_GAAP_2012-2013_final.pdf),
-by providing students the skills and knowledge they need to manage and analyze
-the data used in research.
+* Navigate on unix commandline
+* Use R for data wrangling and plotting
+* Understand how genomic data is generated
+* Be able to turn sequence data into genetic variation
+* Run basic population genetic analyses
 
 
 ### Teaching Philosophy
 
-This class is taught using a flipped, learner-centered, approach, because
+This class is taught using largely a flipped, learner-centered, approach, because
 learning to program and work with data requires actively working on
 computers. Flipped classes work well for all kinds of content, but I think they
 work particularly well for computer oriented classes. If you're interested in
@@ -148,45 +111,42 @@ knowing more take a look at this great
 
 ### Instructional Methods
 
-Classes will involve brief introductions to new concepts followed by working on exercises in
-class that cover that concept. While students are working on exercises the
+Class is divided into lectures on Tuesday and labs on Wednesday. The lecture will
+cover fundamental and technical aspects of genomic methods and analyses. Before each 
+lecture students will be required to read a primary literature article on the topic 
+and submit answers to questions on Brightspace. The lab will involve demonstrations by 
+the instructor, code along sections and independent or group work. While students are working on exercises the
 instructor will actively engage with students to help them understand material
 they find confusing, explain misunderstandings and help identify mistakes that
 are preventing students from completing the exercises, and discuss novel
 applications and alternative approaches to the data analysis challenges students
 are attempting to solve.
 
-### Gender-Inclusive Restrooms
-
-There are two gender-inclusive restrooms available in the building where the course is taught:
-* 1st floor in Room 124
-* 3rd floor in Room 304 
-
-There are also two gender-inclusive restrooms available in the building where the instructor's office is located.
-
-For more information on gender-inclusive restrooms at UF see the [Gender-Inclusive restrooms page](https://titleix.ufl.edu/gender-inclusion/gender-inclusive-restrooms/) maintained by the Office for Accessibility and Gender Equity.
-
 ## Course Policies
 
 ### Attendance Policy
 
-Attendance will not be taken or factor into the grades for this class. However,
-experience suggests that students who regularly miss class often struggle to learn the material.
+Attendance to the lecture portion is highly encouraged. Given the central importance of 
+the lab exercises, attendance for the lab portion is mandatory and recorded. Missing more than 
+two (2) lab sections will result in an incomplete in the course. 
 
 
 ### Quiz/Exam Policy
 
-There are no quizzes or exams in this course.
+There will be two exams in this course. One on the week of the February 14th, the second 
+on the week of April 3rd. Both exams will be on Brightspace, open-book and will occur outside of 
+class time, with a flexible start time. Exams will not be cumulative, although concepts and material 
+may span both exam periods. 
 
 
 ### Make-up policy
 
-Life happens and therefore there is an automatic grace period of 48 hours for
+Life happens and therefore there is an automatic grace period of 24 hours for
 the submission of late assignments with no need to request an extension.
 However, it is highly recommended that you submit assignments on time when
 possible because assignments build on one another and it can be hard to catch up
 if you fall behind. Reasonable requests for longer extensions will also be granted.
-Assignments turned in after the 48 hour grace period without an extension will be
+Assignments turned in after the 24 hour grace period without an extension will be
 be graded with a 20% penalty.
 
 
