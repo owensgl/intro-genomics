@@ -88,15 +88,17 @@ techniques and have the skills to visualize the results. You will also have bett
 ideas on how to plan future genomic projects.
 
 
-### Course Objectives and Goals
+### Course Expected Learning Outcomes
 
 Students completing this course will be able to:
 
-* Navigate on unix commandline
-* Use R for data wrangling and plotting
-* Understand how genomic data is generated
-* Be able to turn sequence data into genetic variation
-* Run basic population genetic analyses
+* Navigate on unix commandline.
+* Use R for data wrangling and plotting.
+* Understand how genomic data is generated.
+* Run commandline genomic programs.
+* Turn sequence data into genetic variation.
+* Run basic population genetic analyses.
+* Explain how and why genomic data is generated.
 
 
 ### Teaching Philosophy
@@ -136,7 +138,8 @@ two (2) lab sections will result in an incomplete in the course.
 There will be two exams in this course. One on the week of the February 14th, the second 
 on the week of April 3rd. Both exams will be on Brightspace, open-book and will occur outside of 
 class time, with a flexible start time. Exams will not be cumulative, although concepts and material 
-may span both exam periods. 
+may span both exam periods. **You are not allowed to communicate with others or use AI software 
+during exams**
 
 
 ### Make-up policy
@@ -152,18 +155,38 @@ be graded with a 20% penalty.
 
 ### Assignment policy
 
-Assignments are due Monday night by 11:59 pm Eastern Time.
-This timing allows you to be finished with one week's material before starting the next week's material.
-Assignments should be submitted via either Posit Cloud (for R assignments) or Canvas (for other assignments).
+Pre-lecture paper questions are due on Monday at 11:59 pm Pacific Time on Brightspace. 
+In lab assignments are due on Tuesday at 11:59 pm Pacific Time on Brightspace the week following 
+the lab material. 
+
+### Grade policy
+
+| Item    | Percentage |
+| -------- | ------- |
+| Pre-lecture questions (11)  | 22%    |
+| In lab assignments (9) | 27% |
+| Midterm 1 | 15%     |
+| Midterm 2 | 15% |
+| Final Group Project     | 21%    |
+
+**To pass the course**, students must:
+1) Complete midterm 1 and midterm 2
+2) Attend the lab section for at least 11 out of 13 weeks.
+3) Complete the final group project.
+4) Score a final grade of 50.0 points for the entire course.
+
+*If any of 1 through 3 are not completed, the student will automatically fail the course and receive an “N” 
+(‘Incomplete’) on their transcript. If a student successfully completes 1 through 3, 
+but is not successful in 4, they will receive an “F” on their transcript.*
+
 
 ### Course Technology
 
-Students are required to provide their own laptops and to install free and open
-source software on those laptops (see [Setup]({{ site.baseurl }}/computer-setup)
-for installation instructions). Support will be provided by the instructor in
-the installation of required software. If you don't have access to a laptop
-please contact the instructor and they will do their best to provide you with
-one.
+Students are required to work on Apple computers for the lab portion of the course. 
+Apple computers are available in the lab space, and it is recommended that students 
+use those and not personal laptops. Windows computers can complete the lab assignments
+but the file system differences between operating systems can cause problems and 
+complexity. 
 
 
 ### Materials and Supplies Fees
@@ -171,81 +194,47 @@ one.
 There are no materials and supplies fees for this course.
 
 
-## UF Policies
+## UVic Policies
 
 
-### University Policy on Accommodating Students with Disabilities
+### Territory Acknowledgement
 
-The Disability Resource Center coordinates the needed accommodations of students
-with disabilities. This includes registering disabilities, recommending academic
-accommodations within the classroom, accessing special adaptive computer
-equipment, providing interpretation services and mediating faculty-student
-disability related issues.Students requesting classroom accommodation must first
-register with the Dean of Students Office. The Dean of Students Office will
-provide documentation to the student who must then provide this documentation to
-the Instructor when requesting accommodation0001 Reid Hall, 352-392-8565,
-www.dso.ufl.edu/drc/
+We acknowledge and respect the lək̓ʷəŋən peoples on whose traditional territory the university stands, 
+and the Songhees, Esquimalt and WSÁNEĆ peoples whose historical relationships with the land continue to this day. 
 
-My policy: If you are in my class I want to help you learn and will happily work
-with you to make the learning environment work effectively for you.
+### Important Dates
+
+Note these important dates:  
+Last day for 100% reduction of tuition fees for standard courses – Sun. Jan. 21  
+Last day for adding second term courses  – Wed. Jan 24 
+Last day for 50% reduction of tuition fees for standard courses – Sun. Feb. 11  
+Last day for withdrawing from 2nd term courses without penalty of failure – Tues. Feb. 29 
+
+Holidays (no class):
+Tues. Feb 20 – Reading Break
+Wed. Feb. 21 – Reading Break
 
 
-### Online Course Evaluation Process
+### Medical documentation
 
-Students are expected to provide professional and respectful feedback on the quality of instruction in this course by completing course evaluations online via GatorEvals. Guidance on how to give feedback in a professional and respectful manner is available at https://gatorevals.aa.ufl.edu/students/. Students will be notified when the evaluation period opens, and can complete evaluations through the email they receive from GatorEvals, in their Canvas course menu under GatorEvals, or via https://ufl.bluera.com/ufl/. Summaries of course evaluation results are available to students at https://gatorevals.aa.ufl.edu/public-results/.
+Medical documentation for short-term absences is not required. Attendance is important.  Students who cannot attend due to illness are asked to notify their instructors immediately. If you miss (or know beforehand that you will be missing) a test because of illness, accident, family affliction, you are required to contact the appropriate instructor in a timely manner after the test (normally within seven calendar days).  
+Policies regarding undergraduate student academic concessions and deferrals are also detailed here: https://www.uvic.ca/registrar/students/appeals/acad-concession/index.php   
 
 
 ### University Policy on Academic Misconduct
 
-Academic honesty and integrity are fundamental values of the University
-community. Students should be sure that they understand the UF Student Honor
-Code at http://www.dso.ufl.edu/students.php.
-
-
-### Netiquette and Communication Courtesy
-
-All members of the class are expected to follow rules of common
-courtesy in all email messages, threaded discussions and chats.
-
-
-### Academic Honesty
-
-As a student at the University of Florida, you have committed yourself to uphold
-the Honor Code, which includes the following pledge:"We, the members of the
-University of Florida community, pledge to hold ourselves and our peers to the
-highest standards of honesty and integrity. "You are expected to exhibit behavior
-consistent with this commitment to the UF academic community, and on all work
-submitted for credit at the University of Florida, the following pledge is
-either required or implied: "On my honor, I have neither given nor received
-unauthorized aid in doing this assignment."
-
-It is assumed that you will complete all work independently in each course
-unless the instructor provides explicit permission for you to collaborate on
-course tasks (e.g. assignments, papers, quizzes, exams). Furthermore, as part of
-your obligation to uphold the Honor Code, you should report any condition that
-facilitates academic misconduct to appropriate personnel. It is your individual
-responsibility to know and comply with all university policies and procedures
-regarding academic integrity and the Student Honor Code.Violations of the Honor
-Code at the University of Florida will not be tolerated. Violations will be
-reported to the Dean of Students Office for consideration of disciplinary
-action. For more information regarding the Student Honor Code, please see:
-http://www.dso.ufl.edu/sccr/process/student-conduct-honor-code
-
-
-### Software Use
-
-All faculty, staff and students of the university are required and expected to
-obey the laws and legal agreements governing software use. Failure to do so can
-lead to monetary damages and/or criminal penalties for the individual violator.
-Because such violations are also against university policies and rules,
-disciplinary action will be taken as appropriate.
-
-
-### Student Privacy
-
-There are federal laws protecting your privacy with regards to grades earned in
-courses and on individual assignments.  For more information, please see:
-http://registrar.ufl.edu/catalog0910/policies/regulationferpa.html
+Students are required to abide by all academic regulations set as set out in the University calendar, including standards of academic integrity. Violations of academic integrity (e.g. cheating and plagiarism) are considered serious and may result in significant penalties. 
+ 
+It is absolutely essential that you understand and uphold academic integrity. To this end, I ask you to please read UVic’s framework on academic integrity, which you can find here: 
+https://www.uvic.ca/students/academics/academic-integrity/index.php 
+ 
+You can also find UVic’s Policy on Academic Integrity in the UVic calendar: https://www.uvic.ca/calendar/undergrad/index.php#/policy/Sk_0xsM_V 
+ 
+To help avoid plagiarism and cheating, please read the UVic Libraries’ plagiarism guide: https://www.uvic.ca/library/research/citation/plagiarism/  
+ 
+I reserve the right to use plagiarism detection software or other platforms to assess the integrity of student work. 
+ 
+Please see read UVic’s Student code of conduct and standards for professional behaviour: https://www.uvic.ca/services/advising/advice-support/academic-units/student-codeof-conduct/index.php 
 
 
 ## Grading Policies
@@ -264,62 +253,14 @@ Exercises in assignments will be graded as follows:
 
 ### Grading scale
 
-- **A 93-100**
-- **A- 90-92.9**
-- **B+ 87-89.9**
-- **B 83-86.9**
-- **B- 80-82.9**
-- **C+ 77-79.9**
-- **C 73-76.9**
-- **C- 70-72.9**
-- **D+ 67-69.9**
-- **D 60-66.9**
-- **E <60**
+- **A+ 89.5-100**
+- **A 84.5-89.4**
+- **A- 79.5-84.4**
+- **B+ 76.5-79.4**
+- **B 72.5-76.4**
+- **B- 69.5-72.4**
+- **C+ 64.5-69.4**
+- **C 59.5-64.4**
+- **D 50.0-59.4**
+- **F <50.0**
 
-
-### UF grading policies for assigning grade points
-
-[https://catalog.ufl.edu/UGRD/academic-regulations/grades-grading-policies/](https://catalog.ufl.edu/UGRD/academic-regulations/grades-grading-policies/)
-
-
-## Campus Helping Resources
-
-Students experiencing crises or personal problems that interfere with
-their general well-being are encouraged to utilize the university’s counseling
-resources. The Counseling& Wellness Center provides confidential counseling
-services at no cost for currently enrolled students. Resources are available on
-campus for students having personal problems or lacking clear career or academic
-goals, which interfere with their academic performance.
-
-### Health and Wellness 
-
-U Matter, We Care: If you or a friend is in distress, please contact umatter@ufl.edu or 352 392-1575 so that a team member can reach out to the student. 
-
-Counseling and Wellness Center: http://www.counseling.ufl.edu/cwc, 392-1575. 
-
-Sexual Assault Recovery Services (SARS): Student Health Care Center, 392-1161. 
-
-University Police Department: 392-1111 (or 9-1-1 for emergencies), or http://www.police.ufl.edu/. 
-
-### Academic Resources
-
-E-learning technical support: 352-392-4357 (select option 2) or e-mail to Learning-support@ufl.edu. https://lss.at.ufl.edu/help.shtml.
-
-Career Connections Center: Reitz Union, 392-1601.  Career assistance and counseling. https://career.ufl.edu/.
-
-Library Support: http://cms.uflib.ufl.edu/ask. Various ways to receive assistance with respect to using the libraries or finding resources.
-
-Teaching Center: Broward Hall, 392-2010 or 392-6420. General study skills and tutoring. https://teachingcenter.ufl.edu/.
-
-Writing Studio: 302 Tigert Hall, 846-1138. Help brainstorming, formatting, and writing papers. https://writing.ufl.edu/writing-studio/.
-
-### Student Complaints
-
-Student Complaints Campus: https://www.dso.ufl.edu/documents/UF_Complaints_policy.pdf.
-
-On-Line Students Complaints: http://www.distance.ufl.edu/student-complaint-process.
-
-## Course Schedule
-
-The details course schedule is available on the course website at:
-[{{ site.url }}/schedule]({{ site.baseurl }}/schedule).
