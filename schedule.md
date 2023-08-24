@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Assignment Schedule
-assignments: ['Data Entry and Storage', 'Introduction to R and RStudio',
-'Data in Tables', 'Grouping & Joining Data', 'Data Visualization',
-'Review + Reproducibility', 'Review + Reproducibility', 'Functions',
-'Making Choices', 'Repeating Things 1', 'Repeating Things 2', 'TBD', 
-'TBD', 'Fall Break', 'TBD', 'TBD']
+assignments: ['Unix commandline', 'Shell scripting',
+'R and data wrangling', 'Data visualization', 'Sequence data and QC',
+'Alignment', 'Reading Break', 'Variant calling',
+'Genome assembly', 'Population genetics', 'Project work', 'Project work', 
+'Student Presentations']
 ---
 
 [Assignment submission & checklist]({{ site.baseurl }}/materials/turn-in-checklist)
