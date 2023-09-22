@@ -92,10 +92,11 @@ ideas on how to plan future genomic projects.
 
 Students completing this course will be able to:
 
-* Navigate on unix commandline.
+* Navigate on unix command line.
 * Use R for data wrangling and plotting.
 * Understand how genomic data is generated.
-* Run commandline genomic programs.
+* Run command line bioinformatic programs.
+* Explain the principles behind genome assembly and variant detection.
 * Turn sequence data into genetic variation.
 * Run basic population genetic analyses.
 * Explain how and why genomic data is generated.
@@ -152,6 +153,10 @@ if you fall behind. Reasonable requests for longer extensions will also be grant
 Assignments turned in after the 24 hour grace period without an extension will be
 be graded with a 20% penalty.
 
+Additionally, for pre-lecture questions, student grades will be based on  their best 
+10 out of 11 assigments. This allows students to not hand in 1 assignment without grade 
+penalty. 
+
 
 ### Assignment policy
 
@@ -163,14 +168,14 @@ the lab material.
 
 | Item    | Percentage |
 | -------- | ------- |
-| Pre-lecture questions (11)  | 22%    |
+| Pre-lecture questions (10)  | 20%    |
 | In lab assignments (9) | 27% |
-| Midterm 1 | 15%     |
-| Midterm 2 | 15% |
-| Final Group Project     | 21%    |
+| Mid term Exam 1 | 15%     |
+| Late term Exam 2 | 15% |
+| Final Group Project     | 23%    |
 
 **To pass the course**, students must:
-1) Complete midterm 1 and midterm 2
+1) Complete exams 1 and 2
 2) Attend the lab section for at least 11 out of 13 weeks.
 3) Complete the final group project.
 4) Score a final grade of 50.0 points for the entire course.
@@ -193,6 +198,19 @@ complexity.
 
 There are no materials and supplies fees for this course.
 
+## Graduate Students
+Graduate students taking Computational Genomics as a directed studies course have several differences from undergraduate students.
+1) Graduate students will not take the exams.
+2) Graduate students will work independently instead of groups on the final project.
+3) Each graduate student final project will include additional requirements.
+4) Graduate students will present a lecture on a topic relevant to the class.
+
+| Item    | Percentage |
+| -------- | ------- |
+| Pre-lecture questions (10)  | 20%    |
+| In lab assignments (9) | 27% |
+| Lecture | 30% |
+| Final Solo Project     | 23%    |
 
 ## UVic Policies
 
