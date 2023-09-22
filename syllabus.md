@@ -175,10 +175,10 @@ the lab material.
 | Final Group Project     | 23%    |
 
 **To pass the course**, students must:
-1) Complete exams 1 and 2
-2) Attend the lab section for at least 11 out of 13 weeks.
-3) Complete the final group project.
-4) Score a final grade of 50.0 points for the entire course.
+1. Complete exams 1 and 2
+2. Attend the lab section for at least 11 out of 13 weeks.
+3. Complete the final group project.
+4. Score a final grade of 50.0 points for the entire course.
 
 *If any of 1 through 3 are not completed, the student will automatically fail the course and receive an “N” 
 (‘Incomplete’) on their transcript. If a student successfully completes 1 through 3, 
@@ -200,10 +200,10 @@ There are no materials and supplies fees for this course.
 
 ## Graduate Students
 Graduate students taking Computational Genomics as a directed studies course have several differences from undergraduate students.
-1) Graduate students will not take the exams.
-2) Graduate students will work independently instead of groups on the final project.
-3) Each graduate student final project will include additional requirements.
-4) Graduate students will present a lecture on a topic relevant to the class.
+1. Graduate students will not take the exams.
+2. Graduate students will work independently instead of groups on the final project.
+3. Each graduate student final project will include additional requirements.
+4. Graduate students will present a lecture on a topic relevant to the class.
 
 | Item    | Percentage |
 | -------- | ------- |
