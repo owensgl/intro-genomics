@@ -4,8 +4,9 @@
     <th width="50">Week</th>
     <th width="300">Topic</th>
     <th width="50">Reading</th>
-    <th width="50">Lesson</th>
-    <th width="50">Lecture</th>
+    <th width="50">Pre-Lecture Questions</th>
+    <th width="50">Slides</th>
+    <th width="50">Lab</th>
     <th width="50">Assignment</th>
   </tr>
 
@@ -81,20 +82,28 @@
           <i class="fa fa-book fa-lg"></i></font></td>
       {% endif %}
 
-      {% if lesson_link %}
-        <td align="center"><a href="{{ lesson_link }}" aria-label="Week {{ forloop.index }} Lesson">
-          <i aria-hidden="true" class="fa fa-play-circle fa-lg"></i></a></td>
+      {% if questions_link %}
+        <td align="center"><a href="{{ questions_link }}" aria-label="Week {{ forloop.index }} Questions">
+          <i aria-hidden="true" class="fa fa-solid fa-pen-nib fa-lg" ></i></a></td>
       {% else %}
         <td align="center"><font color="f1f1f1">
-          <i class="fa fa-play-circle fa-lg"></i></font></td>
+          <i class="fa fa-solid fa-pen-nib fa-lg"></i></font></td>
+      {% endif %}
+
+      {% if slides_link %}
+        <td align="center"><a href="{{ slides_link }}" aria-label="Week {{ forloop.index }} Slides">
+          <i aria-hidden="true" class="fa fa-paperclip fa-lg"></i></a></td>
+      {% else %}
+        <td align="center"><font color="f1f1f1">
+          <i class="fa fa-paperclip fa-lg"></i></font></td>
       {% endif %}      
 
-      {% if lecture_link %}
-        <td align="center"><a href="{{ lecture_link }}" aria-label="Week {{ forloop.index }} Lecture Notes">
-          <i aria-hidden="true" class="fa fa-comment fa-lg"></i></a></td>
+      {% if lab_link %}
+        <td align="center"><a href="{{ lab_link }}" aria-label="Week {{ forloop.index }} Lab">
+          <i aria-hidden="true" class="fa fa-flask fa-lg"></i></a></td>
       {% else %}
         <td align="center"><font color="f1f1f1">
-          <i class="fa fa-comment fa-lg"></i></font></td>
+          <i class="fa fa-flask fa-lg"></i></font></td>
       {% endif %}
 
       {% if assignment_link %}
