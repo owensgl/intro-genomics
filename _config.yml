@@ -24,4 +24,4 @@ github:
   #               Be sure the 'Issues' feature is activated in 'Settings'
 
 plugins:
-  - jekyll-sitemap
+  - jekyll-sitemap 
