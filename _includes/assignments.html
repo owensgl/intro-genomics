@@ -12,8 +12,8 @@
 
   {% for assignment in page.assignments %}
 
-    {% for otherpage in site.pages %}
-      {% if otherpage.title == assignment and otherpage.element == 'assignment' %}
+    {% for readingpage in site.pages %}
+      {% if readingpage.title == assignment and readingpage.element == 'reading' %}
         {% capture language %}{{ otherpage.language }}{% endcapture %}
         {% capture assignment_link %}{{ otherpage.url | prepend: site.baseurl }}{% endcapture %}
         {% break %}
