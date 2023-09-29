@@ -15,7 +15,7 @@
     {% for readingpage in site.pages %}
       {% if readingpage.title == assignment and readingpage.element == 'reading' %}
         {% capture language %}{{ otherpage.language }}{% endcapture %}
-        {% capture assignment_link %}{{ otherpage.url | prepend: site.baseurl }}{% endcapture %}
+        {% capture reading_link %}{{ otherpage.url | prepend: site.baseurl }}{% endcapture %}
         {% break %}
       {% endif %}
       {% assign language = nil %}
