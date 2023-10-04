@@ -38,13 +38,21 @@
     {% endfor %}
 
     {% for lessonpage in site.pages %}
+      {% if lessonpage.title == assignment and lessonpage.element == 'lesson' %}
+        {% capture lesson_link %}{{ lessonpage.url | prepend: site.baseurl }}{% endcapture %}
+        {% break %}
+      {% endif %}
+      {% assign lesson_link = nil %}
+    {% endfor %}
 
-    {% if lessonpage.title == assignment and lessonpage.element == 'lesson' %}
-      {% capture lesson_link %}{{ lessonpage.url | prepend: site.baseurl }}{% endcapture %}
-      {% break %}
-    {% endif %}
-    {% assign lesson_link = nil %}
-  {% endfor %}
+  
+    {% for labpage in site.pages %}
+      {% if labpage.title == assignment and labpage.element == 'lab' %}
+        {% capture lab_link %}{{ labpage.url | prepend: site.baseurl }}{% endcapture %}
+        {% break %}
+      {% endif %}
+      {% assign lab_link = nil %}
+    {% endfor %}
 
     <tr>
       <td align="right">{{ forloop.index }}</td>
