@@ -1,7 +1,7 @@
 ---
 title: Unix commandline
 element: lab
-layout: nil
+layout: default
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
