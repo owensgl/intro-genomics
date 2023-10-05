@@ -179,11 +179,11 @@ Let's look at how our file system is organized. We can see what files and subdir
 which stands for "listing":
 
 ```bash
-$ ls
+[grego@indri ~]$ ls
 ```
 
 ```output
-R  r_data  shell_data
+shell_data
 ```
 
 `ls` prints the names of the files and directories in the current directory in
@@ -199,28 +199,28 @@ Let's say we want to navigate to the `shell_data` directory we saw above.  We ca
 use the following command to get there:
 
 ```bash
-$ cd shell_data
+[grego@indri ~]$ cd shell_data
 ```
 
 Let's look at what is in this directory:
 
 ```bash
-$ ls
+[grego@indri ~]$ ls
 ```
 
 ```output
-sra_metadata  untrimmed_fastq
+untrimmed_fastq
 ```
 
 We can make the `ls` output more comprehensible by using the **flag** `-F`,
 which tells `ls` to add a trailing `/` to the names of directories:
 
 ```bash
-$ ls -F
+[grego@indri ~]$ ls -F
 ```
 
 ```output
-sra_metadata/  untrimmed_fastq/
+untrimmed_fastq/
 ```
 
 Anything with a "/" after it is a directory. Things with a "\*" after them are programs. If
@@ -229,7 +229,7 @@ there are no decorations, it's a file.
 `ls` has lots of other options. To find out what they are, we can type:
 
 ```bash
-$ man ls
+[grego@indri ~]$ man ls
 ```
 
 `man` (short for manual) displays detailed documentation (also referred as man page or man file)
@@ -239,33 +239,30 @@ file using your keyboard's down arrow or use the <kbd>Space</kbd> key to go forw
 and the <kbd>b</kbd> key to go backwards one page. When you are done reading, hit <kbd>q</kbd>
 to quit.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge
+>## Challenge
+>
+>Use the `-l` option for the `ls` command to display more information for each item
+>in the directory. What is one piece of additional information this long format
+>gives you that you don't see with the bare `ls` command?
 
-Use the `-l` option for the `ls` command to display more information for each item
-in the directory. What is one piece of additional information this long format
-gives you that you don't see with the bare `ls` command?
 
-:::::::::::::::  solution
+### Solution
 
-## Solution
+>! ```bash
+>! [grego@indri ~]$ ls -l
+>! ```
+>!
+>! ```output
+>! total 8
+>! drwxr-xr-x 2 grego grego 4096 Nov 15  2017 untrimmed_fastq
+>! ```
 
-```bash
-$ ls -l
-```
+>! The additional information given includes the name of the owner of the file,
+>! when the file was last modified, and whether the current user has permission
+>! to read and write to the file.
 
-```output
-total 8
-drwxr-x--- 2 dcuser dcuser 4096 Jul 30  2015 sra_metadata
-drwxr-xr-x 2 dcuser dcuser 4096 Nov 15  2017 untrimmed_fastq
-```
 
-The additional information given includes the name of the owner of the file,
-when the file was last modified, and whether the current user has permission
-to read and write to the file.
-
-:::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -276,16 +273,17 @@ as needed.
 Let's go into the `untrimmed_fastq` directory and see what is in there.
 
 ```bash
-$ cd untrimmed_fastq
-$ ls -F
+[grego@indri ~]$ cd untrimmed_fastq
+[grego@indri ~]$ ls -F
 ```
 
 ```output
-SRR097977.fastq  SRR098026.fastq
+bullkelp_001_R1.fastq.gz  bullkelp_001_R2.fastq.gz
 ```
 
-This directory contains two files with `.fastq` extensions. FASTQ is a format
-for storing information about sequencing reads and their quality.
+This directory contains two files with `.fastq.gz` extensions. FASTQ is a format
+for storing information about sequencing reads and their quality. GZ is an extension,
+which means that it is compressed using gzip to reduce the amount of storage it takes up.
 We will be learning more about FASTQ files in a later lesson.
 
 ### Shortcut: Tab Completion
@@ -299,13 +297,13 @@ directory or file name.
 Return to your home directory:
 
 ```bash
-$ cd
+[grego@indri ~]$ cd
 ```
 
 then enter:
 
 ```bash
-$ cd she<tab>
+[grego@indri ~]$ cd she<tab>
 ```
 
 The shell will fill in the rest of the directory name for
@@ -314,8 +312,8 @@ The shell will fill in the rest of the directory name for
 Now change directories to `untrimmed_fastq` in `shell_data`
 
 ```bash
-$ cd shell_data
-$ cd untrimmed_fastq
+[grego@indri ~]$ cd shell_data
+[grego@indri ~]$ cd untrimmed_fastq
 ```
 
 Using tab complete can be very helpful. However, it will only autocomplete
@@ -326,19 +324,19 @@ For example, if we now try to list the files which names start with `SR`
 by using tab complete:
 
 ```bash
-$ ls SR<tab>
+[grego@indri ~]$ ls bul<tab>
 ```
 
-The shell auto-completes your command to `SRR09`, because all file names in
+The shell auto-completes your command to `bullkelp_001_R`, because all file names in
 the directory begin with this prefix. When you hit
 <kbd>Tab</kbd> again, the shell will list the possible choices.
 
 ```bash
-$ ls SRR09<tab><tab>
+$ ls bullkelp_001_R<tab><tab>
 ```
 
 ```output
-SRR097977.fastq  SRR098026.fastq
+bullkelp_001_R1.fastq.gz  bullkelp_001_R2.fastq.gz
 ```
 
 Tab completion can also fill in the names of programs, which can be useful if you
@@ -365,12 +363,11 @@ bioinformatic software that is only available in command line versions.
 In the next few episodes, we'll be expanding on these skills and seeing how
 using the command line shell enables us to make our workflow more efficient and reproducible.
 
-:::::::::::::::::::::::::::::::::::::::: keypoints
+## keypoints
 
 - The shell gives you the ability to work more efficiently by using keyboard commands rather than a GUI.
 - Useful commands for navigating your file system include: `ls`, `pwd`, and `cd`.
 - Most commands take options (flags) which begin with a `-`.
 - Tab completion can reduce errors from mistyping and make work more efficient in the shell.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
