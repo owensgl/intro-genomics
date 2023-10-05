@@ -4,23 +4,23 @@ element: lab
 layout: default
 ---
 
-::::::::::::::::::::::::::::::::::::::: objectives
+## objectives
 
 - Describe key reasons for learning shell.
 - Navigate your file system using the command line.
 - Access and read help files for `bash` programs and use help files to identify useful command options.
 - Demonstrate the use of tab completion, and explain its advantages.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
-:::::::::::::::::::::::::::::::::::::::: questions
+## questions
 
 - What is a command shell and why would I use one?
 - How can I move around on my computer?
 - How can I see what files and directories I have?
 - How can I specify the location of a file or directory on my computer?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
 ## What is a shell and why should I care?
 
@@ -35,7 +35,8 @@ There are many reasons to learn about the shell:
   have features and parameter options which are not available in the GUI.
   BLAST is an example. Many of the advanced functions are only accessible
   to users who know how to use a shell.
-- The shell makes your work less boring. In bioinformatics you often need to repeat tasks with a large number of files. With the shell, you can automate those repetitive tasks and leave you free to do more exciting things.
+- The shell makes your work less boring. In bioinformatics you often need to repeat tasks with a large number of files. 
+  With the shell, you can automate those repetitive tasks and leave you free to do more exciting things.
 - The shell makes your work less error-prone. When humans do the same thing a hundred different times
   (or even ten times), they're likely to make a mistake. Your computer can do the same thing a thousand times
   with no mistakes.
@@ -57,7 +58,7 @@ you'll need to download a separate program to access the shell.
 
 To save time, we are going to be working on a remote server where all the necessary data and software available.
 When we say a 'remote server', we are talking about a computer that is not the one you are working on right now.
-You will access the Carpentries remote server where everything is prepared for the lesson.
+You will access the remote server where everything is prepared for the lesson.
 We will learn the basics of the shell by manipulating some data files. Some of these files are very large
 , and would take time to download to your computer.
 We will also be using several bioinformatic packages in later lessons and installing all of the software
@@ -65,61 +66,70 @@ would take up time even more time. A 'ready-to-go' server lets us focus on learn
 
 ## How to access the remote server
 
-You can log-in to the remote server using the [instructions from the Introduction to Cloud Computing for Genomics lesson](https://datacarpentry.org/cloud-genomics/02-logging-onto-cloud#logging-onto-a-cloud-instance).
-Your instructor will supply to you the `ip_address` and password that you need to login.
+All students will be accessing the server using their UVic Netlink ID. You will use the `ssh` or `Secure Shell`
+command to login to the remote server, while logged into the [UVic VPN](https://www.uvic.ca/systems/services/internettelephone/remoteaccess/).
 
-Each of you will have a different `ip_address`. This will
-prevent us from accidentally changing each other's files as we work through the
-exercises. The password will be the same for everyone.
+```bash
+ssh your_id@indri.rcs.uvic.ca
+```
+You will be prompted to use Duo, two-factor authentication before you enter your password. After approving the authentication on your phone,
+you will use your netlink ID to login.
+
+```output
+(base) p165-072:~ gregoryowens$ ssh grego@fossa.rcs.uvic.ca
+*
+* Acceptable Use of Electronic Information Resources
+*
+* Access to this system is prohibited except for authorized University of
+* Victoria students, faculty, and staff.
+*
+* All activity may be logged/monitored and unauthorized access will be handled
+* per the provisions of UVic's Policy IM7200: Acceptable Use of Electronic
+* Information Resources.
+*
+* https://www.uvic.ca/universitysecretary/assets/docs/policies/IM7200_6030_.pdf
+*
+(grego@fossa.rcs.uvic.ca) Duo two-factor login for grego
+
+Enter a passcode or select one of the following options:
+
+ 1. Duo Push to XXX-XXX-XXXX
+
+Passcode or option (1-1):
+```
+
 
 After logging in, you will see a screen showing something like this:
 
 ```output
-Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.4.0-137-generic x86_64)
+To access CVMFS modules please source the appropriate profile.
+For example: 'source /cvmfs/soft.computecanada.ca/config/profile/bash.sh'
 
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
-  System information as of Mon 13 Mar 2023 03:57:46 AM UTC
-
-  System load:  0.0                Processes:             192
-  Usage of /:   20.3% of 98.27GB   Users logged in:       0
-  Memory usage: 25%                IPv4 address for eth0: 172.31.12.214
-  Swap usage:   0%
-
-  Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
-
-178 updates can be applied immediately.
-108 of these updates are standard security updates.
-To see these additional updates run: apt list --upgradable
-
-
-Last login: Fri Mar 10 03:14:44 2023 from 72.83.168.14
+Last failed login: Thu Oct  5 10:44:07 PDT 2023 from 142.104.165.72 on ssh:notty
+There was 1 failed login attempt since the last successful login.
+Last login: Thu Oct  5 09:48:45 2023 from 142.104.165.72
 ```
 
-This provides a lot of information about the remote server that you're logging into. We're not going to use most of this information for
+This provides information about the remote server that you're logging into. We're not going to use most of this information for
 our workshop, so you can clear your screen using the `clear` command.
 
 Type the word `clear` into the terminal and press the `Enter` key.
 
 ```bash
-$ clear
+[grego@indri ~]$ clear
 ```
 
 This will scroll your screen down to give you a fresh screen and will make it easier to read.
 You haven't lost any of the information on your screen. If you scroll up, you can see everything that has been output to your screen
 up until this point.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
 
-## Tip
+>### Tip
+>
+>Hot-key combinations are shortcuts for performing common commands.
+>The hot-key combination for clearing the console is `Ctrl+L`. Feel free to try it and see for yourself.
 
-Hot-key combinations are shortcuts for performing common commands.
-The hot-key combination for clearing the console is `Ctrl+L`. Feel free to try it and see for yourself.
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
 ## Navigating your file system
 
@@ -132,42 +142,21 @@ which hold files or other directories.
 
 Several commands are frequently used to create, inspect, rename, and delete files and directories.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
 
-## Preparation Magic
-
-You may have a prompt (the characters to the left of the cursor) that looks different from the `$` sign character used here.
-If you would like to change your prompt to match the example prompt, first type the command:
-`echo $PS1`
-into your shell, followed by pressing the <kbd>Enter</kbd> key.
-
-This will print the bash special characters that are currently defining your prompt.
-To change the prompt to a `$` (followed by a space), enter the command:
-`PS1='$ '`
-Your window should look like our example in this lesson.
-
-To change back to your original prompt, type in the output of the previous command `echo $PS1` (this will be different depending on the
-original configuration) between the quotes in the following command:
-`PS1=""`
-
-For example, if the output of `echo $PS1` was `\u@\h:\w $ `,
-then type those characters between the quotes in the above command: `PS1="\u@\h:\w $ "`.
-Alternatively, you can reset your original prompt by exiting the shell and opening a new session.
-
-This isn't necessary to follow along (in fact, your prompt may have other helpful information you want to know about).  This is up to you!
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```bash
-$
+[grego@indri ~]$
 ```
 
 The dollar sign is a **prompt**, which shows us that the shell is waiting for input;
 your shell may use a different character as a prompt and may add information before
 the prompt. When typing commands, either from these lessons or from other sources,
-do not type the prompt, only the commands that follow it.
+do not type the prompt, only the commands that follow it. In this case, the prompt is
+showing that my username is **grego**, and I'm logged into **indri**. The **~** is a special
+represents character that represents the **home** directory. You will notice that as you move directories
+this changes to show you the current directory you are in. 
 
-Let's find out where we are by running a command called `pwd`
+To more explicitely find out where you are lets run a command called `pwd`
 (which stands for "print working directory").
 At any moment, our **current working directory**
 is our current default directory,
@@ -175,15 +164,15 @@ i.e.,
 the directory that the computer assumes we want to run commands in,
 unless we explicitly specify something else.
 Here,
-the computer's response is `/home/dcuser`,
+the computer's response is `/home/grego`,
 which is the top level directory within our cloud system:
 
 ```bash
-$ pwd
+[grego@indri ~]$ pwd
 ```
 
 ```output
-/home/dcuser
+/home/grego
 ```
 
 Let's look at how our file system is organized. We can see what files and subdirectories are in this directory by running `ls`,
