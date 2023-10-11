@@ -250,27 +250,25 @@ to quit.
 
 ### Solution
 <details>
-<summary> <b>Solution</b> </summary>
+<summary> <b>Show Solution</b> </summary>
 
-> ```bash
-> [grego@indri ~]$ ls -l
-> ```
->
-> ```output
-> total 8
-> drwxr-xr-x 2 grego grego 4096 Nov 15  2017 untrimmed_fastq
-> ```
+    ```bash
+    [grego@indri ~]$ ls -l
+    ```
+    
+    ```output
+    total 8
+    drwxr-xr-x 2 grego grego 4096 Nov 15  2017 untrimmed_fastq
+    ```
 
-> The additional information given includes the name of the owner of the file,
-> when the file was last modified, and whether the current user has permission
-> to read and write to the file.
+    The additional information given includes the name of the owner of the file,
+    when the file was last modified, and whether the current user has permission
+    to read and write to the file.
 
 </details>
 
 
 
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 No one can possibly learn all of these arguments, that's what the manual page
 is for. You can (and should) refer to the manual page or other help files
