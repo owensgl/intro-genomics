@@ -265,7 +265,7 @@ to quit.
 > when the file was last modified, and whether the current user has permission
 > to read and write to the file.
 
-<details>
+</details>
 
 
 
