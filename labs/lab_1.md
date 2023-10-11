@@ -248,46 +248,6 @@ to quit.
 >gives you that you don't see with the bare `ls` command?
 
 
-### Solution
-<details>
-<summary> <b>Show Solution</b> </summary>
-
-    ```bash
-    [grego@indri ~]$ ls -l
-    ```
-    
-    ```output
-    total 8
-    drwxr-xr-x 2 grego grego 4096 Nov 15  2017 untrimmed_fastq
-    ```
-
-    The additional information given includes the name of the owner of the file,
-    when the file was last modified, and whether the current user has permission
-    to read and write to the file.
-
-</details>
-
-# How to add a collapsible section in markdown
-## 1. Example
-<details>
-  <summary>Click me</summary>
-
-  ### Heading
-  1. Foo
-  2. Bar
-     * Baz
-     * Qux
-
-  ### Some Javascript
-  ```js
-  function logSomething(something) {
-    console.log('Something', something);
-  }
-  ```
-
-</details>
-
-
 ***
 
 No one can possibly learn all of these arguments, that's what the manual page
@@ -484,54 +444,15 @@ prints the contents of `/home`.
 
 ##  Challenge
 
-### Finding hidden directories
+>### Finding hidden directories
+>
+>First navigate to the `shell_data` directory. There is a hidden directory within this directory. Explore the options for `ls` to
+>find out how to see hidden directories. List the contents of the directory and
+>identify the name of the text file in that directory.
+>
+>Hint: hidden files and folders in Unix start with `.`, for example `.my_hidden_directory`
 
-First navigate to the `shell_data` directory. There is a hidden directory within this directory. Explore the options for `ls` to
-find out how to see hidden directories. List the contents of the directory and
-identify the name of the text file in that directory.
-
-Hint: hidden files and folders in Unix start with `.`, for example `.my_hidden_directory`
-
-
-## Solution
-
-First use the `man` command to look at the options for `ls`.
-
-```bash
-[grego@indri shell_data]$ man ls
-```
-
-The `-a` option is short for `all` and says that it causes `ls` to "not ignore
-entries starting with ." This is the option we want.
-
-```bash
-[grego@indri shell_data]$ ls -a
-```
-
-```output
-.  ..  .hidden  untrimmed_fastq
-```
-
-The name of the hidden directory is `.hidden`. We can navigate to that directory
-using `cd`.
-
-```bash
-[grego@indri shell_data]$ cd .hidden
-```
-
-And then list the contents of the directory using `ls`.
-
-```bash
-[grego@indri shell_data]$ ls
-```
-
-```output
-youfoundit.txt
-```
-
-The name of the text file is `youfoundit.txt`.
-
-
+***
 
 In most commands the flags can be combined together in no particular order to obtain the desired results/output.
 
@@ -579,27 +500,12 @@ the intermediate directory.
 
 ##  Challenge
 
-## Navigating practice
+>## Navigating practice
+>
+>Navigate to your home directory. From there, list the contents of the `untrimmed_fastq`
+>directory.
 
-Navigate to your home directory. From there, list the contents of the `untrimmed_fastq`
-directory.
 
-:::::::::::::::  solution
-
-## Solution
-
-```bash
-$ cd
-$ ls shell_data/untrimmed_fastq/
-```
-
-```output
-SRR097977.fastq  SRR098026.fastq 
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Full vs. Relative Paths
 
@@ -611,41 +517,41 @@ hierarchy. Navigate to the home directory, then enter the `pwd`
 command.
 
 ```bash
-$ cd  
-$ pwd  
+[grego@indri ~]$ cd  
+[grego@indri ~]$ pwd  
 ```
 
 You will see:
 
 ```output
-/home/dcuser
+/home/grego
 ```
 
 This is the full name of your home directory. This tells you that you
-are in a directory called `dcuser`, which sits inside a directory called
+are in a directory called `grego`, which sits inside a directory called
 `home` which sits inside the very top directory in the hierarchy. The
 very top of the hierarchy is a directory called `/` which is usually
-referred to as the *root directory*. So, to summarize: `dcuser` is a
+referred to as the *root directory*. So, to summarize: `grego` is a
 directory in `home` which is a directory in `/`. More on `root` and
 `home` in the next section.
 
 Now enter the following command:
 
 ```bash
-$ cd /home/dcuser/shell_data/.hidden
+[grego@indri ~]$ cd /home/grego/shell_data/.hidden
 ```
 
 This jumps forward multiple levels to the `.hidden` directory.
 Now go back to the home directory.
 
 ```bash
-$ cd
+[grego@indri .hidden]$ cd
 ```
 
 You can also navigate to the `.hidden` directory using:
 
 ```bash
-$ cd shell_data/.hidden
+[grego@indri ~]$ cd shell_data/.hidden
 ```
 
 These two commands have the same effect, they both take us to the `.hidden` directory.
@@ -668,7 +574,7 @@ Over time, it will become easier for you to keep a mental note of the
 structure of the directories that you are using and how to quickly
 navigate amongst them.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+##  Challenge
 
 ## Relative path resolution
 
