@@ -586,22 +586,8 @@ what will `ls ../backup` display?
 3. `2012-12-01/ 2013-01-08/ 2013-01-27/`
 4. `original pnas_final pnas_sub`
 
-![](fig/filesystem-challenge.svg){alt='File System for Challenge Questions'}
+![](figs/filesystem-challenge.svg){alt='File System for Challenge Questions'}
 
-:::::::::::::::  solution
-
-## Solution
-
-1. No: there *is* a directory `backup` in `/Users`.
-2. No: this is the content of `Users/thing/backup`,
-  but with `..` we asked for one level further up.
-3. No: see previous explanation.
-  Also, we did not specify `-F` to display `/` at the end of the directory names.
-4. Yes: `../backup` refers to `/Users/backup`.
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Navigational Shortcuts
 
@@ -622,18 +608,18 @@ In our case, the `root` directory is **two** levels above our
 `shell_data` directory:
 
 ```bash
-$ cd
-$ cd shell_data
+[grego@indri ~]$ cd
+[grego@indri ~]$ cd shell_data
 ```
 
 Then enter the command:
 
 ```bash
-$ ls ~
+[grego@indri shell_data]$ ls ~
 ```
 
 ```output
-R  r_data  shell_data
+shell_data
 ```
 
 This prints the contents of your home directory, without you needing to
@@ -641,13 +627,13 @@ type the full path.
 
 The commands `cd`, and `cd ~` are very useful for quickly navigating back to your home directory. We will be using the `~` character in later lessons to specify our home directory.
 
-:::::::::::::::::::::::::::::::::::::::: keypoints
+## Keypoints
 
 - The `/`, `~`, and `..` characters represent important navigational shortcuts.
 - Hidden files and directories start with `.` and can be viewed using `ls -a`.
 - Relative paths specify a location starting from the current location, while absolute paths specify a location from the root of the file system.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
 ## Credit
 This material is adapted from Becker et al. 2019, under CC-BY 4.0 licence. 
