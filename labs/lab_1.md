@@ -267,8 +267,27 @@ to quit.
 
 </details>
 
+# How to add a collapsible section in markdown
+## 1. Example
+<details>
+  <summary>Click me</summary>
+
+  ### Heading
+  1. Foo
+  2. Bar
+     * Baz
+     * Qux
+
+  ### Some Javascript
+  ```js
+  function logSomething(something) {
+    console.log('Something', something);
+  }
+  ```
+</details>
 
 
+***
 
 No one can possibly learn all of these arguments, that's what the manual page
 is for. You can (and should) refer to the manual page or other help files
@@ -462,9 +481,9 @@ You can chain these together like so:
 
 prints the contents of `/home`.
 
-##  challenge
+##  Challenge
 
-## Finding hidden directories
+### Finding hidden directories
 
 First navigate to the `shell_data` directory. There is a hidden directory within this directory. Explore the options for `ls` to
 find out how to see hidden directories. List the contents of the directory and
@@ -472,38 +491,37 @@ identify the name of the text file in that directory.
 
 Hint: hidden files and folders in Unix start with `.`, for example `.my_hidden_directory`
 
-:::::::::::::::  solution
 
 ## Solution
 
 First use the `man` command to look at the options for `ls`.
 
 ```bash
-$ man ls
+[grego@indri shell_data]$ man ls
 ```
 
 The `-a` option is short for `all` and says that it causes `ls` to "not ignore
 entries starting with ." This is the option we want.
 
 ```bash
-$ ls -a
+[grego@indri shell_data]$ ls -a
 ```
 
 ```output
-.  ..  .hidden	sra_metadata  untrimmed_fastq
+.  ..  .hidden  untrimmed_fastq
 ```
 
 The name of the hidden directory is `.hidden`. We can navigate to that directory
 using `cd`.
 
 ```bash
-$ cd .hidden
+[grego@indri shell_data]$ cd .hidden
 ```
 
 And then list the contents of the directory using `ls`.
 
 ```bash
-$ ls
+[grego@indri shell_data]$ ls
 ```
 
 ```output
@@ -512,15 +530,13 @@ youfoundit.txt
 
 The name of the text file is `youfoundit.txt`.
 
-:::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 In most commands the flags can be combined together in no particular order to obtain the desired results/output.
 
 ```
-$ ls -Fa
-$ ls -laF
+[grego@indri shell_data]$ ls -Fa
+[grego@indri shell_data]$ ls -laF
 ```
 
 ## Examining the contents of other directories
@@ -532,17 +548,17 @@ give `ls` the names of other directories to view. Navigate to your
 home directory if you are not already there.
 
 ```bash
-$ cd
+[grego@indri shell_data]$ cd
 ```
 
 Then enter the command:
 
 ```bash
-$ ls shell_data
+[grego@indri ~]$ ls shell_data
 ```
 
 ```output
-sra_metadata  untrimmed_fastq
+untrimmed_fastq
 ```
 
 This will list the contents of the `shell_data` directory without
@@ -553,14 +569,14 @@ The `cd` command works in a similar way.
 Try entering:
 
 ```bash
-$ cd
-$ cd shell_data/untrimmed_fastq
+[grego@indri ~]$ cd
+[grego@indri ~]$ cd shell_data/untrimmed_fastq
 ```
 
 This will take you to the `untrimmed_fastq` directory without having to go through
 the intermediate directory.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+##  Challenge
 
 ## Navigating practice
 
