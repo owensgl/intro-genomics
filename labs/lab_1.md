@@ -249,19 +249,24 @@ to quit.
 
 
 ### Solution
+<details>
+<summary> <b>Solution</b> </summary>
 
->! ```bash
->! [grego@indri ~]$ ls -l
->! ```
->!
->! ```output
->! total 8
->! drwxr-xr-x 2 grego grego 4096 Nov 15  2017 untrimmed_fastq
->! ```
+> ```bash
+> [grego@indri ~]$ ls -l
+> ```
+>
+> ```output
+> total 8
+> drwxr-xr-x 2 grego grego 4096 Nov 15  2017 untrimmed_fastq
+> ```
 
->! The additional information given includes the name of the owner of the file,
->! when the file was last modified, and whether the current user has permission
->! to read and write to the file.
+> The additional information given includes the name of the owner of the file,
+> when the file was last modified, and whether the current user has permission
+> to read and write to the file.
+
+<details>
+
 
 
 
@@ -314,7 +319,7 @@ Now change directories to `untrimmed_fastq` in `shell_data`
 
 ```bash
 [grego@indri ~]$ cd shell_data
-[grego@indri ~]$ cd untrimmed_fastq
+[grego@indri shell_data]$ cd untrimmed_fastq
 ```
 
 Using tab complete can be very helpful. However, it will only autocomplete
@@ -325,7 +330,7 @@ For example, if we now try to list the files which names start with `SR`
 by using tab complete:
 
 ```bash
-[grego@indri ~]$ ls bul<tab>
+[grego@indri untrimmed_fastq]$ ls bul<tab>
 ```
 
 The shell auto-completes your command to `bullkelp_001_R`, because all file names in
@@ -333,7 +338,7 @@ the directory begin with this prefix. When you hit
 <kbd>Tab</kbd> again, the shell will list the possible choices.
 
 ```bash
-$ ls bullkelp_001_R<tab><tab>
+[grego@indri untrimmed_fastq]$ ls bullkelp_001_R<tab><tab>
 ```
 
 ```output
@@ -344,7 +349,7 @@ Tab completion can also fill in the names of programs, which can be useful if yo
 remember the beginning of a program name.
 
 ```bash
-$ pw<tab><tab>
+[grego@indri untrimmed_fastq]$ pw<tab><tab>
 ```
 
 ```output
@@ -376,7 +381,7 @@ using the command line shell enables us to make our workflow more efficient and 
 # Navigating files and directories
 
 
-::::::::::::::::::::::::::::::::::::::: objectives
+## Objectives
 
 - Use a single command to navigate multiple steps in your directory structure, including moving backwards (one level up).
 - Perform operations on files in directories outside your working directory.
@@ -384,14 +389,14 @@ using the command line shell enables us to make our workflow more efficient and 
 - Interconvert between absolute and relative paths.
 - Employ navigational shortcuts to move around your file system.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
-:::::::::::::::::::::::::::::::::::::::: questions
+## Questions
 
 - How can I perform operations on files outside of my working directory?
 - What are some navigational shortcuts I can use to make my work more efficient?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
 ## Moving around the file system
 
@@ -404,16 +409,16 @@ Use the commands we've learned so far to navigate to the `shell_data/untrimmed_f
 you're not already there.
 
 ```bash
-$ cd
-$ cd shell_data
-$ cd untrimmed_fastq
+[grego@indri untrimmed_fastq]$ cd
+[grego@indri ~]$ cd shell_data
+[grego@indri shell_data]$ cd untrimmed_fastq
 ```
 
 What if we want to move back up and out of this directory and to our top level
 directory? Can we type `cd shell_data`? Try it and see what happens.
 
 ```bash
-$ cd shell_data
+[grego@indri untrimmed_data]$ cd shell_data
 ```
 
 ```output
@@ -427,26 +432,26 @@ above the one you were located in.
 We have a special command to tell the computer to move us back or up one directory level.
 
 ```bash
-$ cd ..
+[grego@indri untrimmed_data]$ cd ..
 ```
 
 Now we can use `pwd` to make sure that we are in the directory we intended to navigate
 to, and `ls` to check that the contents of the directory are correct.
 
 ```bash
-$ pwd
+[grego@indri shell_data]$ pwd
 ```
 
 ```output
-/home/dcuser/shell_data
+/home/grego/shell_data
 ```
 
 ```bash
-$ ls
+[grego@indri shell_data]$ ls
 ```
 
 ```output
-sra_metadata  untrimmed_fastq
+untrimmed_fastq
 ```
 
 From this output, we can see that `..` did indeed take us back one level in our file system.
@@ -454,12 +459,12 @@ From this output, we can see that `..` did indeed take us back one level in our 
 You can chain these together like so:
 
 ```bash
-$ ls ../../
+[grego@indri shell_data]$ ls ../../
 ```
 
 prints the contents of `/home`.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+##  challenge
 
 ## Finding hidden directories
 
