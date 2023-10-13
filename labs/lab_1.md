@@ -808,18 +808,17 @@ files in `/usr/bin`. Rerun that command.
 We now know how to switch directories, run programs, and look at the
 contents of directories, but how do we look at the contents of files?
 
-One way to examine a file is to print out the first 10 lines using the program `head`.
+One way to examine a file is to print out all the text using the program `cat`.
 
 Enter the following command from within the `untrimmed_fastq` directory:
 
 ```bash
-[grego@indri untrimmed_fastq]$ head bullkelp_001_R1.fastq.gz
+[grego@indri untrimmed_fastq]$ cat bullkelp_001_R1.fastq.gz
 ```
 
-This will print out the first 10 lines of the `bullkelp_001_R1.fastq.gz` to the screen.
-
-Notice anything weird? It's all weird and unintelligeble characters. 
-That's because this file is gzipped. That means it is compressed and 
+Notice anything weird? It's all unintelligeble characters. It may take a while, 
+to print all the weird characters so cancel the `cat` command using <kbd>Ctrl</kbd>\+<kbd>C</kbd>. 
+We can't read it because this file is gzipped, which means it is compressed and 
 no longer a normal text file. To convert it into a format you can actually 
 read, first we need to unzip it using `gunzip`.
 
@@ -827,25 +826,30 @@ read, first we need to unzip it using `gunzip`.
 [grego@indri untrimmed_fastq]$ gunzip *.fastq.gz
 ```
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+Try again to look at the file using `cat`, now that it is unzipped.
+
+```bash
+[grego@indri untrimmed_fastq]$ cat bullkelp_001_R1.fastq
+```
+
+
 
 ## Exercise
 
-1. Print out the contents of the `~/shell_data/untrimmed_fastq/SRR097977.fastq` file. What is the last line of the file?
+1. Print out the contents of the `~/shell_data/untrimmed_fastq/bullkelp_001_R1.fastq` file. 
+   What is the last line of the file? What command would only print the last lines of a file?
 2. From your home directory, and without changing directories,
   use one short command to print the contents of all of the files in
   the `~/shell_data/untrimmed_fastq` directory.
 
-:::::::::::::::  solution
 
 ## Solution
 
 1. The last line of the file is `C:CCC::CCCCCCCC<8?6A:C28C<608'&&&,'$`.
+  `tail` prints the last lines of a file. 
 2. `cat ~/shell_data/untrimmed_fastq/*`
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
 `cat` is a terrific program, but when the file is really big, it can
 be annoying to use. The program, `less`, is useful for this
@@ -855,7 +859,7 @@ are identical to the `man` program.
 Enter the following command:
 
 ```bash
-$ less SRR097977.fastq
+$ less bullkelp_001_R1.fastq
 ```
 
 Some navigation commands in `less`:
@@ -887,25 +891,26 @@ and where it is in the file. If you continue to type `/` and hit return, you wil
 forward to the next instance of this sequence motif. If you instead type `?` and hit
 return, you will search backwards and move up the file to previous examples of this motif.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Exercise
 
 What are the next three nucleotides (characters) after the first instance of the sequence quoted above?
 
-:::::::::::::::  solution
 
-## Solution
 
-`CAC`
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Remember, the `man` program actually uses `less` internally and
 therefore uses the same commands, so you can search documentation
 using "/" as well!
+
+If you're using a small terminal window, you may notice that the lines are 
+wrapping. This is fine now, but can be annoying when you're trying to view a
+text file with many columns. You can remove text wrapping in less using the `-S` option.
+
+```bash
+$ less -S bullkelp_001_R1.fastq
+```
+In this, you can now use the left and right arrows to move left and write in the text file.
 
 There's another way that we can look at files, and in this case, just
 look at part of them. This can be particularly useful if we just want
@@ -915,56 +920,56 @@ The commands are `head` and `tail` and they let you look at
 the beginning and end of a file, respectively.
 
 ```bash
-$ head SRR098026.fastq
+$ head bullkelp_001_R1.fastq
 ```
 
 ```output
-@SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
-NNNNNNNNNNNNNNNNCNNNNNNNNNNNNNNNNNN
-+SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
-!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!!!
-@SRR098026.2 HWUSI-EAS1599_1:2:1:0:312 length=35
-NNNNNNNNNNNNNNNNANNNNNNNNNNNNNNNNNN
-+SRR098026.2 HWUSI-EAS1599_1:2:1:0:312 length=35
-!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!!!
-@SRR098026.3 HWUSI-EAS1599_1:2:1:0:570 length=35
-NNNNNNNNNNNNNNNNANNNNNNNNNNNNNNNNNN
+@A01754:154:HWCGVDSX5:2:1101:4399:1094 1:N:0:ACTCCGAAGC+NCCGTGTTGC
+CNCAGCCGAAACGGGCCAAAACTCGCCATAAACGAGGCTACGCCGAGTTTGCATCAAACCAGGAACTTTCTCAGATAGATATAGATGCGGACGACGATTCCGAAGTGCAGACCACGCTACACATTTTTCAAGTGAAAAACACCCCTAAAGA
++
+F#FFFFFFF:FFFFFFFF:FFFFF:FFFFFFFFFFFFFFFFFF::FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFF:FFFFFFFFFFFFFFF,FFFFFFF,FFF,
+@A01754:154:HWCGVDSX5:2:1101:5412:1094 1:N:0:ACTCCGAAGC+NCCGTGTTGC
+GNTGGAAACTGCTGTTGGCAGTACTAAAATTGTTGTCAAATAGTTCGAGCCGAACGCTGGACGGACGAATCACACCGACGGGCGAAGGAACGAACGAAGAGCGTTACCGACGGACGAATGGCTTAACGAAGGACGGTGTGCGAGACAAACC
++
+F#FFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF,FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF,FFFFFFFFFFFFFFFFFFFFF
+@A01754:154:HWCGVDSX5:2:1101:9191:1094 1:N:0:ACTCCGAAGC+NCCGTGTTGC
+GNGTAGTGTCCTGCAATGAGCCCCACGACGTCAACGCACGTCAAACACTCTCATCTCGTTTGTATTCCACGATAAATGCGTCCAGGTAGGGAGGGACCTAGCCTTCAAGGCATTCCTGAAAAAATGCCTGAAGTACTTTTTCTGAAACATG
 ```
 
 ```bash
-$ tail SRR098026.fastq
+$ tail bullkelp_001_R1.fastq
 ```
 
 ```output
-+SRR098026.247 HWUSI-EAS1599_1:2:1:2:1311 length=35
-#!##!#################!!!!!!!######
-@SRR098026.248 HWUSI-EAS1599_1:2:1:2:118 length=35
-GNTGNGGTCATCATACGCGCCCNNNNNNNGGCATG
-+SRR098026.248 HWUSI-EAS1599_1:2:1:2:118 length=35
-B!;?!A=5922:##########!!!!!!!######
-@SRR098026.249 HWUSI-EAS1599_1:2:1:2:1057 length=35
-CNCTNTATGCGTACGGCAGTGANNNNNNNGGAGAT
-+SRR098026.249 HWUSI-EAS1599_1:2:1:2:1057 length=35
-A!@B!BBB@ABAB#########!!!!!!!######
++
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+@A01754:154:HWCGVDSX5:2:1101:26368:33066 1:N:0:ACTCCGAAGC+TCCGTGTTGC
+TGAATGGGATGAGCAAAAAAAAAAAGTGTGGTAATGACGAAAGTGATAGATCTACTGTGGCACACAGCAAGCAGTGGTCTGCCGCGGGGTTTCTTGACATGTACCAGGTATTGCGCTTGTACGCACGACGGTTACAAAGTAATCAACACTA
++
+FFFFFFFFFFFFFFFFFFFFFFF,FFF,FF:FFFFFFFFFFF:FFFFF:FF,FFFFFF:F:FFFFFFFFFFFFFFFF,F:FFFFFFFFFFFFF::FFFF,FFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+@A01754:154:HWCGVDSX5:2:1101:27019:33066 1:N:0:ACTCCGAAGC+TCCGTGTTGC
+CTTGAATTGTGTTTGCCTTGCCTTGTCGTCTCTTGTCTTGAATATTGTGTGTTGAATTATCAGAAACGTCATCTCGTTTGTTTTAGTGATTGCTGTAATGTGAGTTTGTATATGGAATATCTAATCAAGTTTTGGAACTTCATGTCATCGT
++
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFFF
 ```
 
 The `-n` option to either of these commands can be used to print the
 first or last `n` lines of a file.
 
 ```bash
-$ head -n 1 SRR098026.fastq
+$ head -n 1 bullkelp_001_R1.fastq
 ```
 
 ```output
-@SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
+@A01754:154:HWCGVDSX5:2:1101:4399:1094 1:N:0:ACTCCGAAGC+NCCGTGTTGC
 ```
 
 ```bash
-$ tail -n 1 SRR098026.fastq
+$ tail -n 1 bullkelp_001_R1.fastq
 ```
 
 ```output
-A!@B!BBB@ABAB#########!!!!!!!######
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFFF
 ```
 
 ## Details on the FASTQ format
@@ -984,18 +989,18 @@ We can view the first complete read in one of the files in our dataset by using 
 the first four lines.
 
 ```bash
-$ head -n 4 SRR098026.fastq
+$ head -n 4 bullkelp_001_R1.fastq
 ```
 
 ```output
-@SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
-NNNNNNNNNNNNNNNNCNNNNNNNNNNNNNNNNNN
-+SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
-!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!!!
+@A01754:154:HWCGVDSX5:2:1101:4399:1094 1:N:0:ACTCCGAAGC+NCCGTGTTGC
+CNCAGCCGAAACGGGCCAAAACTCGCCATAAACGAGGCTACGCCGAGTTTGCATCAAACCAGGAACTTTCTCAGATAGATATAGATGCGGACGACGATTCCGAAGTGCAGACCACGCTACACATTTTTCAAGTGAAAAACACCCCTAAAGA
++
+F#FFFFFFF:FFFFFFFF:FFFFF:FFFFFFFFFFFFFFFFFF::FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFF:FFFFFFFFFFFFFFF,FFFFFFF,FFF,
 ```
 
-All but one of the nucleotides in this read are unknown (`N`). This is a pretty bad read!
-
+We can see that the start of the read has an N, which means it's an unknown base, but most of
+it looks reasonable. 
 Line 4 shows the quality for each nucleotide in the read. Quality is interpreted as the
 probability of an incorrect base call (e.g. 1 in 10) or, equivalently, the base call
 accuracy (e.g. 90%). To make it possible to line up each individual nucleotide with its quality
@@ -1004,10 +1009,10 @@ represents the numerical quality score for an individual nucleotide. For example
 above, the quality score line is:
 
 ```output
-!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!!!
+F#FFFFFFF:FFFFFFFF:FFFFF:FFFFFFFFFFFFFFFFFF::FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFF:FFFFFFFFFFFFFFF,FFFFFFF,FFF,
 ```
 
-The `#` character and each of the `!` characters represent the encoded quality for an
+The `#` character and each of the `F` and `;` characters represent the encoded quality for an
 individual nucleotide. The numerical value assigned to each of these characters depends on the
 sequencing platform that generated the reads. The sequencing machine used to generate our data
 uses the standard Sanger quality PHRED score encoding, Illumina version 1.8 onwards.
@@ -1028,15 +1033,21 @@ much signal was captured for the base incorporation.
 Looking back at our read:
 
 ```output
-@SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
-NNNNNNNNNNNNNNNNCNNNNNNNNNNNNNNNNNN
-+SRR098026.1 HWUSI-EAS1599_1:2:1:0:968 length=35
-!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!!!
+@A01754:154:HWCGVDSX5:2:1101:4399:1094 1:N:0:ACTCCGAAGC+NCCGTGTTGC
+CNCAGCCGAAACGGGCCAAAACTCGCCATAAACGAGGCTACGCCGAGTTTGCATCAAACCAGGAACTTTCTCAGATAGATATAGATGCGGACGACGATTCCGAAGTGCAGACCACGCTACACATTTTTCAAGTGAAAAACACCCCTAAAGA
++
+F#FFFFFFF:FFFFFFFF:FFFFF:FFFFFFFFFFFFFFFFFF::FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFF:FFFFFFFFFFFFFFF,FFFFFFF,FFF,
 ```
 
-we can now see that the quality of each of the `N`s is 0 and the quality of the only
-nucleotide call (`C`) is also very poor (`#` = a quality score of 2). This is indeed a very
-bad read.
+We can see that the N base has a quality score of 2, which means a 63% chance of error.
+The program that decoded the signal decided that 63% chance of error was too high, 
+so it replaced the base with N. For the rest of the read, the quality is `F`, which 
+corresponds to a Quality score of 37 or a 0.02% chance of error. 
+
+## Exercise
+
+Does the base quality change from the start of the read to the end of the read? 
+
 
 ## Creating, moving, copying, and removing
 
