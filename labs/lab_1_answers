@@ -156,5 +156,34 @@ what you need to solve the bonus problem.
 1. The last line of the file is `C:CCC::CCCCCCCC<8?6A:C28C<608'&&&,'$`.
   `tail` prints the last lines of a file. 
 2. `cat ~/shell_data/untrimmed_fastq/*`
+
+
+***
+
+## Exercise
+
+Starting in the `shell_data/untrimmed_fastq/` directory, do the following:
+
+1. Make sure that you have deleted your backup directory and all files it contains.
+2. Create a backup of each of your FASTQ files using `cp`. (Note: You'll need to do this individually for each of the two FASTQ files. We haven't
+  learned yet how to do this
+  with a wildcard.)
+3. Use a wildcard to move all of your backup files to a new backup directory.
+4. Change the permissions on all of your backup files to be write-protected.
+
+:::::::::::::::  solution
+
+## Solution
+
+1. `rm -r backup`
+2. `cp bullkelp_001_R1.fastq bullkelp_001_R1-backup.fastq` and `cp bullkelp_001_R2.fastq bullkelp_001_R2-backup.fastq`
+3. `mkdir backup` and `mv *-backup.fastq backup`
+4. `chmod -w backup/*-backup.fastq`  
+  It's always a good idea to check your work with `ls -l backup`. You should see something like:
+
+```output
+-r--r--r-- 1 grego grego 47552 Nov 15 23:06 bullkelp_001_R1-backup.fastq
+-r--r--r-- 1 grego grego 43332 Nov 15 23:06 bullkelp_001_R2-backup.fastq
+```
   Bonus: `ls /usr/bin/*[ac]*`
 
