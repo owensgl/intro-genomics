@@ -157,6 +157,10 @@ showing that my username is **grego**, and I'm logged into **indri**. The **~** 
 represents character that represents the **home** directory. You will notice that as you move directories
 this changes to show you the current directory you are in. 
 
+For the rest of the lab activities, I will be showing the prompt as only $. 
+Your prompt will be different, depending on which direct you are in, as well 
+as other factors.
+
 To more explicitely find out where you are lets run a command called `pwd`
 (which stands for "print working directory").
 At any moment, our **current working directory**
@@ -169,7 +173,7 @@ the computer's response is `/home/grego`,
 which is the top level directory within our cloud system:
 
 ```bash
-[grego@indri ~]$ pwd
+$ pwd
 ```
 
 ```output
@@ -180,7 +184,7 @@ Let's look at how our file system is organized. We can see what files and subdir
 which stands for "listing":
 
 ```bash
-[grego@indri ~]$ ls
+$ ls
 ```
 
 ```output
@@ -200,13 +204,13 @@ Let's say we want to navigate to the `shell_data` directory we saw above.  We ca
 use the following command to get there:
 
 ```bash
-[grego@indri ~]$ cd shell_data
+$ cd shell_data
 ```
 
 Let's look at what is in this directory:
 
 ```bash
-[grego@indri ~]$ ls
+$ ls
 ```
 
 ```output
@@ -217,7 +221,7 @@ We can make the `ls` output more comprehensible by using the **flag** `-F`,
 which tells `ls` to add a trailing `/` to the names of directories:
 
 ```bash
-[grego@indri ~]$ ls -F
+$ ls -F
 ```
 
 ```output
@@ -230,7 +234,7 @@ there are no decorations, it's a file.
 `ls` has lots of other options. To find out what they are, we can type:
 
 ```bash
-[grego@indri ~]$ man ls
+$ man ls
 ```
 
 `man` (short for manual) displays detailed documentation (also referred as man page or man file)
@@ -257,8 +261,8 @@ as needed.
 Let's go into the `untrimmed_fastq` directory and see what is in there.
 
 ```bash
-[grego@indri ~]$ cd untrimmed_fastq
-[grego@indri ~]$ ls -F
+$ cd untrimmed_fastq
+$ ls -F
 ```
 
 ```output
@@ -281,13 +285,13 @@ directory or file name.
 Return to your home directory:
 
 ```bash
-[grego@indri ~]$ cd
+$ cd
 ```
 
 then enter:
 
 ```bash
-[grego@indri ~]$ cd she<tab>
+$ cd she<tab>
 ```
 
 The shell will fill in the rest of the directory name for
@@ -296,8 +300,8 @@ The shell will fill in the rest of the directory name for
 Now change directories to `untrimmed_fastq` in `shell_data`
 
 ```bash
-[grego@indri ~]$ cd shell_data
-[grego@indri shell_data]$ cd untrimmed_fastq
+$ cd shell_data
+$ cd untrimmed_fastq
 ```
 
 Using tab complete can be very helpful. However, it will only autocomplete
@@ -308,7 +312,7 @@ For example, if we now try to list the files which names start with `SR`
 by using tab complete:
 
 ```bash
-[grego@indri untrimmed_fastq]$ ls bul<tab>
+$ ls bul<tab>
 ```
 
 The shell auto-completes your command to `bullkelp_001_R`, because all file names in
@@ -316,7 +320,7 @@ the directory begin with this prefix. When you hit
 <kbd>Tab</kbd> again, the shell will list the possible choices.
 
 ```bash
-[grego@indri untrimmed_fastq]$ ls bullkelp_001_R<tab><tab>
+$ ls bullkelp_001_R<tab><tab>
 ```
 
 ```output
@@ -327,7 +331,7 @@ Tab completion can also fill in the names of programs, which can be useful if yo
 remember the beginning of a program name.
 
 ```bash
-[grego@indri untrimmed_fastq]$ pw<tab><tab>
+$ pw<tab><tab>
 ```
 
 ```output
@@ -387,16 +391,16 @@ Use the commands we've learned so far to navigate to the `shell_data/untrimmed_f
 you're not already there.
 
 ```bash
-[grego@indri untrimmed_fastq]$ cd
-[grego@indri ~]$ cd shell_data
-[grego@indri shell_data]$ cd untrimmed_fastq
+$ cd
+$ cd shell_data
+$ cd untrimmed_fastq
 ```
 
 What if we want to move back up and out of this directory and to our top level
 directory? Can we type `cd shell_data`? Try it and see what happens.
 
 ```bash
-[grego@indri untrimmed_data]$ cd shell_data
+$ cd shell_data
 ```
 
 ```output
@@ -410,14 +414,14 @@ above the one you were located in.
 We have a special command to tell the computer to move us back or up one directory level.
 
 ```bash
-[grego@indri untrimmed_data]$ cd ..
+$ cd ..
 ```
 
 Now we can use `pwd` to make sure that we are in the directory we intended to navigate
 to, and `ls` to check that the contents of the directory are correct.
 
 ```bash
-[grego@indri shell_data]$ pwd
+$ pwd
 ```
 
 ```output
@@ -425,7 +429,7 @@ to, and `ls` to check that the contents of the directory are correct.
 ```
 
 ```bash
-[grego@indri shell_data]$ ls
+$ ls
 ```
 
 ```output
@@ -437,7 +441,7 @@ From this output, we can see that `..` did indeed take us back one level in our 
 You can chain these together like so:
 
 ```bash
-[grego@indri shell_data]$ ls ../../
+$ ls ../../
 ```
 
 prints the contents of `/home`.
@@ -457,8 +461,8 @@ prints the contents of `/home`.
 In most commands the flags can be combined together in no particular order to obtain the desired results/output.
 
 ```
-[grego@indri shell_data]$ ls -Fa
-[grego@indri shell_data]$ ls -laF
+$ ls -Fa
+$ ls -laF
 ```
 
 ## Examining the contents of other directories
@@ -470,13 +474,13 @@ give `ls` the names of other directories to view. Navigate to your
 home directory if you are not already there.
 
 ```bash
-[grego@indri shell_data]$ cd
+$ cd
 ```
 
 Then enter the command:
 
 ```bash
-[grego@indri ~]$ ls shell_data
+$ ls shell_data
 ```
 
 ```output
@@ -491,8 +495,8 @@ The `cd` command works in a similar way.
 Try entering:
 
 ```bash
-[grego@indri ~]$ cd
-[grego@indri ~]$ cd shell_data/untrimmed_fastq
+$ cd
+$ cd shell_data/untrimmed_fastq
 ```
 
 This will take you to the `untrimmed_fastq` directory without having to go through
@@ -517,8 +521,8 @@ hierarchy. Navigate to the home directory, then enter the `pwd`
 command.
 
 ```bash
-[grego@indri ~]$ cd  
-[grego@indri ~]$ pwd  
+$ cd  
+$ pwd  
 ```
 
 You will see:
@@ -538,20 +542,20 @@ directory in `home` which is a directory in `/`. More on `root` and
 Now enter the following command:
 
 ```bash
-[grego@indri ~]$ cd /home/grego/shell_data/.hidden
+$ cd /home/grego/shell_data/.hidden
 ```
 
 This jumps forward multiple levels to the `.hidden` directory.
 Now go back to the home directory.
 
 ```bash
-[grego@indri .hidden]$ cd
+$ cd
 ```
 
 You can also navigate to the `.hidden` directory using:
 
 ```bash
-[grego@indri ~]$ cd shell_data/.hidden
+$ cd shell_data/.hidden
 ```
 
 These two commands have the same effect, they both take us to the `.hidden` directory.
@@ -608,14 +612,14 @@ In our case, the `root` directory is **two** levels above our
 `shell_data` directory:
 
 ```bash
-[grego@indri ~]$ cd
-[grego@indri ~]$ cd shell_data
+$ cd
+$ cd shell_data
 ```
 
 Then enter the command:
 
 ```bash
-[grego@indri shell_data]$ ls ~
+$ ls ~
 ```
 
 ```output
@@ -666,14 +670,14 @@ have two results files, which are stored in our `untrimmed_fastq` directory.
 Navigate to your `untrimmed_fastq` directory:
 
 ```bash
-[grego@indri ~]$ cd ~/shell_data/untrimmed_fastq
+$ cd ~/shell_data/untrimmed_fastq
 ```
 
 We are interested in looking at the FASTQ files in this directory. We can list
 all files with the .fastq extension using the command:
 
 ```bash
-[grego@indri ~]$ ls *.fastq.gz
+$ ls *.fastq.gz
 ```
 
 ```output
@@ -686,7 +690,7 @@ Thus, `*.fastq.gz` matches every file that ends with `.fastq.gz`.
 This command:
 
 ```bash
-[grego@indri untrimmed_fastq]$ ls *R2.fastq.gz
+$ ls *R2.fastq.gz
 ```
 
 ```output
@@ -698,7 +702,7 @@ lists only the file that ends with `R2.fastq.gz`.
 This command:
 
 ```bash
-[grego@indri untrimmed_fastq]$ ls /usr/bin/*.sh
+$ ls /usr/bin/*.sh
 ```
 
 ```output
@@ -738,7 +742,7 @@ The `echo` command can also be used with pattern matching characters, such as wi
 Here we will use the `echo` command to see how the wildcard character is interpreted by the shell.
 
 ```bash
-[grego@indri untrimmed_fastq]$ echo *.fastq.gz
+$ echo *.fastq.gz
 ```
 
 ```output
@@ -769,7 +773,7 @@ A few more useful shortcuts:
 You can also review your recent commands with the `history` command, by entering:
 
 ```bash
-[grego@indri untrimmed_fastq]$ history
+$ history
 ```
 
 to see a numbered list of recent commands. You can reuse one of these commands
@@ -786,7 +790,7 @@ For example, if your history looked like this:
 then you could repeat command #260 by entering:
 
 ```bash
-[grego@indri untrimmed_fastq]$ !260
+$ !260
 ```
 
 Type `!` (exclamation point) and then the number of the command from your history.
@@ -813,7 +817,7 @@ One way to examine a file is to print out all the text using the program `cat`.
 Enter the following command from within the `untrimmed_fastq` directory:
 
 ```bash
-[grego@indri untrimmed_fastq]$ cat bullkelp_001_R1.fastq.gz
+$ cat bullkelp_001_R1.fastq.gz
 ```
 
 Notice anything weird? It's all unintelligeble characters. It may take a while, 
@@ -823,13 +827,13 @@ no longer a normal text file. To convert it into a format you can actually
 read, first we need to unzip it using `gunzip`.
 
 ```bash
-[grego@indri untrimmed_fastq]$ gunzip *.fastq.gz
+$ gunzip *.fastq.gz
 ```
 
 Try again to look at the file using `cat`, now that it is unzipped.
 
 ```bash
-[grego@indri untrimmed_fastq]$ cat bullkelp_001_R1.fastq
+$ cat bullkelp_001_R1.fastq
 ```
 
 
@@ -1044,9 +1048,6 @@ The program that decoded the signal decided that 63% chance of error was too hig
 so it replaced the base with N. For the rest of the read, the quality is `F`, which 
 corresponds to a Quality score of 37 or a 0.02% chance of error. 
 
-## Exercise
-
-Does the base quality change from the start of the read to the end of the read? 
 
 
 ## Creating, moving, copying, and removing
@@ -1068,15 +1069,15 @@ First, let's make a copy of one of our FASTQ files using the `cp` command.
 Navigate to the `shell_data/untrimmed_fastq` directory and enter:
 
 ```bash
-$ cp SRR098026.fastq SRR098026-copy.fastq
+$ cp bullkelp_001_R1.fastq bullkelp_001_R1-copy.fastq
 $ ls -F
 ```
 
 ```output
-SRR097977.fastq  SRR098026-copy.fastq  SRR098026.fastq
+bullkelp_001_R1.fastq  bullkelp_001_R1-copy.fastq  bullkelp_001_R2.fastq
 ```
 
-We now have two copies of the `SRR098026.fastq` file, one of them named `SRR098026-copy.fastq`. We'll move this file to a new directory
+We now have two copies of the `bullkelp_001_R1.fastq` file, one of them named `bullkelp_001_R1-copy.fastq`. We'll move this file to a new directory
 called `backup` where we'll store our backup data files.
 
 ### Creating Directories
@@ -1094,24 +1095,24 @@ We can now move our backup file to this directory. We can
 move files around using the command `mv`:
 
 ```bash
-$ mv SRR098026-copy.fastq backup
+$ mv bullkelp_001_R1-copy.fastq backup
 $ ls backup
 ```
 
 ```output
-SRR098026-copy.fastq
+bullkelp_001_R1-copy.fastq
 ```
 
 The `mv` command is also how you rename files. Let's rename this file to make it clear that this is a backup:
 
 ```bash
 $ cd backup
-$ mv SRR098026-copy.fastq SRR098026-backup.fastq
+$ mv bullkelp_001_R1-copy.fastq bullkelp_001_R1-backup.fastq
 $ ls
 ```
 
 ```output
-SRR098026-backup.fastq
+bullkelp_001_R1-backup.fastq
 ```
 
 ### File Permissions
@@ -1127,7 +1128,7 @@ $ ls -l
 ```
 
 ```output
--rw-r--r-- 1 dcuser dcuser 43332 Nov 15 23:02 SRR098026-backup.fastq
+-rwxr-x--- 1 grego grego 43332 Nov 15 23:02 bullkelp_001_R1-backup.fastq
 ```
 
 The first part of the output for the `-l` flag gives you information about the file's current permissions. There are ten slots in the
@@ -1136,22 +1137,21 @@ characters relate to the permissions that the file owner has, the next three rel
 three characters specify what other users outside of your group can do with the file. We're going to concentrate on the three positions
 that deal with your permissions (as the file owner).
 
-![](fig/rwx_figure.svg){alt='Permissions breakdown'}
+![](figs/rwx_figure.svg){alt='Permissions breakdown'}
 
-Here the three positions that relate to the file owner are `rw-`. The `r` means that you have permission to read the file, the `w`
-indicates that you have permission to write to (i.e. make changes to) the file, and the third position is a `-`, indicating that you
-don't have permission to carry out the ability encoded by that space (this is the space where `x` or executable ability is stored, we'll
-talk more about this in [a later lesson](05-writing-scripts.md)).
+Here the three positions that relate to the file owner are `rwx`. The `r` means that you have permission to read the file, the `w`
+indicates that you have permission to write to (i.e. make changes to) the file, and the third position is a `x`, indicating that you
+have permission to carry out the ability encoded by that space.
 
 Our goal for now is to change permissions on this file so that you no longer have `w` or write permissions. We can do this using the `chmod` (change mode) command and subtracting (`-`) the write permission `-w`.
 
 ```bash
-$ chmod -w SRR098026-backup.fastq
+$ chmod -w bullkelp_001_R1-backup.fastq
 $ ls -l 
 ```
 
 ```output
--r--r--r-- 1 dcuser dcuser 43332 Nov 15 23:02 SRR098026-backup.fastq
+-r-xr-x---. 1 grego grego 43332 Nov 15 23:02 bullkelp_001_R1-backup.fastq
 ```
 
 ### Removing
@@ -1159,13 +1159,13 @@ $ ls -l
 To prove to ourselves that you no longer have the ability to modify this file, try deleting it with the `rm` command:
 
 ```bash
-$ rm SRR098026-backup.fastq
+$ rm bullkelp_001_R1-backup.fastq
 ```
 
 You'll be asked if you want to override your file permissions:
 
 ```output
-rm: remove write-protected regular file ‘SRR098026-backup.fastq'? 
+rm: remove write-protected regular file ‘bullkelp_001_R1-backup.fastq'? 
 ```
 
 You should enter `n` for no. If you enter `n` (for no), the file will not be deleted. If you enter `y`, you will delete the file. This gives us an extra
@@ -1186,9 +1186,9 @@ $ rm -r backup
 ```
 
 This will delete not only the directory, but all files within the directory. If you have write-protected files in the directory,
-you will be asked whether you want to override your permission settings.
+you will be asked whether you want to override your permission settings. Be extra careful when using `rm` with wildcards,
+or with variables (covered later). A mistaken `rm` command can delete things you don't want to be deleted.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Exercise
 
@@ -1201,34 +1201,16 @@ Starting in the `shell_data/untrimmed_fastq/` directory, do the following:
 3. Use a wildcard to move all of your backup files to a new backup directory.
 4. Change the permissions on all of your backup files to be write-protected.
 
-:::::::::::::::  solution
+***
 
-## Solution
-
-1. `rm -r backup`
-2. `cp SRR098026.fastq SRR098026-backup.fastq` and `cp SRR097977.fastq SRR097977-backup.fastq`
-3. `mkdir backup` and `mv *-backup.fastq backup`
-4. `chmod -w backup/*-backup.fastq`  
-  It's always a good idea to check your work with `ls -l backup`. You should see something like:
-
-```output
--r--r--r-- 1 dcuser dcuser 47552 Nov 15 23:06 SRR097977-backup.fastq
--r--r--r-- 1 dcuser dcuser 43332 Nov 15 23:06 SRR098026-backup.fastq
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::: keypoints
+## keypoints
 
 - You can view file contents using `less`, `cat`, `head` or `tail`.
 - The commands `cp`, `mv`, and `mkdir` are useful for manipulating existing files and creating new directories.
 - You can view file permissions using `ls -l` and change permissions using `chmod`.
 - The `history` command and the up arrow on your keyboard can be used to repeat recently used commands.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
+***
 
 ## Credit
 This material is adapted from Becker et al. 2019, under CC-BY 4.0 licence. 
