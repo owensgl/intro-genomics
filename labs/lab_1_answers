@@ -139,5 +139,22 @@ what you need to solve the bonus problem.
 1. `ls /usr/bin/c*`
 2. `ls /usr/bin/*a*`
 3. `ls /usr/bin/*o`  
+
+***
+
+## Exercise
+
+1. Print out the contents of the `~/shell_data/untrimmed_fastq/bullkelp_001_R1.fastq` file. 
+   What is the last line of the file? What command would only print the last lines of a file?
+2. From your home directory, and without changing directories,
+  use one short command to print the contents of all of the files in
+  the `~/shell_data/untrimmed_fastq` directory.
+
+
+## Solution
+
+1. The last line of the file is `C:CCC::CCCCCCCC<8?6A:C28C<608'&&&,'$`.
+  `tail` prints the last lines of a file. 
+2. `cat ~/shell_data/untrimmed_fastq/*`
   Bonus: `ls /usr/bin/*[ac]*`
 
