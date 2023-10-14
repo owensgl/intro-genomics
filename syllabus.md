@@ -100,6 +100,7 @@ Students completing this course will be able to:
 * Turn sequence data into genetic variation.
 * Run basic population genetic analyses.
 * Explain how and why genomic data is generated.
+* Present scientific analyses in oral and written form.
 
 
 ### Teaching Philosophy
@@ -160,8 +161,8 @@ penalty.
 
 ### Assignment policy
 
-Pre-lecture paper questions are due on Monday at 11:59 pm Pacific Time on Brightspace. 
-In lab assignments are due on Tuesday at 11:59 pm Pacific Time on Brightspace the week following 
+Pre-lecture paper questions are due on Tuesdays at 1:30 pm Pacific Time on Brightspace. 
+In lab assignments are due on Tuesday at 1:30 pm Pacific Time on Brightspace the week following 
 the lab material. 
 
 ### Grade policy
@@ -177,7 +178,7 @@ the lab material.
 **To pass the course**, students must:
 1. Complete exams 1 and 2
 2. Attend the lab section for at least 11 out of 13 weeks.
-3. Complete the final group project.
+3. Complete and present the final group project.
 4. Score a final grade of 50.0 points for the entire course.
 
 *If any of 1 through 3 are not completed, the student will automatically fail the course and receive an “N” 
