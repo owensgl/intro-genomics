@@ -593,3 +593,399 @@ For option 1 to be correct we would only run the `head` command.
 For option 2 to be correct we would only run the `tail` command.
 For option 4 to be correct we would have to pipe the output of `head` into `tail -n 2`
 by doing `head -n 3 animals.csv | tail -n 2 > animals-subset.csv`
+
+***
+
+##  challenge
+
+## Piping Commands Together
+
+In our current directory, we want to find the 3 files which have the least number of
+lines. Which command listed below would work?
+
+1. `wc -l * > sort -n > head -n 3`
+2. `wc -l * | sort -n | head -n 1-3`
+3. `wc -l * | head -n 3 | sort -n`
+4. `wc -l * | sort -n | head -n 3`
+
+
+## Solution
+
+Option 4 is the solution.
+The pipe character `|` is used to connect the output from one command to
+the input of another.
+`>` is used to redirect standard output to a file.
+Try it in the `shell-lesson-data/exercise-data/alkanes` directory!
+
+***
+
+##  challenge
+
+## Pipe Reading Comprehension
+
+A file called `animals.csv` (in the `shell-lesson-data/exercise-data/animal-counts` folder)
+contains the following data:
+
+```source
+2012-11-05,deer,5
+2012-11-05,rabbit,22
+2012-11-05,raccoon,7
+2012-11-06,rabbit,19
+2012-11-06,deer,2
+2012-11-06,fox,4
+2012-11-07,rabbit,16
+2012-11-07,bear,1
+```
+
+What text passes through each of the pipes and the final redirect in the pipeline below?
+Note, the `sort -r` command sorts in reverse order.
+
+```bash
+$ cat animals.csv | head -n 5 | tail -n 3 | sort -r > final.txt
+```
+
+Hint: build the pipeline up one command at a time to test your understanding
+
+
+## Solution
+
+The `head` command extracts the first 5 lines from `animals.csv`.
+Then, the last 3 lines are extracted from the previous 5 by using the `tail` command.
+With the `sort -r` command those 3 lines are sorted in reverse order.
+Finally, the output is redirected to a file: `final.txt`.
+The content of this file can be checked by executing `cat final.txt`.
+The file should contain the following lines:
+
+```source
+2012-11-06,rabbit,19
+2012-11-06,deer,2
+2012-11-05,raccoon,7
+```
+
+***
+
+##  challenge
+
+## Pipe Construction
+
+For the file `animals.csv` from the previous exercise, consider the following command:
+
+```bash
+$ cut -d , -f 2 animals.csv
+```
+
+The `cut` command is used to remove or 'cut out' certain sections of each line in the file,
+and `cut` expects the lines to be separated into columns by a <kbd>Tab</kbd> character.
+A character used in this way is a called a **delimiter**.
+In the example above we use the `-d` option to specify the comma as our delimiter character.
+We have also used the `-f` option to specify that we want to extract the second field (column).
+This gives the following output:
+
+```output
+deer
+rabbit
+raccoon
+rabbit
+deer
+fox
+rabbit
+bear
+```
+
+The `uniq` command filters out adjacent matching lines in a file.
+How could you extend this pipeline (using `uniq` and another command) to find
+out what animals the file contains (without any duplicates in their
+names)?
+
+
+## Solution
+
+```bash
+$ cut -d , -f 2 animals.csv | sort | uniq
+```
+
+***
+
+##  challenge
+
+## Which Pipe?
+
+The file `animals.csv` contains 8 lines of data formatted as follows:
+
+```output
+2012-11-05,deer,5
+2012-11-05,rabbit,22
+2012-11-05,raccoon,7
+2012-11-06,rabbit,19
+...
+```
+
+The `uniq` command has a `-c` option which gives a count of the
+number of times a line occurs in its input.  Assuming your current
+directory is `shell-lesson-data/exercise-data/animal-counts`,
+what command would you use to produce a table that shows
+the total count of each type of animal in the file?
+
+1. `sort animals.csv | uniq -c`
+2. `sort -t, -k2,2 animals.csv | uniq -c`
+3. `cut -d, -f 2 animals.csv | uniq -c`
+4. `cut -d, -f 2 animals.csv | sort | uniq -c`
+5. `cut -d, -f 2 animals.csv | sort | uniq -c | wc -l`
+
+
+## Solution
+
+Option 4. is the correct answer.
+If you have difficulty understanding why, try running the commands, or sub-sections of
+the pipelines (make sure you are in the `shell-lesson-data/exercise-data/animal-counts`
+directory).
+
+***
+
+##  challenge
+
+## Removing Unneeded Files
+
+Suppose you want to delete your processed data files, and only keep
+your raw files and processing script to save storage.
+The raw files end in `.dat` and the processed files end in `.txt`.
+Which of the following would remove all the processed data files,
+and *only* the processed data files?
+
+1. `rm ?.txt`
+2. `rm *.txt`
+3. `rm * .txt`
+4. `rm *.*`
+
+
+## Solution
+
+1. This would remove `.txt` files with one-character names
+2. This is the correct answer
+3. The shell would expand `*` to match everything in the current directory,
+  so the command would try to remove all matched files and an additional
+  file called `.txt`
+4. The shell expands `*.*` to match all filenames containing at least one
+  `.`, including the processed files (`.txt`) *and* raw files (`.dat`)
+  
+***
+
+##  challenge
+
+## Write your own loop
+
+How would you write a loop that echoes all 10 numbers from 0 to 9?
+
+
+## Solution
+
+```bash
+$ for loop_variable in 0 1 2 3 4 5 6 7 8 9
+> do
+>     echo $loop_variable
+> done
+```
+
+```output
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+***
+
+##  challenge
+
+## Variables in Loops
+
+This exercise refers to the `shell-lesson-data/exercise-data/alkanes` directory.
+`ls *.pdb` gives the following output:
+
+```output
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+```
+
+What is the output of the following code?
+
+```bash
+$ for datafile in *.pdb
+> do
+>     ls *.pdb
+> done
+```
+
+Now, what is the output of the following code?
+
+```bash
+$ for datafile in *.pdb
+> do
+>     ls $datafile
+> done
+```
+
+Why do these two loops give different outputs?
+
+
+## Solution
+
+The first code block gives the same output on each iteration through
+the loop.
+Bash expands the wildcard `*.pdb` within the loop body (as well as
+before the loop starts) to match all files ending in `.pdb`
+and then lists them using `ls`.
+The expanded loop would look like this:
+
+```bash
+$ for datafile in cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+> do
+>     ls cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+> done
+```
+
+```output
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+```
+
+The second code block lists a different file on each loop iteration.
+The value of the `datafile` variable is evaluated using `$datafile`,
+and then listed using `ls`.
+
+```output
+cubane.pdb
+ethane.pdb
+methane.pdb
+octane.pdb
+pentane.pdb
+propane.pdb
+```
+
+***
+
+##  challenge
+
+## Limiting Sets of Files
+
+What would be the output of running the following loop in the
+`shell-lesson-data/exercise-data/alkanes` directory?
+
+```bash
+$ for filename in c*
+> do
+>     ls $filename
+> done
+```
+
+1. No files are listed.
+2. All files are listed.
+3. Only `cubane.pdb`, `octane.pdb` and `pentane.pdb` are listed.
+4. Only `cubane.pdb` is listed.
+
+## Solution
+
+4 is the correct answer. `*` matches zero or more characters, so any file name starting with
+the letter c, followed by zero or more other characters will be matched.
+
+***
+##  challenge
+
+## Limiting Sets of Files
+
+How would the output differ from using this command instead?
+
+```bash
+$ for filename in *c*
+> do
+>     ls $filename
+> done
+```
+
+1. The same files would be listed.
+2. All the files are listed this time.
+3. No files are listed this time.
+4. The files `cubane.pdb` and `octane.pdb` will be listed.
+5. Only the file `octane.pdb` will be listed.
+
+
+## Solution
+
+4 is the correct answer. `*` matches zero or more characters, so a file name with zero or more
+characters before a letter c and zero or more characters after the letter c will be matched.
+
+***
+
+##  challenge
+
+## Saving to a File in a Loop - Part One
+
+In the `shell-lesson-data/exercise-data/alkanes` directory, what is the effect of this loop?
+
+```bash
+for alkanes in *.pdb
+do
+    echo $alkanes
+    cat $alkanes > alkanes.pdb
+done
+```
+
+1. Prints `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb` and
+  `propane.pdb`, and the text from `propane.pdb` will be saved to a file called `alkanes.pdb`.
+2. Prints `cubane.pdb`, `ethane.pdb`, and `methane.pdb`, and the text from all three files
+  would be concatenated and saved to a file called `alkanes.pdb`.
+3. Prints `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, and `pentane.pdb`,
+  and the text from `propane.pdb` will be saved to a file called `alkanes.pdb`.
+4. None of the above.
+
+
+## Solution
+
+1. The text from each file in turn gets written to the `alkanes.pdb` file.
+  However, the file gets overwritten on each loop iteration, so the final content of
+  `alkanes.pdb`
+  is the text from the `propane.pdb` file.
+
+***
+
+##  challenge
+
+## Saving to a File in a Loop - Part Two
+
+Also in the `shell-lesson-data/exercise-data/alkanes` directory,
+what would be the output of the following loop?
+
+```bash
+for datafile in *.pdb
+do
+    cat $datafile >> all.pdb
+done
+```
+
+1. All of the text from `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, and
+  `pentane.pdb` would be concatenated and saved to a file called `all.pdb`.
+2. The text from `ethane.pdb` will be saved to a file called `all.pdb`.
+3. All of the text from `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb`
+  and `propane.pdb` would be concatenated and saved to a file called `all.pdb`.
+4. All of the text from `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb`
+  and `propane.pdb` would be printed to the screen and saved to a file called `all.pdb`.
+
+:::::::::::::::  solution
+
+## Solution
+
+3 is the correct answer. `>>` appends to a file, rather than overwriting it with the redirected
+output from a command.
+Given the output from the `cat` command has been redirected, nothing is printed to the screen.
+
+
+  
