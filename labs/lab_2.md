@@ -1,23 +1,21 @@
 ---
-title: Working With Files and Directories
-teaching: 30
-exercises: 20
+title: Shell scripting
+element: lab
+layout: default
 ---
 
-::::::::::::::::::::::::::::::::::::::: objectives
+## objectives
 
 - Create a directory hierarchy that matches a given diagram.
 - Create files in that hierarchy using an editor or by copying and renaming existing files.
 - Delete, copy and move specified files and/or directories.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::: questions
+## questions
 
 - How can I create, copy, and delete files and directories?
 - How can I edit files?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 ## Creating directories
@@ -25,20 +23,21 @@ exercises: 20
 We now know how to explore files and directories,
 but how do we create them in the first place?
 
-In this episode we will learn about creating and moving files and directories,
+In this lab we will learn about creating and moving files and directories,
 using the `exercise-data/writing` directory as an example.
 
 ### Step one: see where we are and what we already have
 
-We should still be in the `shell-lesson-data` directory on the Desktop,
-which we can check using:
+First we should return to the home directory:
 
 ```bash
-$ pwd
+$ cd ~
 ```
 
-```output
-/Users/nelle/Desktop/shell-lesson-data
+Then enter the `lab_2_data` directory:
+
+```bash
+$ cd lab_2_data
 ```
 
 Next we'll move to the `exercise-data/writing` directory and see what it contains:
@@ -61,8 +60,6 @@ Let's create a new directory called `thesis` using the command `mkdir thesis`
 $ mkdir thesis
 ```
 
-As you might guess from its name,
-`mkdir` means 'make directory'.
 Since `thesis` is a relative path
 (i.e., does not have a leading slash, like `/what/ever/thesis`),
 the new directory is created in the current working directory:
@@ -106,19 +103,8 @@ data/  results/
 ../project/results:
 ```
 
-:::::::::::::::::::::::::::::::::::::::::  callout
 
-## Two ways of doing the same thing
-
-Using the shell to create a directory is no different than using a file explorer.
-If you open the current directory using your operating system's graphical file explorer,
-the `thesis` directory will appear there too.
-While the shell and the file explorer are two different ways of interacting with the files,
-the files and directories themselves are the same.
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
+##  Callout
 
 ## Good names for files and directories
 
@@ -149,18 +135,6 @@ expected and can even result in data loss.
 If you need to refer to names of files or directories that have spaces
 or other special characters, you should surround the name in quotes (`""`).
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  instructor
-
-Learners can sometimes get trapped within command-line text editors
-such as Vim, Emacs, or Nano. Closing the terminal emulator and opening
-a new one can be frustrating as learners will have to navigate to the
-correct folder again. Our recommendation to mitigate this problem is that
-instructors should use the same text editor as the learners during workshops
-(in most cases Nano).
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Create a text file
 
@@ -172,7 +146,7 @@ $ cd thesis
 $ nano draft.txt
 ```
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+##  callout
 
 ## Which Editor?
 
@@ -197,11 +171,11 @@ your computer's start menu, it may want to save files in your Desktop or
 Documents directory instead. You can change this by navigating to
 another directory the first time you 'Save As...'
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
 Let's type in a few lines of text.
 
-![](fig/nano-screenshot.png){alt="screenshot of nano text editor in action with the text It's not publish or perish any more, it's share and thrive"}
+![](figs/nano-screenshot.png){alt="screenshot of nano text editor in action with the text It's not publish or perish any more, it's share and thrive"}
 
 Once we're happy with our text, we can press <kbd>Ctrl</kbd>\+<kbd>O</kbd>
 (press the <kbd>Ctrl</kbd> or <kbd>Control</kbd> key and, while
@@ -212,7 +186,7 @@ the suggested default of `draft.txt`.
 Once our file is saved, we can use <kbd>Ctrl</kbd>\+<kbd>X</kbd> to quit the editor and
 return to the shell.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+##  callout
 
 ## Control, Ctrl, or ^ Key
 
@@ -232,7 +206,7 @@ In nano, along the bottom of the screen you'll see `^G Get Help ^O WriteOut`.
 This means that you can use `Control-G` to get help and `Control-O` to save your
 file.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
 `nano` doesn't leave any output on the screen after it exits,
 but `ls` now shows that we have created a file called `draft.txt`:
@@ -245,7 +219,7 @@ $ ls
 draft.txt
 ```
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+##  challenge
 
 ## Creating Files a Different Way
 
@@ -264,28 +238,7 @@ $ touch my_file.txt
 
 3. When might you want to create a file this way?
 
-:::::::::::::::  solution
-
-## Solution
-
-1. The `touch` command generates a new file called `my_file.txt` in
-  your current directory.  You
-  can observe this newly generated file by typing `ls` at the
-  command line prompt.  `my_file.txt` can also be viewed in your
-  GUI file explorer.
-
-2. When you inspect the file with `ls -l`, note that the size of
-  `my_file.txt` is 0 bytes.  In other words, it contains no data.
-  If you open `my_file.txt` using your text editor it is blank.
-
-3. Some programs do not generate output files themselves, but
-  instead require that empty files have already been generated.
-  When the program is run, it searches for an existing file to
-  populate with its output.  The touch command allows you to
-  efficiently generate a blank text file to be used by such
-  programs.
-
-:::::::::::::::::::::::::
+***
 
 To avoid confusion later on,
 we suggest removing the file you've just created before proceeding with the rest
@@ -296,13 +249,12 @@ To do this, use the following command:
 $ rm my_file.txt
 ```
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
+***
+##  callout
 
 ## What's In A Name?
 
-You may have noticed that all of Nelle's files are named 'something dot
+You may have noticed that all of the files are named 'something dot
 something', and in this part of the lesson, we always used the extension
 `.txt`.  This is just a convention; we can call a file `mythesis` or
 almost anything else we want. However, most people use two-part names
@@ -325,7 +277,7 @@ program. In this case, if someone double-clicked `whale.mp3` in a file
 explorer program,the music player will automatically (and erroneously)
 attempt to open the `whale.mp3` file.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
 ## Moving files and directories
 
@@ -344,21 +296,6 @@ which is short for 'move':
 $ mv thesis/draft.txt thesis/quotes.txt
 ```
 
-The first argument tells `mv` what we're 'moving',
-while the second is where it's to go.
-In this case,
-we're moving `thesis/draft.txt` to `thesis/quotes.txt`,
-which has the same effect as renaming the file.
-Sure enough,
-`ls` shows us that `thesis` now contains one file called `quotes.txt`:
-
-```bash
-$ ls thesis
-```
-
-```output
-quotes.txt
-```
 
 One must be careful when specifying the target file name, since `mv` will
 silently overwrite any existing file with the same name, which could
@@ -415,7 +352,7 @@ $ ls quotes.txt
 quotes.txt
 ```
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+###  challenge
 
 ## Moving Files to a new folder
 
@@ -438,20 +375,7 @@ Fill in the blanks to move these files to the `raw/` folder
 $ mv sucrose.dat maltose.dat ____/____
 ```
 
-:::::::::::::::  solution
-
-## Solution
-
-```bash
-$ mv sucrose.dat maltose.dat ../raw
-```
-
-Recall that `..` refers to the parent directory (i.e. one above the current directory)
-and that `.` refers to the current directory.
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
 ## Copying files and directories
 
@@ -501,7 +425,7 @@ cp: -r not specified; omitting directory 'thesis'
 ```
 
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+##  challenge
 
 ## Renaming Files
 
@@ -516,25 +440,9 @@ correct the mistake, which of the following commands could you use to do so?
 3. `mv statstics.txt .`
 4. `cp statstics.txt .`
 
-:::::::::::::::  solution
+***
 
-## Solution
-
-1. No.  While this would create a file with the correct name,
-  the incorrectly named file still exists in the directory
-  and would need to be deleted.
-2. Yes, this would work to rename the file.
-3. No, the period(.) indicates where to move the file, but does not provide a new file name;
-  identical file names
-  cannot be created.
-4. No, the period(.) indicates where to copy the file, but does not provide a new file name;
-  identical file names cannot be created.
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
+##  challenge
 
 ## Moving and Copying
 
@@ -568,27 +476,7 @@ $ ls
 3. `proteins.dat recombined`
 4. `proteins-saved.dat`
 
-:::::::::::::::  solution
-
-## Solution
-
-We start in the `/Users/jamie/data` directory, and create a new folder called `recombined`.
-The second line moves (`mv`) the file `proteins.dat` to the new folder (`recombined`).
-The third line makes a copy of the file we just moved.
-The tricky part here is where the file was copied to.
-Recall that `..` means 'go up a level', so the copied file is now in `/Users/jamie`.
-Notice that `..` is interpreted with respect to the current working
-directory, **not** with respect to the location of the file being copied.
-So, the only thing that will show using ls (in `/Users/jamie/data`) is the recombined folder.
-
-1. No, see explanation above.  `proteins-saved.dat` is located at `/Users/jamie`
-2. Yes
-3. No, see explanation above.  `proteins.dat` is located at `/Users/jamie/data/recombined`
-4. No, see explanation above.  `proteins-saved.dat` is located at `/Users/jamie`
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
 ## Removing files and directories
 
@@ -610,7 +498,7 @@ $ ls quotes.txt
 ls: cannot access 'quotes.txt': No such file or directory
 ```
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+##  callout
 
 ## Deleting Is Forever
 
@@ -622,32 +510,16 @@ recovering deleted files do exist, but there's no guarantee they'll
 work in any particular situation, since the computer may recycle the
 file's disk space right away.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+##  challenge
 
 ## Using `rm` Safely
 
 What happens when we execute `rm -i thesis_backup/quotations.txt`?
 Why would we want this protection when using `rm`?
 
-:::::::::::::::  solution
-
-## Solution
-
-```output
-rm: remove regular file 'thesis_backup/quotations.txt'? y
-```
-
-The `-i` option will prompt before (every) removal (use <kbd>Y</kbd> to confirm deletion
-or <kbd>N</kbd> to keep the file).
-The Unix shell doesn't have a trash bin, so all the files removed will disappear forever.
-By using the `-i` option, we have the chance to check that we are deleting only the files
-that we want to remove.
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+***
 
 If we try to remove the `thesis` directory using `rm thesis`,
 we get an error message:
@@ -681,7 +553,7 @@ or specifying a naming pattern using wildcards. Wildcards are
 special characters that can be used to represent unknown characters
 or sets of characters when navigating the Unix file system.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+##  challenge
 
 ## Copy with Multiple Filenames
 
@@ -709,28 +581,10 @@ basilisk.dat  minotaur.dat  unicorn.dat
 $ cp minotaur.dat unicorn.dat basilisk.dat
 ```
 
-:::::::::::::::  solution
-
-## Solution
-
-If given more than one file name followed by a directory name
-(i.e. the destination directory must be the last argument),
-`cp` copies the files to the named directory.
-
-If given three file names, `cp` throws an error such as the one below,
-because it is expecting a directory name as the last argument.
-
-```error
-cp: target 'basilisk.dat' is not a directory
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ### Using wildcards for accessing multiple files at once
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+##  callout
 
 ## Wildcards
 
@@ -761,9 +615,8 @@ file names matching these expressions, but not the wildcards
 themselves. It is the shell, not the other programs, that expands
 the wildcards.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+##  challenge
 
 ## List filenames matching a pattern
 
@@ -777,33 +630,9 @@ produce this output?
 3. `ls *t??ne.pdb`
 4. `ls ethane.*`
 
-:::::::::::::::  solution
+***
 
-## Solution
-
-The solution is `3.`
-
-`1.` shows all files whose names contain zero or more characters (`*`)
-followed by the letter `t`,
-then zero or more characters (`*`) followed by `ane.pdb`.
-This gives `ethane.pdb  methane.pdb  octane.pdb  pentane.pdb`.
-
-`2.` shows all files whose names start with zero or more characters (`*`) followed by
-the letter `t`,
-then a single character (`?`), then `ne.` followed by zero or more characters (`*`).
-This will give us `octane.pdb` and `pentane.pdb` but doesn't match anything
-which ends in `thane.pdb`.
-
-`3.` fixes the problems of option 2 by matching two characters (`??`) between `t` and `ne`.
-This is the solution.
-
-`4.` only shows files starting with `ethane.`.
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
+##  challenge
 
 ## More on Wildcards
 
@@ -890,22 +719,9 @@ The resulting directory structure should look like this
         ├── 2015-11-23-dataset2.txt
         └── 2015-11-23-dataset_overview.txt
 ```
+***
 
-:::::::::::::::  solution
-
-## Solution
-
-```bash
-$ cp *calibration.txt backup/calibration
-$ cp 2015-11-* send_to_bob/all_november_files/
-$ cp *-23-dataset* send_to_bob/all_datasets_created_on_a_23rd/
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
+##  challenge
 
 ## Organizing Directories and Files
 
@@ -940,23 +756,9 @@ $ ls analyzed
 fructose.dat    sucrose.dat
 ```
 
-:::::::::::::::  solution
+***
 
-## Solution
-
-```bash
-mv *.dat analyzed
-```
-
-Jamie needs to move her files `fructose.dat` and `sucrose.dat` to the `analyzed` directory.
-The shell will expand \*.dat to match all .dat files in the current directory.
-The `mv` command then moves the list of .dat files to the 'analyzed' directory.
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
+##  challenge
 
 ## Reproduce a folder structure
 
@@ -1011,8 +813,6 @@ $ mkdir data
 $ mkdir raw processed
 ```
 
-:::::::::::::::  solution
-
 ## Solution
 
 The first two sets of commands achieve this objective.
@@ -1030,11 +830,9 @@ directories, will cause `mkdir` to create any intermediate subdirectories as req
 The final set of commands generates the 'raw' and 'processed' directories at the same level
 as the 'data' directory.
 
-:::::::::::::::::::::::::
+***
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::: keypoints
+## keypoints
 
 - `cp [old] [new]` copies a file.
 - `mkdir [path]` creates a new directory.
@@ -1047,4 +845,760 @@ as the 'data' directory.
 - Most files' names are `something.extension`. The extension isn't required, and doesn't guarantee anything, but is normally used to indicate the type of data in the file.
 - Depending on the type of work you do, you may need a more powerful text editor than Nano.
 
+***
+# BREAK
+
+
+
+## objectives
+
+- Redirect a command's output to a file.
+- Construct command pipelines with two or more stages.
+- Explain what usually happens if a program or pipeline isn't given any input to process.
+- Explain the advantage of linking commands with pipes and filters.
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- How can I combine existing commands to do new things?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Now that we know a few basic commands,
+we can finally look at the shell's most powerful feature:
+the ease with which it lets us combine existing programs in new ways.
+We'll start with the directory `shell-lesson-data/exercise-data/alkanes`
+that contains six files describing some simple organic molecules.
+The `.pdb` extension indicates that these files are in Protein Data Bank format,
+a simple text format that specifies the type and position of each atom in the molecule.
+
+```bash
+$ ls
+```
+
+```output
+cubane.pdb    methane.pdb    pentane.pdb
+ethane.pdb    octane.pdb     propane.pdb
+```
+
+Let's run an example command:
+
+```bash
+$ wc cubane.pdb
+```
+
+```output
+20  156 1158 cubane.pdb
+```
+
+`wc` is the 'word count' command:
+it counts the number of lines, words, and characters in files (returning the values
+in that order from left to right).
+
+If we run the command `wc *.pdb`, the `*` in `*.pdb` matches zero or more characters,
+so the shell turns `*.pdb` into a list of all `.pdb` files in the current directory:
+
+```bash
+$ wc *.pdb
+```
+
+```output
+  20  156  1158  cubane.pdb
+  12  84   622   ethane.pdb
+   9  57   422   methane.pdb
+  30  246  1828  octane.pdb
+  21  165  1226  pentane.pdb
+  15  111  825   propane.pdb
+ 107  819  6081  total
+```
+
+Note that `wc *.pdb` also shows the total number of all lines in the last line of the output.
+
+If we run `wc -l` instead of just `wc`,
+the output shows only the number of lines per file:
+
+```bash
+$ wc -l *.pdb
+```
+
+```output
+  20  cubane.pdb
+  12  ethane.pdb
+   9  methane.pdb
+  30  octane.pdb
+  21  pentane.pdb
+  15  propane.pdb
+ 107  total
+```
+
+The `-m` and `-w` options can also be used with the `wc` command to show
+only the number of characters or the number of words, respectively.
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Why Isn't It Doing Anything?
+
+What happens if a command is supposed to process a file, but we
+don't give it a filename? For example, what if we type:
+
+```bash
+$ wc -l
+```
+
+but don't type `*.pdb` (or anything else) after the command?
+Since it doesn't have any filenames, `wc` assumes it is supposed to
+process input given at the command prompt, so it just sits there and waits
+for us to give it some data interactively. From the outside, though, all we
+see is it sitting there, and the command doesn't appear to do anything.
+
+If you make this kind of mistake, you can escape out of this state by
+holding down the control key (<kbd>Ctrl</kbd>) and pressing the letter
+<kbd>C</kbd> once: <kbd>Ctrl</kbd>\+<kbd>C</kbd>. Then release both keys.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Capturing output from commands
+
+Which of these files contains the fewest lines?
+It's an easy question to answer when there are only six files,
+but what if there were 6000?
+Our first step toward a solution is to run the command:
+
+```bash
+$ wc -l *.pdb > lengths.txt
+```
+
+The greater than symbol, `>`, tells the shell to **redirect** the command's output to a
+file instead of printing it to the screen. This command prints no screen output, because
+everything that `wc` would have printed has gone into the file `lengths.txt` instead.
+If the file doesn't exist prior to issuing the command, the shell will create the file.
+If the file exists already, it will be silently overwritten, which may lead to data loss.
+Thus, **redirect** commands require caution.
+
+`ls lengths.txt` confirms that the file exists:
+
+```bash
+$ ls lengths.txt
+```
+
+```output
+lengths.txt
+```
+
+We can now send the content of `lengths.txt` to the screen using `cat lengths.txt`.
+The `cat` command gets its name from 'concatenate' i.e. join together,
+and it prints the contents of files one after another.
+There's only one file in this case,
+so `cat` just shows us what it contains:
+
+```bash
+$ cat lengths.txt
+```
+
+```output
+  20  cubane.pdb
+  12  ethane.pdb
+   9  methane.pdb
+  30  octane.pdb
+  21  pentane.pdb
+  15  propane.pdb
+ 107  total
+```
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Output Page by Page
+
+We'll continue to use `cat` in this lesson, for convenience and consistency,
+but it has the disadvantage that it always dumps the whole file onto your screen.
+More useful in practice is the command `less` (e.g. `less lengths.txt`).
+This displays a screenful of the file, and then stops.
+You can go forward one screenful by pressing the spacebar,
+or back one by pressing `b`.  Press `q` to quit.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Filtering output
+
+Next we'll use the `sort` command to sort the contents of the `lengths.txt` file.
+But first we'll do an exercise to learn a little about the sort command:
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## What Does `sort -n` Do?
+
+The file `shell-lesson-data/exercise-data/numbers.txt` contains the following lines:
+
+```source
+10
+2
+19
+22
+6
+```
+
+If we run `sort` on this file, the output is:
+
+```output
+10
+19
+2
+22
+6
+```
+
+If we run `sort -n` on the same file, we get this instead:
+
+```output
+2
+6
+10
+19
+22
+```
+
+Explain why `-n` has this effect.
+
+:::::::::::::::  solution
+
+## Solution
+
+The `-n` option specifies a numerical rather than an alphanumerical sort.
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+We will also use the `-n` option to specify that the sort is
+numerical instead of alphanumerical.
+This does *not* change the file;
+instead, it sends the sorted result to the screen:
+
+```bash
+$ sort -n lengths.txt
+```
+
+```output
+  9  methane.pdb
+ 12  ethane.pdb
+ 15  propane.pdb
+ 20  cubane.pdb
+ 21  pentane.pdb
+ 30  octane.pdb
+107  total
+```
+
+We can put the sorted list of lines in another temporary file called `sorted-lengths.txt`
+by putting `> sorted-lengths.txt` after the command,
+just as we used `> lengths.txt` to put the output of `wc` into `lengths.txt`.
+Once we've done that,
+we can run another command called `head` to get the first few lines in `sorted-lengths.txt`:
+
+```bash
+$ sort -n lengths.txt > sorted-lengths.txt
+$ head -n 1 sorted-lengths.txt
+```
+
+```output
+  9  methane.pdb
+```
+
+Using `-n 1` with `head` tells it that
+we only want the first line of the file;
+`-n 20` would get the first 20,
+and so on.
+Since `sorted-lengths.txt` contains the lengths of our files ordered from least to greatest,
+the output of `head` must be the file with the fewest lines.
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Redirecting to the same file
+
+It's a very bad idea to try redirecting
+the output of a command that operates on a file
+to the same file. For example:
+
+```bash
+$ sort -n lengths.txt > lengths.txt
+```
+
+Doing something like this may give you
+incorrect results and/or delete
+the contents of `lengths.txt`.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## What Does `>>` Mean?
+
+We have seen the use of `>`, but there is a similar operator `>>`
+which works slightly differently.
+We'll learn about the differences between these two operators by printing some strings.
+We can use the `echo` command to print strings e.g.
+
+```bash
+$ echo The echo command prints text
+```
+
+```output
+The echo command prints text
+```
+
+Now test the commands below to reveal the difference between the two operators:
+
+```bash
+$ echo hello > testfile01.txt
+```
+
+and:
+
+```bash
+$ echo hello >> testfile02.txt
+```
+
+Hint: Try executing each command twice in a row and then examining the output files.
+
+:::::::::::::::  solution
+
+## Solution
+
+In the first example with `>`, the string 'hello' is written to `testfile01.txt`,
+but the file gets overwritten each time we run the command.
+
+We see from the second example that the `>>` operator also writes 'hello' to a file
+(in this case `testfile02.txt`),
+but appends the string to the file if it already exists
+(i.e. when we run it for the second time).
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Appending Data
+
+We have already met the `head` command, which prints lines from the start of a file.
+`tail` is similar, but prints lines from the end of a file instead.
+
+Consider the file `shell-lesson-data/exercise-data/animal-counts/animals.csv`.
+After these commands, select the answer that
+corresponds to the file `animals-subset.csv`:
+
+```bash
+$ head -n 3 animals.csv > animals-subset.csv
+$ tail -n 2 animals.csv >> animals-subset.csv
+```
+
+1. The first three lines of `animals.csv`
+2. The last two lines of `animals.csv`
+3. The first three lines and the last two lines of `animals.csv`
+4. The second and third lines of `animals.csv`
+
+:::::::::::::::  solution
+
+## Solution
+
+Option 3 is correct.
+For option 1 to be correct we would only run the `head` command.
+For option 2 to be correct we would only run the `tail` command.
+For option 4 to be correct we would have to pipe the output of `head` into `tail -n 2`
+by doing `head -n 3 animals.csv | tail -n 2 > animals-subset.csv`
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Passing output to another command
+
+In our example of finding the file with the fewest lines,
+we are using two intermediate files `lengths.txt` and `sorted-lengths.txt` to store output.
+This is a confusing way to work because
+even once you understand what `wc`, `sort`, and `head` do,
+those intermediate files make it hard to follow what's going on.
+We can make it easier to understand by running `sort` and `head` together:
+
+```bash
+$ sort -n lengths.txt | head -n 1
+```
+
+```output
+  9  methane.pdb
+```
+
+The vertical bar, `|`, between the two commands is called a **pipe**.
+It tells the shell that we want to use
+the output of the command on the left
+as the input to the command on the right.
+
+This has removed the need for the `sorted-lengths.txt` file.
+
+## Combining multiple commands
+
+Nothing prevents us from chaining pipes consecutively.
+We can for example send the output of `wc` directly to `sort`,
+and then send the resulting output to `head`.
+This removes the need for any intermediate files.
+
+We'll start by using a pipe to send the output of `wc` to `sort`:
+
+```bash
+$ wc -l *.pdb | sort -n
+```
+
+```output
+   9 methane.pdb
+  12 ethane.pdb
+  15 propane.pdb
+  20 cubane.pdb
+  21 pentane.pdb
+  30 octane.pdb
+ 107 total
+```
+
+We can then send that output through another pipe, to `head`, so that the full pipeline becomes:
+
+```bash
+$ wc -l *.pdb | sort -n | head -n 1
+```
+
+```output
+   9  methane.pdb
+```
+
+This is exactly like a mathematician nesting functions like *log(3x)*
+and saying 'the log of three times *x*'.
+In our case,
+the algorithm is 'head of sort of line count of `*.pdb`'.
+
+The redirection and pipes used in the last few commands are illustrated below:
+
+![](fig/redirects-and-pipes.svg){alt='Redirects and Pipes of different commands: "wc -l \*.pdb" will direct theoutput to the shell. "wc -l \*.pdb > lengths" will direct output to the file"lengths". "wc -l \*.pdb | sort -n | head -n 1" will build a pipeline where theoutput of the "wc" command is the input to the "sort" command, the output ofthe "sort" command is the input to the "head" command and the output of the"head" command is directed to the shell'}
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Piping Commands Together
+
+In our current directory, we want to find the 3 files which have the least number of
+lines. Which command listed below would work?
+
+1. `wc -l * > sort -n > head -n 3`
+2. `wc -l * | sort -n | head -n 1-3`
+3. `wc -l * | head -n 3 | sort -n`
+4. `wc -l * | sort -n | head -n 3`
+
+:::::::::::::::  solution
+
+## Solution
+
+Option 4 is the solution.
+The pipe character `|` is used to connect the output from one command to
+the input of another.
+`>` is used to redirect standard output to a file.
+Try it in the `shell-lesson-data/exercise-data/alkanes` directory!
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Tools designed to work together
+
+This idea of linking programs together is why Unix has been so successful.
+Instead of creating enormous programs that try to do many different things,
+Unix programmers focus on creating lots of simple tools that each do one job well,
+and that work well with each other.
+This programming model is called 'pipes and filters'.
+We've already seen pipes;
+a **filter** is a program like `wc` or `sort`
+that transforms a stream of input into a stream of output.
+Almost all of the standard Unix tools can work this way.
+Unless told to do otherwise,
+they read from standard input,
+do something with what they've read,
+and write to standard output.
+
+The key is that any program that reads lines of text from standard input
+and writes lines of text to standard output
+can be combined with every other program that behaves this way as well.
+You can *and should* write your programs this way
+so that you and other people can put those programs into pipes to multiply their power.
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Pipe Reading Comprehension
+
+A file called `animals.csv` (in the `shell-lesson-data/exercise-data/animal-counts` folder)
+contains the following data:
+
+```source
+2012-11-05,deer,5
+2012-11-05,rabbit,22
+2012-11-05,raccoon,7
+2012-11-06,rabbit,19
+2012-11-06,deer,2
+2012-11-06,fox,4
+2012-11-07,rabbit,16
+2012-11-07,bear,1
+```
+
+What text passes through each of the pipes and the final redirect in the pipeline below?
+Note, the `sort -r` command sorts in reverse order.
+
+```bash
+$ cat animals.csv | head -n 5 | tail -n 3 | sort -r > final.txt
+```
+
+Hint: build the pipeline up one command at a time to test your understanding
+
+:::::::::::::::  solution
+
+## Solution
+
+The `head` command extracts the first 5 lines from `animals.csv`.
+Then, the last 3 lines are extracted from the previous 5 by using the `tail` command.
+With the `sort -r` command those 3 lines are sorted in reverse order.
+Finally, the output is redirected to a file: `final.txt`.
+The content of this file can be checked by executing `cat final.txt`.
+The file should contain the following lines:
+
+```source
+2012-11-06,rabbit,19
+2012-11-06,deer,2
+2012-11-05,raccoon,7
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Pipe Construction
+
+For the file `animals.csv` from the previous exercise, consider the following command:
+
+```bash
+$ cut -d , -f 2 animals.csv
+```
+
+The `cut` command is used to remove or 'cut out' certain sections of each line in the file,
+and `cut` expects the lines to be separated into columns by a <kbd>Tab</kbd> character.
+A character used in this way is a called a **delimiter**.
+In the example above we use the `-d` option to specify the comma as our delimiter character.
+We have also used the `-f` option to specify that we want to extract the second field (column).
+This gives the following output:
+
+```output
+deer
+rabbit
+raccoon
+rabbit
+deer
+fox
+rabbit
+bear
+```
+
+The `uniq` command filters out adjacent matching lines in a file.
+How could you extend this pipeline (using `uniq` and another command) to find
+out what animals the file contains (without any duplicates in their
+names)?
+
+:::::::::::::::  solution
+
+## Solution
+
+```bash
+$ cut -d , -f 2 animals.csv | sort | uniq
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Which Pipe?
+
+The file `animals.csv` contains 8 lines of data formatted as follows:
+
+```output
+2012-11-05,deer,5
+2012-11-05,rabbit,22
+2012-11-05,raccoon,7
+2012-11-06,rabbit,19
+...
+```
+
+The `uniq` command has a `-c` option which gives a count of the
+number of times a line occurs in its input.  Assuming your current
+directory is `shell-lesson-data/exercise-data/animal-counts`,
+what command would you use to produce a table that shows
+the total count of each type of animal in the file?
+
+1. `sort animals.csv | uniq -c`
+2. `sort -t, -k2,2 animals.csv | uniq -c`
+3. `cut -d, -f 2 animals.csv | uniq -c`
+4. `cut -d, -f 2 animals.csv | sort | uniq -c`
+5. `cut -d, -f 2 animals.csv | sort | uniq -c | wc -l`
+
+:::::::::::::::  solution
+
+## Solution
+
+Option 4. is the correct answer.
+If you have difficulty understanding why, try running the commands, or sub-sections of
+the pipelines (make sure you are in the `shell-lesson-data/exercise-data/animal-counts`
+directory).
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Nelle's Pipeline: Checking Files
+
+Nelle has run her samples through the assay machines
+and created 17 files in the `north-pacific-gyre` directory described earlier.
+As a quick check, starting from the `shell-lesson-data` directory, Nelle types:
+
+```bash
+$ cd north-pacific-gyre
+$ wc -l *.txt
+```
+
+The output is 18 lines that look like this:
+
+```output
+300 NENE01729A.txt
+300 NENE01729B.txt
+300 NENE01736A.txt
+300 NENE01751A.txt
+300 NENE01751B.txt
+300 NENE01812A.txt
+... ...
+```
+
+Now she types this:
+
+```bash
+$ wc -l *.txt | sort -n | head -n 5
+```
+
+```output
+ 240 NENE02018B.txt
+ 300 NENE01729A.txt
+ 300 NENE01729B.txt
+ 300 NENE01736A.txt
+ 300 NENE01751A.txt
+```
+
+Whoops: one of the files is 60 lines shorter than the others.
+When she goes back and checks it,
+she sees that she did that assay at 8:00 on a Monday morning --- someone
+was probably in using the machine on the weekend,
+and she forgot to reset it.
+Before re-running that sample,
+she checks to see if any files have too much data:
+
+```bash
+$ wc -l *.txt | sort -n | tail -n 5
+```
+
+```output
+ 300 NENE02040B.txt
+ 300 NENE02040Z.txt
+ 300 NENE02043A.txt
+ 300 NENE02043B.txt
+5040 total
+```
+
+Those numbers look good --- but what's that 'Z' doing there in the third-to-last line?
+All of her samples should be marked 'A' or 'B';
+by convention,
+her lab uses 'Z' to indicate samples with missing information.
+To find others like it, she does this:
+
+```bash
+$ ls *Z.txt
+```
+
+```output
+NENE01971Z.txt    NENE02040Z.txt
+```
+
+Sure enough,
+when she checks the log on her laptop,
+there's no depth recorded for either of those samples.
+Since it's too late to get the information any other way,
+she must exclude those two files from her analysis.
+She could delete them using `rm`,
+but there are actually some analyses she might do later where depth doesn't matter,
+so instead, she'll have to be careful later on to select files using the wildcard expressions
+`NENE*A.txt NENE*B.txt`.
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Removing Unneeded Files
+
+Suppose you want to delete your processed data files, and only keep
+your raw files and processing script to save storage.
+The raw files end in `.dat` and the processed files end in `.txt`.
+Which of the following would remove all the processed data files,
+and *only* the processed data files?
+
+1. `rm ?.txt`
+2. `rm *.txt`
+3. `rm * .txt`
+4. `rm *.*`
+
+:::::::::::::::  solution
+
+## Solution
+
+1. This would remove `.txt` files with one-character names
+2. This is the correct answer
+3. The shell would expand `*` to match everything in the current directory,
+  so the command would try to remove all matched files and an additional
+  file called `.txt`
+4. The shell expands `*.*` to match all filenames containing at least one
+  `.`, including the processed files (`.txt`) *and* raw files (`.dat`)
+  
+  
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- `wc` counts lines, words, and characters in its inputs.
+- `cat` displays the contents of its inputs.
+- `sort` sorts its inputs.
+- `head` displays the first 10 lines of its input.
+- `tail` displays the last 10 lines of its input.
+- `command > [file]` redirects a command's output to a file (overwriting any existing content).
+- `command >> [file]` appends a command's output to a file.
+- `[first] | [second]` is a pipeline: the output of the first command is used as the input to the second.
+- The best way to use the shell is to use pipes to combine simple single-purpose programs (filters).
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
