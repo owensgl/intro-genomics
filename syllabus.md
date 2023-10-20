@@ -210,8 +210,8 @@ Graduate students taking Computational Genomics as a directed studies course hav
 | -------- | ------- |
 | Pre-lecture questions (10)  | 20%    |
 | In lab assignments (9) | 27% |
-| Lecture | 30% |
-| Final Solo Project     | 23%    |
+| Lecture | 20% |
+| Final Solo Project     | 33%    |
 
 ## UVic Policies
 
