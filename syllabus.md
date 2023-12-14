@@ -103,14 +103,6 @@ Students completing this course will be able to:
 * Present scientific analyses in oral and written form.
 
 
-### Teaching Philosophy
-
-This class is taught using largely a flipped, learner-centered, approach, because
-learning to program and work with data requires actively working on
-computers. Flipped classes work well for all kinds of content, but I think they
-work particularly well for computer oriented classes. If you're interested in
-knowing more take a look at this great
-[flipped classroom info-graphic](https://assignmentbro.com/wp-content/uploads/2021/02/flipped-classroom-infographics-scaled.jpg).
 
 
 ### Instructional Methods
@@ -152,24 +144,30 @@ However, it is highly recommended that you submit assignments on time when
 possible because assignments build on one another and it can be hard to catch up
 if you fall behind. Reasonable requests for longer extensions will also be granted.
 Assignments turned in after the 24 hour grace period without an extension will be
-be graded with a 20% penalty.
-
-Additionally, for pre-lecture questions, student grades will be based on  their best 
-10 out of 11 assigments. This allows students to not hand in 1 assignment without grade 
-penalty. 
+be graded with a 20% penalty, and not accepted one week after the initial deadline.
 
 
 ### Assignment policy
 
-Pre-lecture paper questions are due on Tuesdays at 1:30 pm Pacific Time on Brightspace. 
-In lab assignments are due on Tuesday at 1:30 pm Pacific Time on Brightspace the week following 
-the lab material. 
+Lecture assignments will be due roughly every 3 weeks, and will be announced in class and online. 
+Assignments will focus on lecture material and will involve reading and interpreting primary literature. 
+In lab assignments will cover the same material as the lab activities and will demonstrate understanding 
+and expertise. They are available on brightspace. 
+
+### Final group project
+
+In teams of two (2), students will analyse a simulated genomic dataset to understand,
+how populations are related, and identify the gene causing a trait. This will involve applying 
+computational techniques learned in the lab to develop a custom workflow. The project will be marked
+based on the results, their interpretation and an annotated code document. The final project is due
+the week of April 7th, exact date to be determined. Detailed rubric and instructions will be released
+on Brightspace.
 
 ### Grade policy
 
 | Item    | Percentage |
 | -------- | ------- |
-| Pre-lecture questions (10)  | 20%    |
+| Lecture assignments (4) | 20%  |
 | In lab assignments (9) | 27% |
 | Mid term Exam 1 | 15%     |
 | Late term Exam 2 | 15% |
@@ -202,13 +200,12 @@ There are no materials and supplies fees for this course.
 ## Graduate Students
 Graduate students taking Computational Genomics as a directed studies course have several differences from undergraduate students.
 1. Graduate students will not take the exams.
-2. Graduate students will work independently instead of groups on the final project.
-3. Each graduate student final project will include additional requirements.
-4. Graduate students will present a lecture on a topic relevant to the class.
+2. Graduate students will work complete a bioinformatic project related to their thesis.
+3. Graduate students will present a lecture on a topic relevant to the class, either solo or in a team depending on time availability.
 
 | Item    | Percentage |
 | -------- | ------- |
-| Pre-lecture questions (10)  | 20%    |
+| Lecture assignments (4)  | 20%    |
 | In lab assignments (9) | 27% |
 | Lecture | 20% |
 | Final Solo Project     | 33%    |
@@ -258,9 +255,7 @@ Please see read UVic’s Student code of conduct and standards for professional 
 
 ## Grading Policies
 
-Grading for this course is based on ~12 equally weighted assignments.
-
-Exercises in assignments will be graded as follows:
+In lab assignments will be graded as follows for coding based questions:
 
 * Produces the correct answer using the requested approach: 100%
 * Generally uses the right approach, but a minor mistake results in an incorrect
