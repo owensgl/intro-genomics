@@ -1,6 +1,3 @@
-Certainly! Here's the improved formatting of the markdown document:
-
-```markdown
 ---
 title: Shell Scripting Lab
 element: lab
@@ -152,5 +149,3 @@ Output:
 draft.txt
 
 
-```
-```
