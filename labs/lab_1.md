@@ -77,7 +77,7 @@ You will be prompted to use Duo, two-factor authentication before you enter your
 you will use your netlink ID to login.
 
 ```output
-(base) p165-072:~ gregoryowens$ ssh grego@fossa.rcs.uvic.ca
+(base) p165-072:~ gregoryowens$ ssh grego@indri.rcs.uvic.ca
 *
 * Acceptable Use of Electronic Information Resources
 *
