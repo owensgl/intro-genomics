@@ -104,8 +104,6 @@ data/  results/
 ```
 
 
-##  Callout
-
 ## Good names for files and directories
 
 Complicated names of files and directories can make your life painful
@@ -146,8 +144,6 @@ $ cd thesis
 $ nano draft.txt
 ```
 
-##  callout
-
 ## Which Editor?
 
 When we say, '`nano` is a text editor' we really do mean 'text'. It can
@@ -186,7 +182,6 @@ the suggested default of `draft.txt`.
 Once our file is saved, we can use <kbd>Ctrl</kbd>\+<kbd>X</kbd> to quit the editor and
 return to the shell.
 
-##  callout
 
 ## Control, Ctrl, or ^ Key
 
@@ -219,9 +214,7 @@ $ ls
 draft.txt
 ```
 
-##  challenge
-
-## Creating Files a Different Way
+## Challenge: Creating Files a Different Way
 
 We have seen how to create text files using the `nano` editor.
 Now, try the following command:
@@ -250,7 +243,6 @@ $ rm my_file.txt
 ```
 
 ***
-##  callout
 
 ## What's In A Name?
 
@@ -352,9 +344,8 @@ $ ls quotes.txt
 quotes.txt
 ```
 
-###  challenge
 
-## Moving Files to a new folder
+## Challenge: Moving Files to a new folder
 
 After running the following commands,
 Jamie realizes that she put the files `sucrose.dat` and `maltose.dat` into the wrong folder.
@@ -425,9 +416,7 @@ cp: -r not specified; omitting directory 'thesis'
 ```
 
 
-##  challenge
-
-## Renaming Files
+## Challenge: Renaming Files
 
 Suppose that you created a plain-text file in your current directory to contain a list of the
 statistical tests you will need to do to analyze your data, and named it `statstics.txt`
@@ -442,9 +431,7 @@ correct the mistake, which of the following commands could you use to do so?
 
 ***
 
-##  challenge
-
-## Moving and Copying
+## Challenge: Moving and Copying
 
 What is the output of the closing `ls` command in the sequence shown below?
 
@@ -498,8 +485,6 @@ $ ls quotes.txt
 ls: cannot access 'quotes.txt': No such file or directory
 ```
 
-##  callout
-
 ## Deleting Is Forever
 
 The Unix shell doesn't have a trash bin that we can recover deleted
@@ -511,8 +496,6 @@ work in any particular situation, since the computer may recycle the
 file's disk space right away.
 
 ***
-
-##  challenge
 
 ## Using `rm` Safely
 
@@ -553,9 +536,8 @@ or specifying a naming pattern using wildcards. Wildcards are
 special characters that can be used to represent unknown characters
 or sets of characters when navigating the Unix file system.
 
-##  challenge
 
-## Copy with Multiple Filenames
+## Challenge: Copy with Multiple Filenames
 
 For this exercise, you can test the commands in the `shell-lesson-data/exercise-data` directory.
 
@@ -582,9 +564,6 @@ $ cp minotaur.dat unicorn.dat basilisk.dat
 ```
 
 
-### Using wildcards for accessing multiple files at once
-
-##  callout
 
 ## Wildcards
 
@@ -616,9 +595,7 @@ themselves. It is the shell, not the other programs, that expands
 the wildcards.
 
 
-##  challenge
-
-## List filenames matching a pattern
+## Challenge: List filenames matching a pattern
 
 When run in the `alkanes` directory, which `ls` command(s) will
 produce this output?
@@ -632,9 +609,7 @@ produce this output?
 
 ***
 
-##  challenge
-
-## More on Wildcards
+## Challenge: More on Wildcards
 
 Sam has a directory containing calibration data, datasets, and descriptions of
 the datasets:
@@ -721,9 +696,7 @@ The resulting directory structure should look like this
 ```
 ***
 
-##  challenge
-
-## Organizing Directories and Files
+## Challenge: Organizing Directories and Files
 
 Jamie is working on a project, and she sees that her files aren't very well
 organized:
@@ -758,9 +731,7 @@ fructose.dat    sucrose.dat
 
 ***
 
-##  challenge
-
-## Reproduce a folder structure
+## Challenge: Reproduce a folder structure
 
 You're starting a new experiment and would like to duplicate the directory
 structure from your previous experiment so you can add new data.
@@ -933,7 +904,6 @@ $ wc -l *.pdb
 The `-m` and `-w` options can also be used with the `wc` command to show
 only the number of characters or the number of words, respectively.
 
-##  callout
 
 ## Why Isn't It Doing Anything?
 
@@ -1005,7 +975,6 @@ $ cat lengths.txt
  107  total
 ```
 
-##  callout
 
 ## Output Page by Page
 
@@ -1024,9 +993,8 @@ or back one by pressing `b`.  Press `q` to quit.
 Next we'll use the `sort` command to sort the contents of the `lengths.txt` file.
 But first we'll do an exercise to learn a little about the sort command:
 
-##  challenge
 
-## What Does `sort -n` Do?
+## Challenge: What Does `sort -n` Do?
 
 The file `shell-lesson-data/exercise-data/numbers.txt` contains the following lines:
 
@@ -1103,7 +1071,6 @@ and so on.
 Since `sorted-lengths.txt` contains the lengths of our files ordered from least to greatest,
 the output of `head` must be the file with the fewest lines.
 
-##  callout
 
 ## Redirecting to the same file
 
@@ -1121,9 +1088,7 @@ the contents of `lengths.txt`.
 
 
 
-##  challenge
-
-## What Does `>>` Mean?
+## Challenge: What Does `>>` Mean?
 
 We have seen the use of `>`, but there is a similar operator `>>`
 which works slightly differently.
@@ -1153,21 +1118,8 @@ $ echo hello >> testfile02.txt
 Hint: Try executing each command twice in a row and then examining the output files.
 
 
-## Solution
 
-In the first example with `>`, the string 'hello' is written to `testfile01.txt`,
-but the file gets overwritten each time we run the command.
-
-We see from the second example that the `>>` operator also writes 'hello' to a file
-(in this case `testfile02.txt`),
-but appends the string to the file if it already exists
-(i.e. when we run it for the second time).
-
-
-
-## challenge
-
-## Appending Data
+## Challenge: Appending Data
 
 
 Consider the file `shell-lesson-data/exercise-data/animal-counts/animals.csv`.
@@ -1183,16 +1135,6 @@ $ tail -n 2 animals.csv >> animals-subset.csv
 2. The last two lines of `animals.csv`
 3. The first three lines and the last two lines of `animals.csv`
 4. The second and third lines of `animals.csv`
-
-:::::::::::::::  solution
-
-## Solution
-
-Option 3 is correct.
-For option 1 to be correct we would only run the `head` command.
-For option 2 to be correct we would only run the `tail` command.
-For option 4 to be correct we would have to pipe the output of `head` into `tail -n 2`
-by doing `head -n 3 animals.csv | tail -n 2 > animals-subset.csv`
 
 
 ***
@@ -1263,9 +1205,8 @@ The redirection and pipes used in the last few commands are illustrated below:
 
 ![](figs/redirects-and-pipes.svg){alt='Redirects and Pipes of different commands: "wc -l \*.pdb" will direct theoutput to the shell. "wc -l \*.pdb > lengths" will direct output to the file"lengths". "wc -l \*.pdb | sort -n | head -n 1" will build a pipeline where theoutput of the "wc" command is the input to the "sort" command, the output ofthe "sort" command is the input to the "head" command and the output of the"head" command is directed to the shell'}
 
-##  challenge
 
-## Piping Commands Together
+## Challenge: Piping Commands Together
 
 In our current directory, we want to find the 3 files which have the least number of
 lines. Which command listed below would work?
@@ -1274,17 +1215,6 @@ lines. Which command listed below would work?
 2. `wc -l * | sort -n | head -n 1-3`
 3. `wc -l * | head -n 3 | sort -n`
 4. `wc -l * | sort -n | head -n 3`
-
-:::::::::::::::  solution
-
-## Solution
-
-Option 4 is the solution.
-The pipe character `|` is used to connect the output from one command to
-the input of another.
-`>` is used to redirect standard output to a file.
-Try it in the `shell-lesson-data/exercise-data/alkanes` directory!
-
 
 ***
 
@@ -1312,7 +1242,7 @@ so that you and other people can put those programs into pipes to multiply their
 
 ##  challenge
 
-## Pipe Reading Comprehension
+## Challenge: Pipe Reading Comprehension
 
 A file called `animals.csv` (in the `shell-lesson-data/exercise-data/animal-counts` folder)
 contains the following data:
@@ -1339,9 +1269,8 @@ Hint: build the pipeline up one command at a time to test your understanding
 
 ***
 
-##  challenge
 
-## Pipe Construction
+## Challenge: Pipe Construction
 
 For the file `animals.csv` from the previous exercise, consider the following command:
 
@@ -1373,10 +1302,7 @@ out what animals the file contains (without any duplicates in their
 names)?
 
 
-
-##  challenge
-
-## Which Pipe?
+## Challenge: Which Pipe?
 
 The file `animals.csv` contains 8 lines of data formatted as follows:
 
@@ -1483,9 +1409,7 @@ but there are actually some analyses she might do later where depth doesn't matt
 so instead, she'll have to be careful later on to select files using the wildcard expressions
 `NENE*A.txt NENE*B.txt`.
 
-##  challenge
-
-## Removing Unneeded Files
+## Challenge: Removing Unneeded Files
 
 Suppose you want to delete your processed data files, and only keep
 your raw files and processing script to save storage.
@@ -1498,18 +1422,7 @@ and *only* the processed data files?
 3. `rm * .txt`
 4. `rm *.*`
 
-:::::::::::::::  solution
 
-## Solution
-
-1. This would remove `.txt` files with one-character names
-2. This is the correct answer
-3. The shell would expand `*` to match everything in the current directory,
-  so the command would try to remove all matched files and an additional
-  file called `.txt`
-4. The shell expands `*.*` to match all filenames containing at least one
-  `.`, including the processed files (`.txt`) *and* raw files (`.dat`)
-  
   
 
 ***
@@ -1574,7 +1487,7 @@ using the pseudo-code below:
 ```bash
 # The word "for" indicates the start of a "For-loop" command
 for thing in list_of_things 
-#The word "do" indicates the start of job execution list
+# The word "do" indicates the start of job execution list
 do 
     # Indentation within the loop is not required, but aids legibility
     operation_using/command $thing 
@@ -1600,8 +1513,6 @@ CLASSIFICATION: bos hominus
 unicorn.dat
 CLASSIFICATION: equus monoceros
 ```
-
-##  callout
 
 ## Follow the Prompt
 
@@ -1643,8 +1554,6 @@ For the third iteration, `$filename` becomes
 `unicorn.dat`, so the shell runs the `head` command on that file,
 and `tail` on the output of that.
 Since the list was only three items, the shell exits the `for` loop.
-
-##  callout
 
 ## Same Symbols, Different Meanings
 
@@ -1701,16 +1610,14 @@ writing the code and the person reading it.
 Note also that loops can be used for other things than filenames, like a list of numbers
 or a subset of data.
 
-##  challenge
 
-## Write your own loop
+## Challenge: Write your own loop
 
 How would you write a loop that echoes all 10 numbers from 0 to 9?
 
 
-##  challenge
 
-## Variables in Loops
+## Challenge: Variables in Loops
 
 This exercise refers to the `shell-lesson-data/exercise-data/alkanes` directory.
 `ls *.pdb` gives the following output:
@@ -1740,9 +1647,8 @@ $ for datafile in *.pdb
 Why do these two loops give different outputs?
 
 
-##  challenge
 
-## Limiting Sets of Files
+## Challenge: Limiting Sets of Files
 
 What would be the output of running the following loop in the
 `shell-lesson-data/exercise-data/alkanes` directory?
@@ -1776,9 +1682,7 @@ $ for filename in *c*
 5. Only the file `octane.pdb` will be listed.
 
 
-##  challenge
-
-## Saving to a File in a Loop - Part One
+## Challenge: Saving to a File in a Loop - Part One
 
 In the `shell-lesson-data/exercise-data/alkanes` directory, what is the effect of this loop?
 
@@ -1798,20 +1702,10 @@ done
   and the text from `propane.pdb` will be saved to a file called `alkanes.pdb`.
 4. None of the above.
 
-:::::::::::::::  solution
 
-## Solution
-
-1. The text from each file in turn gets written to the `alkanes.pdb` file.
-  However, the file gets overwritten on each loop iteration, so the final content of
-  `alkanes.pdb`
-  is the text from the `propane.pdb` file.
-  
   
 
-##  challenge
-
-## Saving to a File in a Loop - Part Two
+## Challenge: Saving to a File in a Loop - Part Two
 
 Also in the `shell-lesson-data/exercise-data/alkanes` directory,
 what would be the output of the following loop?
@@ -1881,7 +1775,6 @@ the `head` and `tail` combination selects lines 81-100
 from whatever file is being processed
 (assuming the file has at least 100 lines).
 
-##  callout
 
 ## Spaces in Names
 
@@ -2089,7 +1982,6 @@ $ for datafile in NENE*A.txt NENE*B.txt; do echo $datafile;
 bash goostats.sh $datafile stats-$datafile; done
 ```
 
-##  callout
 
 ## Beginning and End
 
@@ -2120,7 +2012,6 @@ to examine one of the output files.
 It looks good,
 so she decides to get some coffee and catch up on her reading.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Those Who Know History Can Choose to Repeat It
 
@@ -2146,9 +2037,6 @@ then she can re-run `goostats.sh` on the files simply by typing
 `!459`.
 
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Other History Commands
 
@@ -2168,11 +2056,8 @@ There are a number of other shortcut commands for getting at the history.
   quicker than doing <kbd>↑</kbd> and editing the command-line.
   
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Doing a Dry Run
+## Challenge: Doing a Dry Run
 
 A loop is a way to do many things at once --- or to make many mistakes at
 once if it does the wrong thing. One way to check what a loop *would* do
@@ -2207,7 +2092,6 @@ $ for datafile in *.pdb
 > done
 ```
 
-:::::::::::::::  solution
 
 ## Solution
 
@@ -2227,13 +2111,7 @@ Try both versions for yourself to see the output! Be sure to open the
 
 
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Nested Loops
+## Challenge: Nested Loops
 
 Suppose we want to set up a directory structure to organize
 some experiments measuring reaction rate constants with different compounds
@@ -2250,7 +2128,6 @@ $ for species in cubane ethane methane
 > done
 ```
 
-:::::::::::::::  solution
 
 ## Solution
 
@@ -2262,13 +2139,10 @@ Try running the code for yourself to see which directories are created!
 
 
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
-:::::::::::::::::::::::::::::::::::::::: keypoints
+## Keypoints
 
 - A `for` loop repeats commands once for every thing in a list.
 - Every `for` loop needs a variable to refer to the thing it is currently operating on.
@@ -2279,7 +2153,6 @@ Try running the code for yourself to see which directories are created!
 - Use <kbd>Ctrl</kbd>\+<kbd>R</kbd> to search through the previously entered commands.
 - Use `history` to display recent commands, and `![number]` to repeat a command by number.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
