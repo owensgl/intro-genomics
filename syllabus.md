@@ -30,7 +30,8 @@ Email:
 
 ### Location
 
-{{location}}
+Lecture (Tuesdays): Cunningham 146
+Lab (Wednesdays): Clearihue A035
 
 
 ### Times
