@@ -42,7 +42,7 @@ Email:
 
 ### Office Hours
 
-By appointment. Email me and we can find a time. 
+By appointment. Email me and we can find a time. I will also schedule a review session before each exam. 
 
 
 ### Website
@@ -188,7 +188,8 @@ but is not successful in 4, they will receive an “F” on their transcript.*
 
 Students are required to work on Apple computers for the lab portion of the course. 
 Apple computers are available in the lab space, and it is recommended that students 
-use those and not personal laptops. Windows computers can complete the lab assignments
+use those and not personal laptops. Outside of lab time, apple computers can
+be used in the library. Windows computers can complete the lab assignments
 but the file system differences between operating systems can cause problems and 
 complexity. 
 
