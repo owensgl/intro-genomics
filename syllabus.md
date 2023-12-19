@@ -223,10 +223,10 @@ and the Songhees, Esquimalt and WSÁNEĆ peoples whose historical relationships 
 ### Important Dates
 
 Note these important dates:  
-Last day for 100% reduction of tuition fees for standard courses – Sun. Jan. 21  
-Last day for adding second term courses  – Wed. Jan 24 
-Last day for 50% reduction of tuition fees for standard courses – Sun. Feb. 11  
-Last day for withdrawing from 2nd term courses without penalty of failure – Tues. Feb. 29 
+* Last day for 100% reduction of tuition fees for standard courses – Sun. Jan. 21  
+* Last day for adding second term courses  – Wed. Jan 24 
+* Last day for 50% reduction of tuition fees for standard courses – Sun. Feb. 11  
+* Last day for withdrawing from 2nd term courses without penalty of failure – Tues. Feb. 29 
 
 Holidays (no class):
 Tues. Feb 20 – Reading Break
