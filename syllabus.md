@@ -51,7 +51,10 @@ By appointment. Email me and we can find a time. I will also schedule a review s
 The syllabus and other relevant class information and resources will be posted
 at [{{ site.url}}]({{ site.baseurl }}/).
 Changes to the schedule will be posted to this site so please try to check it
-periodically for updates.
+periodically for updates. 
+
+The online version of this syllabus will be updated to clarify points, but the version
+of record is saved [here]({{ site.baseurl }}/syllabus_current.pdf).
 
 
 ### Course Communications
