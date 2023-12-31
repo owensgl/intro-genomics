@@ -125,7 +125,9 @@ are attempting to solve.
 
 Attendance to the lecture portion is highly encouraged. Given the central importance of 
 the lab exercises, attendance for the lab portion is mandatory and recorded. Missing more than 
-two (2) lab sections will result in an incomplete in the course. 
+two (2) lab sections will result in an incomplete grade in the course. For missed lab section,
+the student should complete the tutorial on their own time. 
+Even when the lab section is missed, the lab assignment is still due the following week.
 
 
 ### Quiz/Exam Policy
@@ -135,6 +137,13 @@ on the week of April 3rd. Both exams will be on Brightspace, open-book and will 
 class time, with a flexible start time. Exams will not be cumulative, although concepts and material 
 may span both exam periods. **You are not allowed to communicate with others or use AI software 
 during exams**
+
+Since the midterm exam times will be flexible (i.e. available over a several day period), there
+will not make up exam time slots. If the exam is not completed during the window,
+including in cases of technical issues, then the student will receive 0% on the exam.
+In the case of extended medical issues, the exam will be omitted and the 
+grade point percentages will be put onto on the remaining exam (i.e. the other exam
+will be worth 30% of the final grade). 
 
 
 ### Make-up policy
@@ -171,18 +180,17 @@ on Brightspace.
 | Lecture assignments (4) | 20%  |
 | In lab assignments (9) | 27% |
 | Mid term Exam 1 | 15%     |
-| Late term Exam 2 | 15% |
+| Mid term Exam 2 | 15% |
 | Final Group Project     | 23%    |
 
 **To pass the course**, students must:
-1. Complete exams 1 and 2
-2. Attend the lab section for at least 11 out of 13 weeks.
-3. Complete and present the final group project.
-4. Score a final grade of 50.0 points for the entire course.
+1. Attend the lab section for at least 11 out of 13 weeks.
+2. Complete and present the final group project.
+3. Score a final grade of 50.0 points for the entire course.
 
-*If any of 1 through 3 are not completed, the student will automatically fail the course and receive an “N” 
-(‘Incomplete’) on their transcript. If a student successfully completes 1 through 3, 
-but is not successful in 4, they will receive an “F” on their transcript.*
+*If any of 1 through 2 are not completed, the student will automatically fail the course and receive an “N” 
+(‘Incomplete’) on their transcript. If a student successfully completes 1 through 2, 
+but is not successful in 3, they will receive an “F” on their transcript.*
 
 
 ### Course Technology
