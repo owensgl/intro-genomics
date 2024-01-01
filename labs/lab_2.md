@@ -4,6 +4,8 @@ element: lab
 layout: default
 ---
 
+# Section 1
+
 ## objectives
 
 - Create a directory hierarchy that matches a given diagram.
@@ -817,9 +819,11 @@ as the 'data' directory.
 - Depending on the type of work you do, you may need a more powerful text editor than Nano.
 
 ***
-# BREAK
+# Rest Break
 
+***
 
+# Section 2
 
 ## objectives
 
@@ -1240,7 +1244,6 @@ can be combined with every other program that behaves this way as well.
 You can *and should* write your programs this way
 so that you and other people can put those programs into pipes to multiply their power.
 
-##  challenge
 
 ## Challenge: Pipe Reading Comprehension
 
@@ -1441,8 +1444,11 @@ and *only* the processed data files?
 - `[first] | [second]` is a pipeline: the output of the first command is used as the input to the second.
 - The best way to use the shell is to use pipes to combine simple single-purpose programs (filters).
 
-# BREAK
+***
+# Rest Break
+***
 
+# Section 3
 ## objectives
 
 - Write a loop that applies one or more commands separately to each file in a set of files.
@@ -2093,23 +2099,6 @@ $ for datafile in *.pdb
 ```
 
 
-## Solution
-
-The second version is the one we want to run.
-This prints to screen everything enclosed in the quote marks, expanding the
-loop variable name because we have prefixed it with a dollar sign.
-It also *does not* modify nor create the file `all.pdb`, as the `>>`
-is treated literally as part of a string rather than as a
-redirection instruction.
-
-The first version appends the output from the command `echo cat $datafile`
-to the file, `all.pdb`. This file will just contain the list;
-`cat cubane.pdb`, `cat ethane.pdb`, `cat methane.pdb` etc.
-
-Try both versions for yourself to see the output! Be sure to open the
-`all.pdb` file to view its contents.
-
-
 
 ## Challenge: Nested Loops
 
@@ -2127,18 +2116,6 @@ $ for species in cubane ethane methane
 >     done
 > done
 ```
-
-
-## Solution
-
-We have a nested loop, i.e. contained within another loop, so for each species
-in the outer loop, the inner loop (the nested loop) iterates over the list of
-temperatures, and creates a new directory for each combination.
-
-Try running the code for yourself to see which directories are created!
-
-
-
 
 
 
