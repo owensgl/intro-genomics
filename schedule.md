@@ -4,8 +4,8 @@ title: Assignment Schedule
 assignments: ['Unix commandline', 'Shell scripting',
 'R and data wrangling', 'Data visualization', 'Sequence data and QC',
 'Alignment', 'Reading Break', 'Variant calling',
-'Genome assembly', 'Population genetics', 'Project work', 'Project work', 
-'Student Presentations']
+'Genome assembly', 'Population genetics', 'GWAS', 'Project work', 
+'Project work']
 ---
 
 
