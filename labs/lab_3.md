@@ -1,5 +1,5 @@
 ---
-title: R scripting
+title: R and data wrangling
 element: lab
 layout: default
 ---
