@@ -731,7 +731,6 @@ Hint: The bonus question requires a Unix wildcard that we haven't talked about
 yet. Try searching the internet for information about Unix wildcards to find
 what you need to solve the bonus problem.
 
-:::::::::::::::  solution
 
 ##  Challenge
 
