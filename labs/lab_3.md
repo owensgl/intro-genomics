@@ -9,11 +9,9 @@ layout: default
 ## Objectives
 
 - Load Libraries in R studio
-- Load data from a text file into R
 - Describe the structure of a dataframe
-- Convert a dataframe to tidy format
 - Filter a dataframe
-- Summarize and transforma a dataframe
+- Summarize and transform a dataframe
 
 ## Activities
 
@@ -51,11 +49,15 @@ We're going to install a series of packages for handling data.
 ```R
 install.packages("dplyr")
 install.packages("ggplot2")
-install.packages("gapminder")
+install.packages("nycflights13")
 install.packages("forcats")
 install.packages("stringr")
 install.packages("readr")
 install.packages("tibble")
+install.packages("tidyr")
+install.packages("purrr")
+install.packages("stringr")
+
 ```
 
 Those packages are installed, but we also have to load them before they can be used.
@@ -63,11 +65,14 @@ Those packages are installed, but we also have to load them before they can be u
 ```R
 library("dplyr")
 library("ggplot2")
-library("gapminder")
+library("nycflights13")
 library("forcats")
 library("stringr")
 library("readr")
 library("tibble")
+library("tidyr")
+library("purrr")
+library("stringr")
 ```
 
 ### Dataframes
@@ -129,6 +134,8 @@ The '[1]' indicates the positione number of the first item in that line. In this
 there is only one line of items but this can be helpful if you print out very long 
 lists of items. 
 
+The result of our command is a list of all names, in their original order. 
+
 We can also access a column by using its relative position. The Name column is the first 
 column, so we're going to print out the first column.
 
@@ -142,6 +149,60 @@ column_1
 ```
 
 This is a general way of accessing data in R. It uses the format [Row_number,Column_number]. 
+We didn't put anything in the "Row number" portion, so it printed out all rows. This same function
+can be used to pull out specific rows, or even single values by triangulating their row and column.
+
+
+Lastly, we can access specific columns by using the "pull()" function.
+
+```R
+names <- pull(df, Name)
+names
+```
+```output
+[1] "Alice"   "Bob"     "Charlie" "David"
+```
+
+For this command, we're telling it to pull out the "Name" column from the "df" dataframe. 
+We will see this command more when we start chaining together different commands.
+
+### Challenge
+
+Write two different sets of commands to extract the age of Charlie. 
+Hint: You can use the [n] notation on a list. In this case, you only need to give it
+one number, since this is is 1-dimensional.
+
+
+### Using the pipe function.
+
+When we used the pull function, we could also organize it using a pipe. This
+is similar to using pipes in command line, where you're passing the output
+of one command to the next.
+
+```R
+df |>
+  pull(Name)
+
+```
+```output
+[1] "Alice"   "Bob"     "Charlie" "David"
+```
+
+In this case, we're taking the dataframe "df" and passing it to the pull command.
+You'll notice that we don't have to tell pull which dataframe to use, it knows that it is
+using the dataframe passed to it from the previous part of the code.
+
+### Transform data!
+
+We're going to be following along with the textbook "R for data science". We're working on 
+chapter 3, Data Transformation: https://r4ds.hadley.nz/data-transform
+Important: In the tutorial, it loads "tidyverse". We have already installed and loaded
+almost all of the tidyverse packages, but due to some quirks in the server it's easier
+to use it the way listed here. So, where it says "library(tidyverse)", skip that command.
+
+
+
+
 
 
 
