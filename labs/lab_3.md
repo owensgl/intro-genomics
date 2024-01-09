@@ -4,8 +4,6 @@ element: lab
 layout: default
 ---
 
-# Section 1
-
 ## Objectives
 
 - Load Libraries in R studio
