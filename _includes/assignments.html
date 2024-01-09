@@ -3,21 +3,11 @@
   <tr>
     <th width="50">Week</th>
     <th width="300">Topic</th>
-    <th width="50">Slides</th>
     <th width="50">Lab</th>
-    <th width="50">Assignment</th>
   </tr>
 
   {% for assignment in page.assignments %}
 
-
-    {% for lecturepage in site.pages %}
-      {% if lecturepage.title == assignment and lecturepage.element == 'slides' %}
-        {% capture lecture_link %}{{ lecturepage.url | prepend: site.baseurl }}{% endcapture %}
-        {% break %}
-      {% endif %}
-      {% assign lecture_link = nil %}
-    {% endfor %}
 
     {% for labpage in site.pages %}
       {% if labpage.title == assignment and labpage.element == 'lab' %}
@@ -27,25 +17,11 @@
       {% assign lab_link = nil %}
     {% endfor %}
   
-    {% for lessonpage in site.pages %}
-      {% if lessonpage.title == assignment and lessonpage.element == 'assignment' %}
-        {% capture assignment_link %}{{ lessonpage.url | prepend: site.baseurl }}{% endcapture %}
-        {% break %}
-      {% endif %}
-      {% assign assignment_link = nil %}
-    {% endfor %}
 
     <tr>
       <td align="right">{{ forloop.index }}</td>
       <td>{{ assignment }}</td>
-
-      {% if slides_link %}
-        <td align="center"><a href="{{ slides_link }}" aria-label="Week {{ forloop.index }} Slides">
-          <i aria-hidden="true" class="fa fa-paperclip fa-lg"></i></a></td>
-      {% else %}
-        <td align="center"><font color="f1f1f1">
-          <i class="fa fa-paperclip fa-lg"></i></font></td>
-      {% endif %}      
+   
       
 
       {% if lab_link %}
@@ -56,13 +32,7 @@
           <i class="fa fa-flask fa-lg"></i></font></td>
       {% endif %}
 
-      {% if assignment_link %}
-        <td align="center"><a href="{{ assignment_link }}" aria-label="Week {{ forloop.index }} Assignment">
-          <i aria-hidden="true" class="fa fa-keyboard-o fa-lg"></i></a></td>
-      {% else %}
-        <td align="center"><font color="f1f1f1">
-          <i class="fa fa-keyboard-o fa-lg"></i></font></td>
-      {% endif %}
+
     </tr>
 
   {% endfor %}
