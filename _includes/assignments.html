@@ -4,47 +4,21 @@
     <th width="50">Week</th>
     <th width="300">Topic</th>
     <th width="50">Slides</th>
-    <th width="50">Questions</th>
     <th width="50">Lab</th>
     <th width="50">Assignment</th>
   </tr>
 
   {% for assignment in page.assignments %}
 
-    {% for readingpage in site.pages %}
-      {% if readingpage.title == assignment and readingpage.element == 'reading' %}
-        {% capture reading_link %}{{ otherpage.url | prepend: site.baseurl }}{% endcapture %}
-        {% break %}
-      {% endif %}
-      {% assign language = nil %}
-      {% assign reading_link = nil %}
-    {% endfor %}
 
     {% for lecturepage in site.pages %}
-      {% if lecturepage.title == assignment and lecturepage.element == 'lecture' %}
+      {% if lecturepage.title == assignment and lecturepage.element == 'slides' %}
         {% capture lecture_link %}{{ lecturepage.url | prepend: site.baseurl }}{% endcapture %}
         {% break %}
       {% endif %}
       {% assign lecture_link = nil %}
     {% endfor %}
 
-    {% for readingpage in site.pages %}
-      {% if readingpage.title == assignment and readingpage.element == 'reading' %}
-        {% capture reading_link %}{{ readingpage.url | prepend: site.baseurl }}{% endcapture %}
-        {% break %}
-      {% endif %}
-      {% assign reading_link = nil %}
-    {% endfor %}
-
-    {% for lessonpage in site.pages %}
-      {% if lessonpage.title == assignment and lessonpage.element == 'lesson' %}
-        {% capture lesson_link %}{{ lessonpage.url | prepend: site.baseurl }}{% endcapture %}
-        {% break %}
-      {% endif %}
-      {% assign lesson_link = nil %}
-    {% endfor %}
-
-  
     {% for labpage in site.pages %}
       {% if labpage.title == assignment and labpage.element == 'lab' %}
         {% capture lab_link %}{{ labpage.url | prepend: site.baseurl }}{% endcapture %}
@@ -52,26 +26,18 @@
       {% endif %}
       {% assign lab_link = nil %}
     {% endfor %}
+  
+    {% for lessonpage in site.pages %}
+      {% if lessonpage.title == assignment and lessonpage.element == 'assignment' %}
+        {% capture assignment_link %}{{ lessonpage.url | prepend: site.baseurl }}{% endcapture %}
+        {% break %}
+      {% endif %}
+      {% assign assignment_link = nil %}
+    {% endfor %}
 
     <tr>
       <td align="right">{{ forloop.index }}</td>
       <td>{{ assignment }}</td>
-
-      {% if reading_link %}
-        <td align="center"><a href="{{ reading_link }}" aria-label="Week {{ forloop.index }} Reading">
-          <i aria-hidden="true" class="fa fa-book fa-lg" ></i></a></td>
-      {% else %}
-        <td align="center"><font color="f1f1f1">
-          <i class="fa fa-book fa-lg"></i></font></td>
-      {% endif %}
-
-      {% if questions_link %}
-        <td align="center"><a href="{{ questions_link }}" aria-label="Week {{ forloop.index }} Questions">
-          <i aria-hidden="true" class="fa fa-solid fa-pen-nib fa-lg" ></i></a></td>
-      {% else %}
-        <td align="center"><font color="f1f1f1">
-          <i class="fa fa-solid fa-pen-nib fa-lg"></i></font></td>
-      {% endif %}
 
       {% if slides_link %}
         <td align="center"><a href="{{ slides_link }}" aria-label="Week {{ forloop.index }} Slides">
@@ -80,6 +46,7 @@
         <td align="center"><font color="f1f1f1">
           <i class="fa fa-paperclip fa-lg"></i></font></td>
       {% endif %}      
+      
 
       {% if lab_link %}
         <td align="center"><a href="{{ lab_link }}" aria-label="Week {{ forloop.index }} Lab">
