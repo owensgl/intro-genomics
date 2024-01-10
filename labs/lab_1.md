@@ -132,6 +132,25 @@ up until this point.
 
 ***
 
+## Downloading files. 
+We first have to download the data files used in this lab. I have put them on a git repository 
+(which you will learn about next lecture) and you download it using this code.
+
+```bash
+[grego@indri ~]$ git clone https://github.com/owensgl/shell_data.git
+```
+
+```output
+Cloning into 'shell_data'...
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 8 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (8/8), 3.71 MiB | 4.38 MiB/s, done.
+```
+
+
+
 ## Navigating your file system
 
 The part of the operating system that manages files and directories
