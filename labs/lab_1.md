@@ -609,7 +609,7 @@ what will `ls ../backup` display?
 3. `2012-12-01/ 2013-01-08/ 2013-01-27/`
 4. `original pnas_final pnas_sub`
 
-![](../figs/filesystem-challenge.svg){alt='File System for Challenge Questions'}
+![](../figs/filesystem-challenge.svg)
 
 
 ### Navigational Shortcuts
@@ -1149,7 +1149,7 @@ characters relate to the permissions that the file owner has, the next three rel
 three characters specify what other users outside of your group can do with the file. We're going to concentrate on the three positions
 that deal with your permissions (as the file owner).
 
-![](../figs/rwx_figure.svg){alt='Permissions breakdown'}
+![](../figs/rwx_figure.svg)
 
 Here the three positions that relate to the file owner are `rwx`. The `r` means that you have permission to read the file, the `w`
 indicates that you have permission to write to (i.e. make changes to) the file, and the third position is a `x`, indicating that you
