@@ -865,12 +865,6 @@ $ cat bullkelp_001_R1.fastq
   the `~/shell_data/untrimmed_fastq` directory.
 
 
-## Solution
-
-1. The last line of the file is `C:CCC::CCCCCCCC<8?6A:C28C<608'&&&,'$`.
-  `tail` prints the last lines of a file. 
-2. `cat ~/shell_data/untrimmed_fastq/*`
-
 ***
 
 `cat` is a terrific program, but when the file is really big, it can
