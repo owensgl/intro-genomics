@@ -4,8 +4,8 @@ element: lab
 layout: default
 ---
 
-# Introduction 
-## objectives
+# Section 1 
+## Objectives
 
 - Describe key reasons for learning shell.
 - Navigate your file system using the command line.
@@ -14,7 +14,7 @@ layout: default
 
 ***
 
-## questions
+## Questions
 
 - What is a command shell and why would I use one?
 - How can I move around on my computer?
@@ -378,9 +378,7 @@ using the command line shell enables us to make our workflow more efficient and 
 - Tab completion can reduce errors from mistyping and make work more efficient in the shell.
 
 ***
-
-# Navigating files and directories
-
+# Section 2
 
 ## Objectives
 
@@ -658,7 +656,8 @@ The commands `cd`, and `cd ~` are very useful for quickly navigating back to you
 
 ***
 
-## objectives
+# Section 3
+## Objectives
 
 - View, search within, copy, move, and rename files. Create new directories.
 - Use wildcards (`*`) to perform operations on multiple files.
@@ -667,7 +666,7 @@ The commands `cd`, and `cd ~` are very useful for quickly navigating back to you
 
 ***
 
-## questions
+## Questions
 
 - How can I view and search file contents?
 - How can I create, copy and delete files and directories?
@@ -734,7 +733,6 @@ each result starts with `/`.
 
 ##  Challenge
 
-## Exercise
 
 Do each of the following tasks from your current directory using a single
 `ls` command for each:
@@ -753,7 +751,7 @@ what you need to solve the bonus problem.
 
 ##  Challenge
 
-## Exercise
+
 
 `echo` is a built-in shell command that writes its arguments, like a line of text to standard output.
 The `echo` command can also be used with pattern matching characters, such as wildcard characters.
@@ -818,7 +816,7 @@ For more information on advanced usage of `history`, read section 9.3 of
 
 ## Challenge
 
-## Exercise
+
 
 Find the line number in your history for the command that listed all the .sh
 files in `/usr/bin`. Rerun that command.
@@ -856,7 +854,7 @@ $ cat bullkelp_001_R1.fastq
 
 
 
-## Exercise
+## Challenge
 
 1. Print out the contents of the `~/shell_data/untrimmed_fastq/bullkelp_001_R1.fastq` file. 
    What is the last line of the file? What command would only print the last lines of a file?
@@ -908,7 +906,7 @@ forward to the next instance of this sequence motif. If you instead type `?` and
 return, you will search backwards and move up the file to previous examples of this motif.
 
 
-## Exercise
+## Challenge
 
 What are the next three nucleotides (characters) after the first instance of the sequence quoted above?
 
@@ -1202,7 +1200,7 @@ you will be asked whether you want to override your permission settings. Be extr
 or with variables (covered later). A mistaken `rm` command can delete things you don't want to be deleted.
 
 
-## Exercise
+## Challenge
 
 Starting in the `shell_data/untrimmed_fastq/` directory, do the following:
 
@@ -1215,7 +1213,7 @@ Starting in the `shell_data/untrimmed_fastq/` directory, do the following:
 
 ***
 
-## keypoints
+## Keypoints
 
 - You can view file contents using `less`, `cat`, `head` or `tail`.
 - The commands `cp`, `mv`, and `mkdir` are useful for manipulating existing files and creating new directories.
