@@ -6,17 +6,68 @@ layout: default
 
 # Section 1
 
-## objectives
+## Objectives
 
 - Create a directory hierarchy that matches a given diagram.
 - Create files in that hierarchy using an editor or by copying and renaming existing files.
 - Delete, copy and move specified files and/or directories.
 
 
-## questions
+## Questions
 
 - How can I create, copy, and delete files and directories?
 - How can I edit files?
+
+## Logging into the remote server
+
+## How to access the remote server
+
+All students will be accessing the server using their UVic Netlink ID. You will use the `ssh` or `Secure Shell`
+command to login to the remote server, while logged into the UVic VPN. The VPN is called 
+"Cisco AnyConnect Secure Mobile Client". Open it and fill in "vpn.uvic.ca" into the connection box. 
+It will then tell you to select a group, please select "3 - Student". This will then prompt you
+to fill in your netlink ID and then request a Duo Push notification. 
+
+```bash
+ssh your_id@indri.rcs.uvic.ca
+```
+You will be prompted to use Duo, two-factor authentication before you enter your password. After approving the authentication on your phone,
+you will use your netlink ID to login.
+
+```output
+(base) p165-072:~ gregoryowens$ ssh grego@indri.rcs.uvic.ca
+*
+* Acceptable Use of Electronic Information Resources
+*
+* Access to this system is prohibited except for authorized University of
+* Victoria students, faculty, and staff.
+*
+* All activity may be logged/monitored and unauthorized access will be handled
+* per the provisions of UVic's Policy IM7200: Acceptable Use of Electronic
+* Information Resources.
+*
+* https://www.uvic.ca/universitysecretary/assets/docs/policies/IM7200_6030_.pdf
+*
+(grego@fossa.rcs.uvic.ca) Duo two-factor login for grego
+
+Enter a passcode or select one of the following options:
+
+ 1. Duo Push to XXX-XXX-XXXX
+
+Passcode or option (1-1):
+```
+
+
+After logging in, you will see a screen showing something like this:
+
+```output
+To access CVMFS modules please source the appropriate profile.
+For example: 'source /cvmfs/soft.computecanada.ca/config/profile/bash.sh'
+
+Last failed login: Thu Oct  5 10:44:07 PDT 2023 from 142.104.165.72 on ssh:notty
+There was 1 failed login attempt since the last successful login.
+Last login: Thu Oct  5 09:48:45 2023 from 142.104.165.72
+```
 
 
 
@@ -26,7 +77,13 @@ We now know how to explore files and directories,
 but how do we create them in the first place?
 
 In this lab we will learn about creating and moving files and directories,
-using the `exercise-data/writing` directory as an example.
+using the `exercise-data/writing` directory as an example. 
+
+We can get this data by downloading it from a git repository:
+
+```bash
+[grego@indri ~]$ git clone https://github.com/owensgl/shell_data.git
+```
 
 ### Step one: see where we are and what we already have
 
