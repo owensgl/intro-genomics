@@ -230,7 +230,7 @@ another directory the first time you 'Save As...'
 
 Let's type in a few lines of text.
 
-![](../figs/nano-screenshot.png){alt="screenshot of nano text editor in action with the text It's not publish or perish any more, it's share and thrive"}
+![](../figs/nano-screenshot.png)
 
 Once we're happy with our text, we can press <kbd>Ctrl</kbd>\+<kbd>O</kbd>
 (press the <kbd>Ctrl</kbd> or <kbd>Control</kbd> key and, while
@@ -1264,7 +1264,7 @@ the algorithm is 'head of sort of line count of `*.pdb`'.
 
 The redirection and pipes used in the last few commands are illustrated below:
 
-![](../figs/redirects-and-pipes.svg){alt='Redirects and Pipes of different commands: "wc -l \*.pdb" will direct theoutput to the shell. "wc -l \*.pdb > lengths" will direct output to the file"lengths". "wc -l \*.pdb | sort -n | head -n 1" will build a pipeline where theoutput of the "wc" command is the input to the "sort" command, the output ofthe "sort" command is the input to the "head" command and the output of the"head" command is directed to the shell'}
+![](../figs/redirects-and-pipes.svg)
 
 
 ## Challenge: Piping Commands Together
@@ -1952,7 +1952,7 @@ The following diagram
 shows what happens when the modified loop is executed and demonstrates how the
 judicious use of `echo` is a good debugging technique.
 
-![](../fig/shell_script_for_loop_flow_chart.svg){alt='The for loop "for filename in .dat; do echo cp $filename original-$filename;done" will successively assign the names of all ".dat" files in your currentdirectory to the variable "$filename" and then execute the command. With thefiles "basilisk.dat", "minotaur.dat" and "unicorn.dat" in the current directorythe loop will successively call the echo command three times and print threelines: "cp basislisk.dat original-basilisk.dat", then "cp minotaur.datoriginal-minotaur.dat" and finally "cp unicorn.datoriginal-unicorn.dat"'}
+![](../fig/shell_script_for_loop_flow_chart.svg)
 
 ## Nelle's Pipeline: Processing Files
 
