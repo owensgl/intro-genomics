@@ -843,26 +843,9 @@ $ mkdir data
 $ mkdir raw processed
 ```
 
-## Solution
-
-The first two sets of commands achieve this objective.
-The first set uses relative paths to create the top-level directory before
-the subdirectories.
-
-The third set of commands will give an error because the default behavior of `mkdir`
-won't create a subdirectory of a non-existent directory:
-the intermediate level folders must be created first.
-
-The fourth set of commands achieve this objective. Remember, the `-p` option,
-followed by a path of one or more
-directories, will cause `mkdir` to create any intermediate subdirectories as required.
-
-The final set of commands generates the 'raw' and 'processed' directories at the same level
-as the 'data' directory.
-
 ***
 
-## keypoints
+## Keypoints
 
 - `cp [old] [new]` copies a file.
 - `mkdir [path]` creates a new directory.
@@ -882,14 +865,14 @@ as the 'data' directory.
 
 # Section 2
 
-## objectives
+## Objectives
 
 - Redirect a command's output to a file.
 - Construct command pipelines with two or more stages.
 - Explain what usually happens if a program or pipeline isn't given any input to process.
 - Explain the advantage of linking commands with pipes and filters.
 
-## questions
+## Questions
 
 - How can I combine existing commands to do new things?
 
@@ -1489,7 +1472,7 @@ and *only* the processed data files?
 
 
 
-## keypoints
+## Keypoints
 
 - `wc` counts lines, words, and characters in its inputs.
 - `cat` displays the contents of its inputs.
@@ -1506,7 +1489,7 @@ and *only* the processed data files?
 ***
 
 # Section 3
-## objectives
+## Objectives
 
 - Write a loop that applies one or more commands separately to each file in a set of files.
 - Trace the values taken on by a loop variable during execution of the loop.
@@ -1515,7 +1498,7 @@ and *only* the processed data files?
 - Demonstrate how to see what commands have recently been executed.
 - Re-run recently executed commands without retyping them.
 
-## questions
+## Questions
 
 - How can I perform the same actions on many different files?
 
