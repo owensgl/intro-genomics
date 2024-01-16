@@ -193,7 +193,7 @@ using the dataframe passed to it from the previous part of the code.
 ### Transform data!
 
 We're going to be following along with the textbook "R for data science". We're working on 
-chapter 3, Data Transformation: (https://r4ds.hadley.nz/data-transform)[https://r4ds.hadley.nz/data-transform]
+chapter 3, Data Transformation: (LINK)[https://r4ds.hadley.nz/data-transform]
 
 Important: In the tutorial, it loads "tidyverse". We have already installed and loaded
 almost all of the tidyverse packages, but due to some quirks in the server it's easier
