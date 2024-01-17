@@ -18,7 +18,12 @@ layout: default
 - How can I create, copy, and delete files and directories?
 - How can I edit files?
 
-## Logging into the remote server
+## How to access the terminal if you're on a windows PC
+
+For mac and linux computers, the terminal program is pre-installed, but 
+for windows users you will need to install it. Follow this [link](https://carpentries.github.io/workshop-template/install_instructions/#shell) and click on the "windows" tab. 
+Then follow the instructions there to download and install
+git for windows, which includes a bash shell. 
 
 ## How to access the remote server
 
