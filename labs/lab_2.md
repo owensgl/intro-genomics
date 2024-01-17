@@ -74,7 +74,16 @@ There was 1 failed login attempt since the last successful login.
 Last login: Thu Oct  5 09:48:45 2023 from 142.104.165.72
 ```
 
+## Sourcing our programs
 
+We want to access a variety of programs on the server. To do that, 
+we are going to source a file to bring it into our profile. This will
+tell the computer where all your programs are stored. NOTE:
+You have to run this command whenever you login.
+
+```bash
+source /cvmfs/soft.computecanada.ca/config/profile/bash.sh
+```
 
 ## Creating directories
 
