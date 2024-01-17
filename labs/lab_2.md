@@ -349,7 +349,7 @@ attempt to open the `whale.mp3` file.
 Returning to the `shell-lesson-data/exercise-data/writing` directory,
 
 ```bash
-$ cd ~/Desktop/shell-lesson-data/exercise-data/writing
+$ cd ~shell_data/exercise-data/writing
 ```
 
 In our `thesis` directory we have a file `draft.txt`
@@ -1968,7 +1968,7 @@ Moving to the `north-pacific-gyre` directory, Nelle types:
 
 ```bash
 $ cd
-$ cd Desktop/shell-lesson-data/north-pacific-gyre
+$ cd shell-data/north-pacific-gyre
 $ for datafile in NENE*A.txt NENE*B.txt
 > do
 >     echo $datafile
