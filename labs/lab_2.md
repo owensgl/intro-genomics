@@ -95,7 +95,7 @@ We can get this data by downloading it from a git repository:
 First we should return to the home directory:
 
 ```bash
-$ cd ~
+$ cd ~/shell_data
 ```
 
 Then enter the `lab_2_data` directory:
