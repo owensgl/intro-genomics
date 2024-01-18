@@ -346,7 +346,7 @@ attempt to open the `whale.mp3` file.
 
 ## Moving files and directories
 
-Returning to the `shell-data/exercise-data/writing` directory,
+Returning to the `shell-data/lab_2_data/exercise-data/writing` directory,
 
 ```bash
 $ cd ~shell_data/exercise-data/writing
@@ -540,7 +540,7 @@ $ ls
 
 ## Removing files and directories
 
-Returning to the `shell-data/exercise-data/writing` directory,
+Returning to the `shell-data/lab_2_data/exercise-data/writing` directory,
 let's tidy up this directory by removing the `quotes.txt` file we created.
 The Unix command we'll use for this is `rm` (short for 'remove'):
 
@@ -612,7 +612,7 @@ or sets of characters when navigating the Unix file system.
 
 ## Challenge: Copy with Multiple Filenames
 
-For this exercise, you can test the commands in the `shell-data/exercise-data` directory.
+For this exercise, you can test the commands in the `shell-data/lab_2_data/exercise-data` directory.
 
 In the example below, what does `cp` do when given several filenames and a directory name?
 
@@ -641,7 +641,7 @@ $ cp minotaur.dat unicorn.dat basilisk.dat
 ## Wildcards
 
 `*` is a **wildcard**, which represents zero or more other characters.
-Let's consider the `shell-data/exercise-data/alkanes` directory:
+Let's consider the `shell-data/lab_2_data/exercise-data/alkanes` directory:
 `*.pdb` represents `ethane.pdb`, `propane.pdb`, and every
 file that ends with '.pdb'. On the other hand, `p*.pdb` only represents
 `pentane.pdb` and `propane.pdb`, because the 'p' at the front can only
@@ -895,7 +895,7 @@ $ mkdir raw processed
 Now that we know a few basic commands,
 we can finally look at the shell's most powerful feature:
 the ease with which it lets us combine existing programs in new ways.
-We'll start with the directory `shell-data/exercise-data/alkanes`
+We'll start with the directory `shell-data/lab_2_data/exercise-data/alkanes`
 that contains six files describing some simple organic molecules.
 The `.pdb` extension indicates that these files are in Protein Data Bank format,
 a simple text format that specifies the type and position of each atom in the molecule.
@@ -1054,7 +1054,7 @@ But first we'll do an exercise to learn a little about the sort command:
 
 ## Challenge: What Does `sort -n` Do?
 
-The file `shell-data/exercise-data/numbers.txt` contains the following lines:
+The file `shell-data/lab_2_data/exercise-data/numbers.txt` contains the following lines:
 
 ```source
 10
@@ -1180,7 +1180,7 @@ Hint: Try executing each command twice in a row and then examining the output fi
 ## Challenge: Appending Data
 
 
-Consider the file `shell-data/exercise-data/animal-counts/animals.csv`.
+Consider the file `shell-data/lab_2_data/exercise-data/animal-counts/animals.csv`.
 After these commands, select the answer that
 corresponds to the file `animals-subset.csv`:
 
@@ -1301,7 +1301,7 @@ so that you and other people can put those programs into pipes to multiply their
 
 ## Challenge: Pipe Reading Comprehension
 
-A file called `animals.csv` (in the `shell-data/exercise-data/animal-counts` folder)
+A file called `animals.csv` (in the `shell-data/lab_2_data/exercise-data/animal-counts` folder)
 contains the following data:
 
 ```source
@@ -1373,7 +1373,7 @@ The file `animals.csv` contains 8 lines of data formatted as follows:
 
 The `uniq` command has a `-c` option which gives a count of the
 number of times a line occurs in its input.  Assuming your current
-directory is `shell-data/exercise-data/animal-counts`,
+directory is `shell-data/lab_2_data/exercise-data/animal-counts`,
 what command would you use to produce a table that shows
 the total count of each type of animal in the file?
 
@@ -1389,7 +1389,7 @@ the total count of each type of animal in the file?
 
 Nelle has run her samples through the assay machines
 and created 17 files in the `north-pacific-gyre` directory described earlier.
-As a quick check, starting from the `shell-data` directory, Nelle types:
+As a quick check, starting from the `shell-data/lab_2_data` directory, Nelle types:
 
 ```bash
 $ cd north-pacific-gyre
@@ -1679,7 +1679,7 @@ How would you write a loop that echoes all 10 numbers from 0 to 9?
 
 ## Challenge: Variables in Loops
 
-This exercise refers to the `shell-data/exercise-data/alkanes` directory.
+This exercise refers to the `shell-data/lab_2_data/exercise-data/alkanes` directory.
 `ls *.pdb` gives the following output:
 
 ```output
@@ -1711,7 +1711,7 @@ Why do these two loops give different outputs?
 ## Challenge: Limiting Sets of Files
 
 What would be the output of running the following loop in the
-`shell-data/exercise-data/alkanes` directory?
+`shell-data/lab_2_data/exercise-data/alkanes` directory?
 
 ```bash
 $ for filename in c*
@@ -1744,7 +1744,7 @@ $ for filename in *c*
 
 ## Challenge: Saving to a File in a Loop - Part One
 
-In the `shell-data/exercise-data/alkanes` directory, what is the effect of this loop?
+In the `shell-data/lab_2_data/exercise-data/alkanes` directory, what is the effect of this loop?
 
 ```bash
 for alkanes in *.pdb
@@ -1767,7 +1767,7 @@ done
 
 ## Challenge: Saving to a File in a Loop - Part Two
 
-Also in the `shell-data/exercise-data/alkanes` directory,
+Also in the `shell-data/lab_2_data/exercise-data/alkanes` directory,
 what would be the output of the following loop?
 
 ```bash
@@ -1787,7 +1787,7 @@ done
 
 ***
 
-Let's continue with our example in the `shell-data/exercise-data/creatures` directory.
+Let's continue with our example in the `shell-data/lab_2_data/exercise-data/creatures` directory.
 Here's a slightly more complicated loop:
 
 ```bash
@@ -1885,7 +1885,7 @@ CAAGTGTTCC
 
 ***
 
-We would like to modify each of the files in `shell-data/exercise-data/creatures`,
+We would like to modify each of the files in `shell-data/lab_2_data/exercise-data/creatures`,
 but also save a version of the original files. We want to copy the original files to new
 files named `original-basilisk.dat` and `original-unicorn.dat`, for example. We can't use:
 
@@ -1968,7 +1968,7 @@ Moving to the `north-pacific-gyre` directory, Nelle types:
 
 ```bash
 $ cd
-$ cd shell-data/north-pacific-gyre
+$ cd shell-data/lab_2_data/north-pacific-gyre
 $ for datafile in NENE*A.txt NENE*B.txt
 > do
 >     echo $datafile
