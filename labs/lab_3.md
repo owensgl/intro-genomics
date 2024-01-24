@@ -128,11 +128,11 @@ names
 [1] "Alice"   "Bob"     "Charlie" "David"
 ```
 
-The '[1]' indicates the positione number of the first item in that line. In this case,
+We've printed out all the names in the name column, in their original order. 
+The '[1]' indicates the position number of the first item in that line. In this case,
 there is only one line of items but this can be helpful if you print out very long 
 lists of items. 
 
-The result of our command is a list of all names, in their original order. 
 
 We can also access a column by using its relative position. The Name column is the first 
 column, so we're going to print out the first column.
@@ -146,9 +146,13 @@ column_1
 [1] "Alice"   "Bob"     "Charlie" "David"
 ```
 
-This is a general way of accessing data in R. It uses the format [Row_number,Column_number]. 
-We didn't put anything in the "Row number" portion, so it printed out all rows. This same function
-can be used to pull out specific rows, or even single values by triangulating their row and column.
+This is a general way of accessing data in R. It uses the format [Row_number,Column_number], for 
+2-dimensional data. For 1-dimensional (i.e. a list) you'd only need a single number. If you have more than
+2-dimensions (i.e. complex matrixes), then you can also use this notation and each number will specify the position
+in a dimension.  
+We didn't put anything in the "Row number" portion, so it printed out all rows. 
+This is a general feature, if you leave a dimension blank, it includes all values.
+This same function can be used to pull out specific rows, or even single values by triangulating their row and column.
 
 
 Lastly, we can access specific columns by using the "pull()" function.
@@ -189,6 +193,7 @@ df |>
 In this case, we're taking the dataframe "df" and passing it to the pull command.
 You'll notice that we don't have to tell pull which dataframe to use, it knows that it is
 using the dataframe passed to it from the previous part of the code.
+You can also use %>% for a pipe, although |> works with base-R so is more general.
 
 ### Transform data!
 
