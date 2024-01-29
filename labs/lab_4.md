@@ -1,5 +1,5 @@
 ---
-title: R and data wrangling
+title: Data visualization
 element: lab
 layout: default
 ---
