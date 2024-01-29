@@ -10,7 +10,7 @@ layout: default
 - Apply aesthetic changes to a plot
 - Visualize a distribution
 - Visualize a relationship between variables
-- Explain
+
 
 ## Questions
 
