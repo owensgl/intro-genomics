@@ -88,11 +88,55 @@ java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE DRR053219_1.fastq DRR053219
 - Look at the manual for trimmomatic and figure out what the arguments in the trimmomatic call mean
 - If you wanted to make your filtering more stringent, what arguments would you change?
 - What is TruSeq3-PE? Would you use this for every library?
+- How many reads were removed by the filtering? Can you calculate that just by comparing the files?
 
 
-  ***
+***
 
-  We can look at the 
+We also need a reference genome to compare our sample with. Reference genomes are often available 
+on the NCBI website. Here's a link to the yeast (S. cerevisiae) reference genome: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000146045.2/
+
+### Activity
+- Using the NCBI website, find the GPX1 gene in the yeast reference genome. Where is it? What is the nucleotide sequence of the gene? What is the function of the gene?
+- What are the genes next to GPX1 in the genome?
+- Using BLAST, find where this gene is in the genome:
+```bash
+>Unknown gene
+ATGGTCAAATTAACTTCAATCGCCGCTGGTGTCGCTGCCATCGCTGCTACTGCTTCTGCAACCACCACTC
+TAGCTCAATCTGACGAAAGAGTCAACTTGGTGGAATTGGGTGTCTACGTCTCTGATATCAGAGCTCACTT
+AGCCCAATACTACATGTTCCAAGCCGCCCACCCAACTGAAACCTACCCAGTCGAAGTTGCTGAAGCCGTT
+TTCAACTACGGTGACTTCACCACCATGTTGACCGGTATTGCTCCAGACCAAGTGACCAGAATGATCACCG
+GTGTTCCATGGTACTCCAGCAGATTAAAGCCAGCCATCTCCAGTGCTCTATCCAAGGACGGTATCTACAC
+TATCGCAAACTAG
+```
+
+***
+
+To work with the yeast reference genome, we have to download it to the server. 
+Go back to the first yeast genome page and click on the "Curl" button. It will show you a URL, which you should copy. 
+We can use that URL and the "curl" command to download the reference genome files
+
+```bash
+curl -o yeast_genome.zip 'https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_000146045.2/download?include_annotation_type=GENOME_FASTA,GENOME_GFF,RNA_FASTA,CDS_FASTA,PROT_FASTA,SEQUENCE_REPORT'
+
+unzip yeast_genome.zip
+
+```
+
+Now lets take a look at what we got.
+
+```bash
+cd ncbi_dataset/data/GCF_000146045.2
+ls
+```
+
+```output
+cds_from_genomic.fna  GCF_000146045.2_R64_genomic.fna  genomic.gff  protein.faa  rna.fna  sequence_report.jsonl
+```
+
+
+
+
 
 
 
