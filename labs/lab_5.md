@@ -189,8 +189,8 @@ of basepairs in each contig.
 ### Activity
 - Sometimes you will want to extract the sequence from a specific region of the genome. 
 You can do this using samtools faidx. Figure out how to output the region NC_001135.5:10030-10130.
-- Other times, you'll want to work on only a subset of chromosomes. Find the two longest chromosomes 
-and output only those two chromosomes to a separate fasta file.
+- Other times, you'll want to work on only a subset of chromosomes. Write a script that finds the two longest chromosomes 
+and outputs only those two chromosomes to a separate fasta file.
 
 ***
 
