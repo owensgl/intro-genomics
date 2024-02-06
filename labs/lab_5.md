@@ -1,5 +1,5 @@
 ---
-title: TEST
+title: Sequence data and QC
 element: lab
 layout: default
 ---
