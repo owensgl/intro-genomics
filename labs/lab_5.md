@@ -209,7 +209,7 @@ Lets take a look a the gff file.
 
 ```bash
 #We're piping it to `less -S` to prevent line wrapping, because the lines on this
-file can be quite long
+#file can be quite long
 head -n 20 genomic.gff | less -S
 ```
 ```output
