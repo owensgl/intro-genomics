@@ -146,6 +146,65 @@ The lowest value is 0, which means it is equally likely to map elsewhere.
 11) The base quality of the read
 12) Any extra flags.
 
+## Questions
+1) For one read, you find a CIGAR string "12M1I113M". Refer to the (sam format manual)[https://samtools.github.io/hts-specs/SAMv1.pdf] and figure out
+what this means for how the read is aligned.
+2) Find the read with the lowest mapping quality in your dataset using command line programs.
+3) How are the reads ordered in this sam file?
+
+****
+
+As you can tell, reads are not ordered based on where they are aligned in the genome. Most programs
+require that reads be ordered by their position in the genome because it allows them to be
+rapidly accessed. Imagine if the reads were randomly ordered but we wanted to get all the reads
+from the start of chromosome 1. The program would need to search through the entire file to find
+those reads before it could use them (which can take a while). When reads are ordered, 
+programs can know exactly where to find all the reads for a particular region. 
+
+Therefore, we are going to sort the sam file by read position. At the same time, we'll 
+convert it to a "bam" file. This is a binary version of the sam file, so the file size 
+is smaller, but we will need to use samtools to convert it to a human readable version if 
+we later want to look at it. 
+
+```bash
+samtools sort SalmonSim.Stabilising.p10.i1.80000.sam > SalmonSim.Stabilising.p10.i1.80000.sort.bam
+```
+We've now changed the name to end with .sort.bam to remind us that this version of the file
+is sorted and it is a bam file. To access the file now, using standard text viewing programs
+won't work. We need to use samtools view. Lets try that.
+
+
+```bash
+#This will print weird characters, because its in binary
+head SalmonSim.Stabilising.p10.i1.80000.sort.bam
+
+#This will convert the file to standard text and then print it to screen
+samtools view -h SalmonSim.Stabilising.p10.i1.80000.sort.bam | head
+```
+
+Another important step in processing alignment files is to mark PCR duplicates. These
+are cases where we have sequenced the same molecule more than once. Since they
+don't represent independent observations of the genome, we need to mark them so
+that we only use one copy in our calculations. We'll use picardtools for this.
+
+```bash
+module load picard/3.1.0
+java -jar $EBROOTPICARD/picard.jar MarkDuplicates I=SalmonSim.Stabilising.p10.i1.80000.sort.bam O=SalmonSim.Stabilising.p10.i1.80000.sort.markdup.bam M=SalmonSim.Stabilising.p10.i1.80000.dupmetrics.txt
+```
+In cases where there are many options to a single command, it can be easier to put each option on its own line. 
+As long as we end each line with \ the system will treat it as if it was a single line. Be careful
+not to have a space or anything after the \, because then it will think that the line really has ended (and your command will mess up).
+
+```bash
+#Alternate formatting for command
+java -jar $EBROOTPICARD/picard.jar MarkDuplicates \
+  I=SalmonSim.Stabilising.p10.i1.80000.sort.bam \
+  O=SalmonSim.Stabilising.p10.i1.80000.sort.markdup.bam \
+  M=SalmonSim.Stabilising.p10.i1.80000.dupmetrics.txt
+```
+
+
+
 
 
 
