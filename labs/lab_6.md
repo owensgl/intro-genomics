@@ -225,6 +225,134 @@ Depth indicates how many reads are on each base (on average) and
 coverage tells you how much of the reference sequence is covered by
 at least one base. 
 
+### Questions
+1) Use samtools stats to find out how many reads had MAPQ less than 10 in sample "SalmonSim.Stabilising.p10.i1.80000".
+2) Use samtools flagstats to find out what percent of reads are mapped to the genome.
+
+
+We can also look at the alignment itself by using samtools tview.
+```bash
+samtools tview SalmonSim.Stabilising.p10.i1.80000.sort.markdup.bam SalmonReference.fasta
+```
+Once you're inside, use the "?" key to bring up the help menu. Then use keys to move
+and look at your alignment. For this sample, we have very little differences between 
+our sample and the reference, but when we start doing variant calling we can use
+this to actually look at the reads and make sure that the variants are real. 
+
+***
+
+We often sequence many samples, and each of them needs to be processed individually. 
+We could make one long script that does each step for each sample individually, 
+but it's much more manageable to use loops to repeat the same steps for 
+many different samples. Lets go through a toy example to learn some tricks. 
+
+First lets start with a list of fastq files. You can make this file in nano by 
+copying and pasting and name it "fastq_files.txt". You could imagine making
+this file using the "ls" command with real data.
+```bash
+cat fastq_files.txt
+```
+```output
+sample01_R1.fastq.gz
+sample01_R2.fastq.gz
+sample02_R1.fastq.gz
+sample02_R2.fastq.gz
+sample29_R1.fastq.gz
+sample29_R2.fastq.gz
+```
+
+First thing is that we have both R1 and R2 files, but we're going to be treating
+those together as a single sample. So lets filter out the R2 lines using "grep"
+
+```bash
+cat fastq_files.txt | grep -v R2.fastq.gz > fastq_files.R1.txt
+```
+Now we have a list of files that we want to work on. Here are two ways
+we can loop through each line in that file.
+
+Option 1:
+```bash
+for x in `cat fastq_files.R1.txt`
+do
+  echo $x
+done
+```
+In this option, we're doing a creating our list of $x variables by using
+a mini command call in the `` marks. We could modify it on the fly with additional filters. 
+For example
+Option 1a:
+```bash
+for x in `cat fastq_files.R1.txt | grep -v sample29`
+do
+  echo $x
+done
+```
+Here we've excluded sample29. 
+
+In the second option, we use a "while" loop and the "read" command.
+The file that it is reading is specified at the end of the while loop. 
+Option 2:
+```bash
+while read x; do
+  echo $x
+done < fastq_files.R1.txt
+```
+
+A second challenge when making shell scripts is that we often want to
+make a series of files with similar names but different suffixes. In this case
+we start off with "sample29_R1.fastq.gz". The bam file we create from this should
+be sample29.bam, not sample29_R1.fastq.gz.bam. 
+
+Here are two options for removing suffixes. 
+Option 1:
+```bash
+x=sample01_R1.fastq.gz
+y=$(basename $x _R1.fastq.gz)
+echo $y
+```
+The "basename" removes a suffix that you specify for a string. It
+can also function to remove directories before a filename. 
+```bash
+x=fastq/data/sample01_R1.fastq.gz
+y=$(basename $x)
+echo $y
+```
+
+A more general approach is to use sed (a.k.a. string editor) 
+to modify a variable. Sed can be used to find and substitute 
+any character pattern in a string. It works like this:
+s/character to find/character to replace it with/g
+The "s" at the start is for subtitution.
+The "g" at the end is for global (which means it finds all instances
+of the replacement, not just the first). 
+
+Take a look at these examples and see if you understand how they work:
+```bash
+echo "cats" | sed s/a/o/g
+
+echo "cats" | sed s/a//g
+
+echo "cats" | sed s/a/aaaaaa/g
+
+echo "cats" | sed s/ats/ats_are_funky/g
+```
+We can use this to rename variables.
+```bash
+x=sample01_R1.fastq.gz
+y=$(echo $x | sed s/_R1.fastq.gz//g)
+echo $y
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
