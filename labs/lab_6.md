@@ -182,7 +182,7 @@ head SalmonSim.Stabilising.p10.i1.80000.sort.bam
 samtools view -h SalmonSim.Stabilising.p10.i1.80000.sort.bam | head
 ```
 
-Another important step in processing alignment files is to mark PCR duplicates. These
+Another important step in processing alignment files is to mark duplicates. These
 are cases where we have sequenced the same molecule more than once. Since they
 don't represent independent observations of the genome, we need to mark them so
 that we only use one copy in our calculations. We'll use picardtools for this.
@@ -203,6 +203,15 @@ java -jar $EBROOTPICARD/picard.jar MarkDuplicates \
   M=SalmonSim.Stabilising.p10.i1.80000.dupmetrics.txt
 ```
 
+For this example data, there are no duplicates because this is simulated. In most cases,
+you will have at least some duplicates. 
+
+Lastly, we need to index the bam file. Many programs require the file to be indexed,
+before it can be used. The index files are prefixed with .bai for bam index.
+
+```bash
+samtools index SalmonSim.Stabilising.p10.i1.80000.sort.markdup.bam
+```
 
 
 
@@ -212,6 +221,4 @@ java -jar $EBROOTPICARD/picard.jar MarkDuplicates \
 
 
 #Look around bam file
-#Sort bam file.
 #Extract single region of bam file
-#Remove PCR duplicates. 
