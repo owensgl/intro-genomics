@@ -127,7 +127,24 @@ it has the bwa-mem2 call (and specific information about the flags used for that
 modify the sam file, more lines will get added to the header recording the steps we did. This
 is very helpful if you forget what you did exactly. 
 
-
+Next, we have one line per read with a bunch of columns. 
+1) The query template name. This is a unique name for each read or read pair. In this case, it has "chr_1"
+because it was simulated using chr_1 as a reference, but for real data this will be a random string of characters.
+2) The bitwise flag. This number tells us about the read and its mapping. There are multiple different possible 
+things the read could have, and the total value of the number can the translated into that information. For example, 
+if the read is paired, add + 1. If the read is unmapped, add + 8. Therefore, if the final number is 9, that means it
+is paired and unmapped. The decoding of all possible numbers can be found (here)[https://broadinstitute.github.io/picard/explain-flags.html].
+3) The contig that the read is mapped to
+4) The starting location where the read maps to, on the contig.
+5) The mapping quality. 60 is the highest (generally) and means high confidence in where the read is mapped.
+The lowest value is 0, which means it is equally likely to map elsewhere.
+6) The CIGAR string describing how the read is aligned.
+7) The ID of the read pair mate (in this case, the same as the original)
+8) The mapping location of the read pair mate.
+9) The distance between read map pairs (sort of)
+10) The sequence of the read
+11) The base quality of the read
+12) Any extra flags.
 
 
 
