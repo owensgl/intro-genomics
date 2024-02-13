@@ -151,7 +151,8 @@ The lowest value is 0, which means it is equally likely to map elsewhere.
 what this means for how the read is aligned.
 2) Find the read with the lowest mapping quality in your dataset using command line programs.
 3) How are the reads ordered in this sam file?
-
+4) What are three possible reasons why a read could have very low mapping quality?
+5) 
 ****
 
 As you can tell, reads are not ordered based on where they are aligned in the genome. Most programs
@@ -213,7 +214,16 @@ before it can be used. The index files are prefixed with .bai for bam index.
 samtools index SalmonSim.Stabilising.p10.i1.80000.sort.markdup.bam
 ```
 
+We now have a nicely sorted and labelled bam file. Lets get some stats on it, 
+using samtools commands.
 
+```bash
+samtools coverage SalmonSim.Stabilising.p10.i1.80000.sort.markdup.bam
+```
+This shows you a summary of the depth and coverage for your sample. 
+Depth indicates how many reads are on each base (on average) and 
+coverage tells you how much of the reference sequence is covered by
+at least one base. 
 
 
 
