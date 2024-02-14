@@ -1,5 +1,5 @@
 ---
-title: Unknown
+title: Alignment
 element: lab
 layout: default
 ---
@@ -9,7 +9,6 @@ layout: default
 - To learn how to align sequence data to a reference.
 - To learn how to interpret sam and bam files.
 - To learn how to manipulate a bam file.
-- To learn how to filter a bam file.
 
 ****
 
