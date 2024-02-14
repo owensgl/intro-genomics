@@ -127,30 +127,30 @@ modify the sam file, more lines will get added to the header recording the steps
 is very helpful if you forget what you did exactly. 
 
 Next, we have one line per read with a bunch of columns. 
-1) The query template name. This is a unique name for each read or read pair. In this case, it has "chr_1"
+1. The query template name. This is a unique name for each read or read pair. In this case, it has "chr_1"
 because it was simulated using chr_1 as a reference, but for real data this will be a random string of characters.
-2) The bitwise flag. This number tells us about the read and its mapping. There are multiple different possible 
+2. The bitwise flag. This number tells us about the read and its mapping. There are multiple different possible 
 things the read could have, and the total value of the number can the translated into that information. For example, 
 if the read is paired, add + 1. If the read is unmapped, add + 8. Therefore, if the final number is 9, that means it
 is paired and unmapped. The decoding of all possible numbers can be found (here)[https://broadinstitute.github.io/picard/explain-flags.html].
-3) The contig that the read is mapped to
-4) The starting location where the read maps to, on the contig.
-5) The mapping quality. 60 is the highest (generally) and means high confidence in where the read is mapped.
+3. The contig that the read is mapped to
+4. The starting location where the read maps to, on the contig.
+5. The mapping quality. 60 is the highest (generally) and means high confidence in where the read is mapped.
 The lowest value is 0, which means it is equally likely to map elsewhere.
-6) The CIGAR string describing how the read is aligned.
-7) The ID of the read pair mate (in this case, the same as the original)
-8) The mapping location of the read pair mate.
-9) The distance between read map pairs (sort of)
-10) The sequence of the read
-11) The base quality of the read
-12) Any extra flags.
+6. The CIGAR string describing how the read is aligned.
+7. The ID of the read pair mate (in this case, the same as the original)
+8. The mapping location of the read pair mate.
+9. The distance between read map pairs (sort of)
+10. The sequence of the read
+11. The base quality of the read
+12. Any extra flags.
 
 ## Questions
-1) For one read, you find a CIGAR string "12M1I113M". Refer to the (sam format manual)[https://samtools.github.io/hts-specs/SAMv1.pdf] and figure out
+1. For one read, you find a CIGAR string "12M1I113M". Refer to the (sam format manual)[https://samtools.github.io/hts-specs/SAMv1.pdf] and figure out
 what this means for how the read is aligned.
-2) Find the read with the lowest mapping quality in your dataset using command line programs.
-3) How are the reads ordered in this sam file?
-4) What are three possible reasons why a read could have very low mapping quality?
+2. Find the read with the lowest mapping quality in your dataset using command line programs.
+3. How are the reads ordered in this sam file?
+4. What are three possible reasons why a read could have very low mapping quality?
 
 ****
 
@@ -225,8 +225,8 @@ coverage tells you how much of the reference sequence is covered by
 at least one base. 
 
 ### Questions
-1) Use samtools stats to find out how many reads had MAPQ less than 10 in sample "SalmonSim.Stabilising.p10.i1.80000".
-2) Use samtools flagstats to find out what percent of reads are mapped to the genome.
+1. Use samtools stats to find out how many reads had MAPQ less than 10 in sample "SalmonSim.Stabilising.p10.i1.80000".
+2. Use samtools flagstats to find out what percent of reads are mapped to the genome.
 
 
 We can also look at the alignment itself by using samtools tview.
@@ -342,9 +342,18 @@ y=$(echo $x | sed s/_R1.fastq.gz//g)
 echo $y
 ```
 
+Lastly, don't forget you can build prefixes onto variable based names by
+wrapping the variable in '{}'.
+```bash
+x=sample01_R1.fastq.gz
+y=$(echo $x | sed s/_R1.fastq.gz//g)
+echo $y
+echo ${y}.fastq.gz
+```
+
 ### Questions
-1) Use multiple sed commands to change the first sentence into the second sentence. "My favorite city is Vancouver because Vancouver is much better than Victoria" into "My favorite city is Victoria because Victoria is much better than Vancouver".
-2) Extract the sample name using a command from the file named "fastq/pool_1/Pool_1.sample902_R1.fastq.gz"
+1. Use multiple sed commands to change the first sentence into the second sentence. "My favorite city is Vancouver because Vancouver is much better than Victoria" into "My favorite city is Victoria because Victoria is much better than Vancouver".
+2. Extract the sample name using a command from the file named "fastq/pool_1/Pool_1.sample902_R1.fastq.gz"
 
 For the lab questions, you'll be working on a small set of real data. Lets copy that into your directory
 ```bash
