@@ -151,7 +151,7 @@ what this means for how the read is aligned.
 2) Find the read with the lowest mapping quality in your dataset using command line programs.
 3) How are the reads ordered in this sam file?
 4) What are three possible reasons why a read could have very low mapping quality?
-5) 
+
 ****
 
 As you can tell, reads are not ordered based on where they are aligned in the genome. Most programs
