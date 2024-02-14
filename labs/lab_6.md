@@ -318,7 +318,7 @@ y=$(basename $x)
 echo $y
 ```
 
-A more general approach is to use sed (a.k.a. string editor) 
+A more general approach is to use sed (a.k.a. stream editor) 
 to modify a variable. Sed can be used to find and substitute 
 any character pattern in a string. It works like this:
 s/character to find/character to replace it with/g
@@ -343,20 +343,14 @@ y=$(echo $x | sed s/_R1.fastq.gz//g)
 echo $y
 ```
 
+### Questions
+1) Use multiple sed commands to change the first sentence into the second sentence. "My favorite city is Vancouver because Vancouver is much better than Victoria" into "My favorite city is Victoria because Victoria is much better than Vancouver".
+2) Extract the sample name using a command from the file named "fastq/pool_1/Pool_1.sample902_R1.fastq.gz"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#Look around bam file
-#Extract single region of bam file
+For the lab questions, you'll be working on a small set of real data. Lets copy that into your directory
+```bash
+cd ~
+mkdir lab_6_questions
+cd lab_6_questions
+cp /project/ctb-grego/sharing/lab_6/* ./
+```
