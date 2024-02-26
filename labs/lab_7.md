@@ -213,6 +213,20 @@ filtering a vcf is using a minor allele frequency cut off.
 ```bash
 bcftools view -q 0.1:minor lab_7.bcftools.vcf > lab_7.bcftools.maf10.vcf
 ```
+Now that we've created our bcftools vcf, lets go back and delete the gvcf file
+because it's fairly big and have limited space on the server.
+```bash
+rm lab_7.g.vcf
+```
+
+If we wanted to create the bcftools vcf again, we can actually pipe the two
+bcftool commands together without saving the gvcf.
+```
+#Example, you don't need to run this
+#bcftools mpileup -q 20 -d 200 -f Sockeye/ReferenceGenome/SalmonReference.fasta -b bamlist.txt | bcftools call -mv > Biol470.bcftools.vcf
+```
+
+*** 
 
 Another program for calling variants is freebayes (https://github.com/freebayes/freebayes). 
 This program uses haplotypes (i.e. multiple bases together) instead of individual sites. 
@@ -226,10 +240,55 @@ are sometimes not worth the effort to make it work.
 
 ```bash
 module load StdEnv/2020 freebayes/1.3.6
+#This will take a couple minutes. 
 freebayes -L bamlist.txt -f reference/SalmonReference.fasta > lab_7.fb.vcf
 ```
 
-This will take a couple minutes. 
+The first thing we will notice is that the freebayes vcf is larger than the bcftools vcf. 
+
+```bash
+ls -thor
+```
+```output
+drwxr-x---. 2 grego   68 Feb 25 15:18 reference
+drwxr-x---. 2 grego 4.0K Feb 25 16:27 bam
+-rw-r-----. 1 grego  200 Feb 25 16:32 bamlist.txt
+-rw-r-----. 1 grego 1.3M Feb 25 16:36 Biol470.vcf
+-rw-r-----. 1 grego 8.3M Feb 25 16:39 lab_7.bcftools.vcf
+-rw-r-----. 1 grego  44K Feb 25 16:50 lab_7.bcftools.maf10.vcf
+-rw-r-----. 1 grego  274 Feb 25 17:02 add_rg.sh
+-rw-r-----. 1 grego  17M Feb 25 17:18 lab_7.fb.vcf
+```
+
+## Question:
+1. How many variants were identified with bcftools? How many with Freebayes?
+
+If we take a look at the two files, we can see that they do actually overlap but
+freebayes tends to have a lot more SNPs. This is a general property of freebayes, it
+is very lenient in what it thinks might be a variant. For example, the first SNP in 
+bcftools is at 73673 bases, but freebayes thinks there might actually be a bunch before that.
+Since this is simulated data we know the truth, which is that there are no variants before 73673 (
+just based on how I set it up). 
+
+The key column to note here is the QUAL column (Column #6). This is the phred scaled likelihood
+that there really is a variant here in any of the samples. Larger values mean it is very very unlikely
+that this variant is produced by base call errors in the sequencer. We can see that for the early SNPs in 
+freebayes they all have very low QUAL score. When using Freebayes, you should require at least a minimum 
+QUAL score of 20 to look at a SNP. 
+
+```bash
+bcftools view -i 'QUAL > 20' -q 0.1:minor lab_7.fb.vcf > lab_7.fb.Q20.vcf
+```
+
+You should note that QUAL is a minimum filter, and doesn't guarantee that your genotypes are correct
+or that this is a real SNP. You can often have SNPs generated from misalignment of paralogs or 
+repetitive regions. When working with complicated genomes like plants, it's regular to remove more than 50% of SNPs
+during filtering. QUAL scores scale with minor allele frequency, since at a higher minor allele frequency there
+must be more reads with the alternate base. To get high quality bases, it's important to look at some
+of the other stats and to remove outliers. 
+
+
+
 
 
 
