@@ -284,11 +284,91 @@ You should note that QUAL is a minimum filter, and doesn't guarantee that your g
 or that this is a real SNP. You can often have SNPs generated from misalignment of paralogs or 
 repetitive regions. When working with complicated genomes like plants, it's regular to remove more than 50% of SNPs
 during filtering. QUAL scores scale with minor allele frequency, since at a higher minor allele frequency there
-must be more reads with the alternate base. To get high quality bases, it's important to look at some
+must be more reads with the alternate base. To get high quality calls, it's important to look at some
 of the other stats and to remove outliers. 
 
+In the last part of this tutorial, we're going to visualize our vcf directly using R. This
+lets us see overall patterns in missing data or genotypes and can spot problems that you won't
+notice otherwise. 
 
+Open the Rstudio Server instance (https://indri.rcs.uvic.ca).
 
+```R
+install.packages("vcfR")
+library(tidyr)
+library(dplyr)
+library(vcfR)
+library(ggplot2)
+
+```
+
+We're going to the vcfR package to convert our vcf file, into a tidy format for easy manipulation
+in R.
+
+```R
+vcf_file <- "/home/grego/lab_7/lab_7.fb.Q20.vcf"
+vcf <- read.vcfR(vcf_file)
+#extract the genotypes
+gt_data <- vcfR2tidy(vcf, format_fields = 'GT' )
+gt = gt_data$gt
+names(gt) = c('Chr','Position','ID','Genotype','Allele')
+gt
+```
+```output
+# A tibble: 620 × 5
+     Chr Position ID       Genotype Allele
+   <int>    <int> <chr>    <chr>    <chr> 
+ 1     1  1055444 sample_8 NA       .     
+ 2     1  1357852 sample_8 1/1      A/A   
+ 3     1  1901255 sample_8 NA       .     
+ 4     1  2068429 sample_8 NA       .     
+ 5     1  2069422 sample_8 NA       .     
+ 6     1  2340711 sample_8 0/0      T/T   
+ 7     1  2366756 sample_8 1/1      G/G   
+ 8     1  2431471 sample_8 NA       .     
+ 9     1  2746213 sample_8 1/1      C/C   
+10     1  2896664 sample_8 0/0      C/C   
+# ℹ 610 more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
+
+We now have a dataframe where each row is a single genotype for a single individual.
+This gives us a lot of flexibility to plot or manipulate the data using the tidyverse
+skills we learned early in the course. Here are a couple examples. First lets just plot 
+all the genotypes
+
+```R
+gt %>% 
+  filter(Chr == 1) %>%
+  ggplot(aes(y = ID, x = as.factor(Position), fill = Genotype)) +
+  geom_tile() +
+  xlab("Individuals") +
+  scale_fill_brewer("Genotype",palette = "Set1") +
+  theme_minimal(base_size=10) + ylab('Sample')+xlab('Position') +
+  theme(axis.text.x = element_text(size=4,angle = 90, vjust = 0.5, hjust = 1),
+        panel.border = element_rect(colour = "black", fill=NA, size=1),
+        strip.text.y.right = element_text(angle = 0))
+```
+![](../figs/lab_7.1.png)
+
+This could show us if there are some samples with more missing data. 
+
+We could also query that directly by calculating the proportion of missing
+genotypes by sample.
+
+```R
+gt %>%
+  group_by(ID) %>%
+  mutate(missing = case_when(is.na(Genotype) ~ "Yes",
+                             TRUE ~ "No")) %>%
+  group_by(ID, missing) %>%
+  summarise(n = n()) %>%
+  mutate(freq = n / sum(n)) %>%
+  filter(missing == "Yes")
+```
+While there are tools to do tasks like this (e.g. vcftools), being able
+to code them yourself in R gives you flexibility to customize each analyses to your
+particular requirements. 
 
 
 
