@@ -139,19 +139,101 @@ position in the genome. The most important parts of this file are:
 - The first column, which is the chromosome.
 - The second column, which is the position on that chromosome.
 - The fourth column, which is the reference allele (i.e. the allele in the reference genome).
-- The fifth column, which is the alternate allele(s). If there is no alternate allele, it is
-labeled as <*>. 
+- The fifth column, which is the alternate allele(s). A possible deletion of this base is labelled as <*>. 
 - The DP value in the info column. This tells you hany reads there is total for this site.
 - The 10th column onward shows the genotype likelihoods for each sample. The three values, separated
 by ",", are the phred scaled likelihoods for 0/0, 0/1 and 1/1 respectively. A 0 phred scaled likelihood,
 is the most likely. Higher values are less likely. Ultimately, the program is going to pick a single
-genotype value based on comparing these likelihoods.
+genotype value based on comparing these likelihoods. If there are more than one alternate allele, 
+then there will be more possible genotype likelihoods. 
+
+You'll notice that in the row that includes sample names, the names is the bam file including it's directory. 
+This is not great, since it contains extra information and we'd really just want to include only
+the actual name of the sample, not in it's bam file name. The way to do this is to add a "read group"
+sample to the bam file. 
+
+```bash
+module load picard/3.1.0
+
+java -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
+  I=bam/sample_0.bam \
+  O=bam/sample_0.rg.bam \
+  RGSM=sample_0 \
+  RGLB=sample_0 \
+  RGPL=Illumina \
+  RGPU=NULL
+```
+
+## Questions
+1. We've added read group to one sample. Make a shell script that adds the read group information to all samples, and additionally 
+indexes the resulting bam file. Run your script.
+2. RGSM is the readgroup sample information. Using the internet, figure out what information RGLB, RGPL and RGPU store.
+3. The read group information is being added to the bam file. Take a look at your new .rg.bam file, and compare it to the original bam
+to figure out where the readgroup information is stored. Hint: You need to use samtools -h to see the header. 
+4. We want to run bcftools mpileup on our new set of bam files with readgroup info added. Make a new bamlist.txt file that has
+those files.
+
+Make sure you complete the four questions above before continuing. 
+
+Lets remake our gvcf file, with the new readgroup added bams
+```bash
+bcftools mpileup -q 20 -f reference/SalmonReference.fasta -b bamlist.txt  > lab_7.gvcf
+
+```
+If we take a look at the resulting file, we can see that our samples are now correctly named.
+The next step is to use this gvcf to call genotypes and create a vcf file. 
+
+```bash
+#We use the -m tag to allow for multiple alternate alleles when variant calling.
+#We use the -v tag to only print variable sites.
+#We use 'bcftools +fill-tags' to fill in some extra information about our variants (not necessary).
+bcftools call -mv lab_7.g.vcf | bcftools +fill-tags> lab_7.bcftools.vcf
+```
+
+Now with this new vcf file we can see that it only includes a subset of sites in the genome. It doesn't
+print out sites where there isn't a SNP or an INDEL. Take a look at the file and I'll highlight a few 
+important points here:
+- AC tag is the alternate count, which tells you how many alternate alleles have been called. Remember that 
+in most cases your samples are diploid, so there for 10 samples, there are 20 allele calls.
+- AN tag is the number of alleles called total. It is twice the number of genotyped samples at that site.
+- AF tag is the alternate allele frequency.
+
+The genotype field looks something like this "1/1:200,24,0". The first part is your genotype call. 
+0 is the reference allele, 1 is the first alternate allele, 2 is the second alternate allele, etc. A
+./. means that it isn't called since there was not enough reads to know. After the genotype is the phred 
+scaled likelihood of each genotype (like in the gvcf). In other variant calling programs, there can
+be other information here like read depth.
+
+If we look at this vcf file, you may notice that many sites have an AF of 1, meaning that
+all the samples have the alternate allele. This is partially an artifact of how the data was 
+simulated, but in any case you will find allele like this in any dataset. Since these
+sites are monomorphic within our dataset, they're not particularly useful. A common way of 
+filtering a vcf is using a minor allele frequency cut off. 
+
+```bash
+bcftools view -q 0.1:minor lab_7.bcftools.vcf > lab_7.bcftools.maf10.vcf
+```
+
+Another program for calling variants is freebayes (https://github.com/freebayes/freebayes). 
+This program uses haplotypes (i.e. multiple bases together) instead of individual sites. 
+It is a bit more complicated than bcftools but does better when there are more complicated 
+changes like INDELS, which occurs in real data. 
+
+Side Note: The most common program for variant calling 
+is GATK, which is a spiritual successor for freebayes but has grown into a huge set of programs.
+If you use human data, GATK is awesome, but if you're working on other organisms the quirks of GATK
+are sometimes not worth the effort to make it work. 
+
+```bash
+module load StdEnv/2020 freebayes/1.3.6
+freebayes -L bamlist.txt -f reference/SalmonReference.fasta > lab_7.fb.vcf
+```
+
+This will take a couple minutes. 
 
 
 
 
-
-bcftools mpileup -q 20 -d 200 -f Sockeye/ReferenceGenome/SalmonReference.fasta -b bamlist.txt | bcftools call -mv > Biol470.vcf
 
 
 
