@@ -1,5 +1,5 @@
 ---
-title: TMP
+title: Variant Calling
 element: lab
 layout: default
 ---
