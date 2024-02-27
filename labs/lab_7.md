@@ -1,5 +1,5 @@
 ---
-title: Variant Calling
+title: Variant calling
 element: lab
 layout: default
 ---
