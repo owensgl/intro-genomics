@@ -86,7 +86,7 @@ Now we're going to call the first step, bcftools mpileup.
 module load StdEnv/2023  gcc/12.3 bcftools/1.18
 
 #We're using the -q 20 option here to require that reads have mapq >= 20.
-bcftools mpileup -q 20 -f reference/SalmonReference.fasta -b bamlist.txt  > lab_7.gvcf
+bcftools mpileup -q 20 -f reference/SalmonReference.fasta -b bamlist.txt  > lab_7.g.vcf
 ```
 
 The output of this is like a vcf file but it includes information on all sites in the genome,
@@ -94,7 +94,7 @@ but hasn't actually called genotypes yet. This is an intermediate file format be
 the final vcf. Lets take a look.
 
 ```bash
-less lab_7.gvcf
+less lab_7.g.vcf
 ```
 ```output
 ##FILTER=<ID=PASS,Description="All filters passed">
@@ -171,13 +171,13 @@ indexes the resulting bam file. Run your script.
 3. The read group information is being added to the bam file. Take a look at your new .rg.bam file, and compare it to the original bam
 to figure out where the readgroup information is stored. Hint: You need to use samtools -h to see the header. 
 4. We want to run bcftools mpileup on our new set of bam files with readgroup info added. Make a new bamlist.txt file that has
-those files.
+those files and name it bamlist.rg.vcf.
 
 Make sure you complete the four questions above before continuing. 
 
 Lets remake our gvcf file, with the new readgroup added bams
 ```bash
-bcftools mpileup -q 20 -f reference/SalmonReference.fasta -b bamlist.txt  > lab_7.gvcf
+bcftools mpileup -q 20 -f reference/SalmonReference.fasta -b bamlist.rg.txt  > lab_7.g.vcf
 
 ```
 If we take a look at the resulting file, we can see that our samples are now correctly named.
@@ -223,7 +223,7 @@ If we wanted to create the bcftools vcf again, we can actually pipe the two
 bcftool commands together without saving the gvcf.
 ```
 #Example, you don't need to run this
-#bcftools mpileup -q 20 -d 200 -f Sockeye/ReferenceGenome/SalmonReference.fasta -b bamlist.txt | bcftools call -mv > Biol470.bcftools.vcf
+#bcftools mpileup -q 20 -d 200 -f Sockeye/ReferenceGenome/SalmonReference.fasta -b bamlist.rg.txt | bcftools call -mv > Biol470.bcftools.vcf
 ```
 
 *** 
@@ -241,7 +241,7 @@ are sometimes not worth the effort to make it work.
 ```bash
 module load StdEnv/2020 freebayes/1.3.6
 #This will take a couple minutes. 
-freebayes -L bamlist.txt -f reference/SalmonReference.fasta > lab_7.fb.vcf
+freebayes -L bamlist.rg.txt -f reference/SalmonReference.fasta > lab_7.fb.vcf
 ```
 
 The first thing we will notice is that the freebayes vcf is larger than the bcftools vcf. 
