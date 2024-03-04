@@ -148,6 +148,148 @@ Loglikelihood: -712272.711731
 Writing output files.
 ````
 
+It has now produced two output files: chinook.g5.m2.c5.d5.20miss.subsample.nchrs.1.Q and 
+chinook.g5.m2.c5.d5.20miss.subsample.nchrs.1.P. The Q file includes the ancestry of each
+sample for each group. In this case, there's only one group, but this will be more useful with
+higher K values. The P file estimates allele frequencies for each SNP in each population, which 
+isn't useful for us now. 
+
+Ultimately for this type of algorith, we want to try multiple K values and find which one is best. To
+do that we use a cross- validation method. In this method, they mask some genotype values, and try
+to predict what they are, based on the groupings. Lower cross-validation error means the model
+is a better fit. Lets run this for K from 1 to 10. 
+
+```bash
+for K in `seq 10`
+  do
+  admixture --cv chinook.g5.m2.c5.d5.20miss.subsample.nchrs.bed $K -j3 | tee log${K}.out;
+done
+```
+The "tee" command is allowing us to save the output that is output to the screen into a file. 
+We need those files to compare the CV error for each. Lets look at all the CV error scores.
+
+```bash
+grep -h CV log*.out
+```
+
+```output
+CV error (K=10): 1.00561
+CV error (K=1): 0.46015
+CV error (K=2): 0.47496
+CV error (K=3): 0.53477
+CV error (K=4): 0.60377
+CV error (K=5): 0.66514
+CV error (K=6): 0.72932
+CV error (K=7): 0.79938
+CV error (K=8): 0.86884
+CV error (K=9): 0.94260
+```
+
+From this we can see that the lowest CV is with with K=1, and K=2 is only slightly worse. This
+suggests that there isn't much population grouping in our dataset. It's always good to look at
+how your groups are distributed amongst your samples and see if it makes sense biologically. To
+do that, we have plot the Q values for each K. We're going to use R for this, so open the R 
+studio server window on indri.
+
+```R
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(tidyr)
+
+#Get sample names in order from the .fam 
+sample_names <- read_table("lab_8/vcf/chinook.g5.m2.c5.d5.20miss.subsample.nchrs.fam",col_names = F) %>%
+  select(X1) %>%
+  rename(sample.id=X1)
+all_data <- tibble()
+
+#Loop for each K value
+for (k in 1:10){
+  #Read the Q file 
+  data <- read_delim(paste0("lab_8/vcf/chinook.g5.m2.c5.d5.20miss.subsample.nchrs.",k,".Q"),
+                     col_names = paste0("Q",seq(1:k)),
+                     delim=" ")
+  #Add in sample names
+  data$sample.id <- sample_names$sample.id
+  #Add in the K value
+  data$k <- k
+  
+  #Convert the wide table to a long table, which is easier to plot
+  data %>% gather(Q, value, -sample.id,-k) -> data
+  #Bind together all the outputs of each K value
+  all_data <- rbind(all_data,data)
+}
+```
+Before we do the plotting, lets get some information about the samples. Thankfully,
+all the information is in the sample name. e.g. Otsh_Chilcotin_2018_10.merged.dedup.bam.
+-Otsh <- species abbreviation
+-Chilcotin <- population
+-2018 <- sampling year
+-10 <- sample number.
+
+We probably will want to plot by year and population, so lets extract that into our table.
+
+```R
+all_data <- all_data %>%
+  separate(sample.id, c("species","pop","year","spacer"), "_", remove=F ) %>%
+  separate(spacer, c("sample_n"),remove=T)
+```
+And now, lets plot for K=2
+```R
+all_data %>%
+  filter(k == 2) %>%
+  ggplot(.,aes(x=fct_reorder(sample.id,pop),y=value,fill=factor(Q))) + 
+  geom_bar(stat="identity",position="stack") +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
+```
+![](../figs/lab_8.1.png)
+
+This looks interesting! We're sorting the x axis by the population label, so 
+samples are ordered by population. We can see that the first half samples are mostly group 1
+and the second half are mostly group 2. This is evidence that those populations reflect
+actual genetically separated populations because admixture is rediscovering the groupings,
+without being given the labels. We can also explore what the groupings look like at higher levels
+of K.
+![](../figs/lab_8.2.png)
+
+## Questions
+- Make a nice version of the plot for K=2. Update the axis labels, colors, theme, title and sample names.
+- Make a version of the plot with K=2, where samples are ordered by their ancestry proportion.
+- Try running admixture with K=10 again and see if you get identical scores. What does this mean?
+
+Next, lets do a PCA on the samples to see how they are related. We're going to use plink for this, 
+so go back into the terminal.
+
+```bash
+plink --vcf chinook.g5.m2.c5.d5.20miss.subsample.nchrs.vcf --out chinook.g5.m2.c5.d5.20miss.subsample.nchrs --pca --allow-extra-chr --double-id --autosome-num 95
+```
+This outputs a .eigenvec and a .eigenval file. The .eigenvec file has the scores for the
+first 20 Principal Components, which we want to plot. We have to load this
+into R to plot it.
+
+```R
+pca_data <- read_table("lab_8/vcf/chinook.g5.m2.c5.d5.20miss.subsample.nchrs.eigenvec",
+         col_names = c("sample.id","spacer",paste0("PC",1:20)))
+```
+In this case, the data file does not have a header, so we have to tell it what the columns are named.
+The command "paste0("PC",1:20)", makes the names PC1, PC2 ... PC20. 
+
+Now we want to make a scatter plot of these scores.
+```R
+pca_data %>%
+  ggplot(.,aes(x=PC1,y=PC2)) +
+  geom_point()
+```
+![](../figs/lab_8.3.png)
+
+## Questions
+- Make a version of this plot, with population as point color, and year as point shape.
+- Add ellipses around the population groups to show their range of values.
+
+Lastly, we want to calculate FST between our populations. 
+
+
+
 
 
 
