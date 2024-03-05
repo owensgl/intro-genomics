@@ -1,5 +1,5 @@
 ---
-title: test_8
+title: Population genetics
 element: lab
 layout: default
 ---
