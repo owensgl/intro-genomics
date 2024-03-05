@@ -326,9 +326,10 @@ fst %>%
 That looks pretty good, but what if we wanted to put all of the chromosomes in one figure? We
 can try using facet_wrap() to facet by chromosome.
 ```R
-chr_lengths <- fst %>%
-  group_by(CHROM) %>%
-  summarize(length=max(POS))
+fst %>%
+  ggplot(.,aes(x=POS,y=WEIR_AND_COCKERHAM_FST)) +
+  geom_point() +
+  facet_wrap(~CHROM, nrow=1)
 ```
 ![](../figs/lab_8.5.png)
 
