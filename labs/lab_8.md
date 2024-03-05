@@ -303,7 +303,7 @@ bcftools query -l chinook.g5.m2.c5.d5.20miss.subsample.vcf.gz | grep Chilcotin >
 ```
 Now we next calculate Weir and Cockerhams FST from our vcf
 ```
-vcftools --gzvcf chinook.g5.m2.c5.d5.20miss.subsample.vcf.gz${VCF} \
+vcftools --gzvcf chinook.g5.m2.c5.d5.20miss.subsample.vcf.gz \
 --weir-fst-pop chilko.txt \
 --weir-fst-pop chilcotin.txt \
 --out chinook.g5.m2.c5.d5.20miss.subsample
