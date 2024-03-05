@@ -225,10 +225,10 @@ for (k in 1:10){
 ```
 Before we do the plotting, lets get some information about the samples. Thankfully,
 all the information is in the sample name. e.g. Otsh_Chilcotin_2018_10.merged.dedup.bam.
--Otsh <- species abbreviation
--Chilcotin <- population
--2018 <- sampling year
--10 <- sample number.
+- Otsh <- species abbreviation
+- Chilcotin <- population
+- 2018 <- sampling year
+- 10 <- sample number.
 
 We probably will want to plot by year and population, so lets extract that into our table.
 
