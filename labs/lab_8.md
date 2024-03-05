@@ -34,7 +34,8 @@ This contains a thinned set of SNPs for some Chinook salmon.
 - How many samples are in the vcf file? How many SNPs?
 - Extract a list of the sample names in the file. 
 HINT: Sample names are in the header line starting with #CHROM. 
-HINT: You can convert tabs to newlines using the 'tr' command
+HINT: You can convert tabs to newlines using the 'tr' command.
+HINT: Alternate idea is to use bcftools query
 
 We want to group these samples into populations, so we're going to use the program "admixture".
 To use it, we need to have our data in "bed" format. Bed is the binary version of ped format,
@@ -196,6 +197,8 @@ library(ggplot2)
 library(dplyr)
 library(readr)
 library(tidyr)
+library(forcats)
+
 
 #Get sample names in order from the .fam 
 sample_names <- read_table("lab_8/vcf/chinook.g5.m2.c5.d5.20miss.subsample.nchrs.fam",col_names = F) %>%
@@ -283,10 +286,46 @@ pca_data %>%
 ![](../figs/lab_8.3.png)
 
 ## Questions
-- Make a version of this plot, with population as point color, and year as point shape.
+- Make a version of this plot with population as point color and year as point shape.
 - Add ellipses around the population groups to show their range of values.
 
-Lastly, we want to calculate FST between our populations. 
+Lastly, we want to calculate FST between our populations. We're going to use vcftools to 
+do this. Go back to the terminal.
+
+```bash
+#First make a list of all your samples
+bcftools query -l chinook.g5.m2.c5.d5.20miss.subsample.vcf.gz > chinook.g5.m2.c5.d5.20miss.subsample.samplenames.txt
+
+#Next we need to get a list of samples for each population, Chilko and Chilcotin. We can use grep to get that.
+bcftools query -l chinook.g5.m2.c5.d5.20miss.subsample.vcf.gz | grep Chilko > chilko.txt
+bcftools query -l chinook.g5.m2.c5.d5.20miss.subsample.vcf.gz | grep Chilcotin > chilcotin.txt
+#This only worked because we had our populations in the sample name, which is a why its useful to have that.
+```
+Now we next calculate Weir and Cockerhams FST from our vcf
+```
+vcftools --gzvcf chinook.g5.m2.c5.d5.20miss.subsample.vcf.gz${VCF} \
+--weir-fst-pop chilko.txt \
+--weir-fst-pop chilcotin.txt \
+--out chinook.g5.m2.c5.d5.20miss.subsample
+```
+This gives us a per-site FST value. Its important to note here that to get the average FST
+across the entire genome, we can't just average these scores. The correct way is to 
+sum the numerator and denominator of FST (which vcftools doesn't report). You'll
+need to use a different program (like hierfstat) to get that.
+
+Anyway, we should visualize this data across the genome using a manhattan plot. Lets go back to R.
+```R
+fst <- read_tsv("lab_8/vcf/chinook.g5.m2.c5.d5.20miss.subsample.weir.fst")
+fst %>%
+  filter(CHROM == "CM031199.1") %>%
+  ggplot(.,aes(x=POS,y=WEIR_AND_COCKERHAM_FST)) +
+  geom_point()
+```
+![](../figs/lab_8.4.png)
+
+
+
+
 
 
 
