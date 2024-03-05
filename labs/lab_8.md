@@ -323,6 +323,66 @@ fst %>%
 ```
 ![](../figs/lab_8.4.png)
 
+That looks pretty good, but what if we wanted to put all of the chromosomes in one figure? We
+can try using facet_wrap() to facet by chromosome.
+```R
+chr_lengths <- fst %>%
+  group_by(CHROM) %>%
+  summarize(length=max(POS))
+```
+![](../figs/lab_8.5.png)
+
+That works, but is not great. It has a fair amount of wasted space between the facets. Ideally,
+we'd want to have all of the SNPs in one long axis representing the cumulative genome. We
+can do this!
+
+```R
+#We need to create a table with the length of each chromosome.
+chr_lengths <- fst %>%
+  group_by(CHROM) %>%
+  summarize(length=max(POS))
+
+#Make cumulative
+chr_lengths %>%
+  # Calculate cumulative position of each chromosome
+  mutate(total=cumsum(length)-length) %>%
+  # Remove the length column, we don't need it anymore.
+  select(-length) %>%
+  # Add this info to the initial dataset
+  left_join(fst, ., by=c("CHROM"="CHROM")) %>%
+  # Make sure that positions are still sorted
+  arrange(CHROM, POS) %>%
+  # Now create a new column with the cumulative position
+  mutate( cumulative_pos=POS+total) -> fst.cumulative
+
+#This is used to find the middle position of each chromosome for labelling
+axisdf <- fst.cumulative %>% 
+  group_by(CHROM) %>% 
+  summarize(center=( max(cumulative_pos) + min(cumulative_pos) ) / 2 )
+```
+With this, we can then make a single plot that includes the entire genome.
+```R
+fst.cumulative %>%
+  ggplot(.) +
+  geom_point( aes(x=cumulative_pos, y=WEIR_AND_COCKERHAM_FST,color=as.factor(CHROM)), 
+              alpha=0.8, size=1.3) +
+  # Alternate chromosome point colors
+  scale_color_manual(values = rep(c("grey", "skyblue"), nrow(chr_lengths) )) +
+  # Custom X-axis
+  scale_x_continuous( label = axisdf$CHROM, breaks= axisdf$center, 
+                      guide = guide_axis(n.dodge=2)) +
+  theme_bw() +
+  theme(legend.position="none",
+        panel.border = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank()) +
+  xlab("Chr") +
+  ylab("Fst")
+```
+![](../figs/lab_8.6.png)
+
+Hurray. We've learned how to do population genetic analyses with SNPs!
+
 
 
 
