@@ -205,6 +205,12 @@ plot_1
 ```
 ![GWAS zoom 3](../figs/lab_9.5.png)
 
+### Questions
+- What are the gene(s) under the second GWAS peak (around 33 MBp)?
+- Choose one of the genes under the peak and BLAST it against the human genome. What is the 
+best hit? HINT: The LOC# is used by NCBI to track genes.
+
+
 Now that we've done some GWAS calculations lets see if we can validate our
 p-values for one SNP. We're going to extract the genotypes for one of our
 top SNPs and run our own linear model.
