@@ -35,6 +35,7 @@ in the correct location. Organization is very important because for many project
 you're going to be working on them for perhaps years and you will forget where you
 put individual items. 
 
+As a first step, we're going to run a PCA on our samples.
 
 ```shell
 module load plink
