@@ -2,6 +2,7 @@
 title: GWAS
 element: lab
 layout: default
+timing: Too short
 ---
 
 ## Objectives
