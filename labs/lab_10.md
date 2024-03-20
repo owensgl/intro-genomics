@@ -3,6 +3,7 @@ title: Genome assembly
 element: lab
 layout: default
 ---
+## Genome Assembly
 
 Before we start working on genome assembly, we need to clear space on the server. 
 Currently we're using almost all of the space in the home directory. Once
