@@ -222,17 +222,118 @@ this similarity, it labels genes by their likely function.
 - Find a gene annotated in both the reference genome and your new genome. Find a gene that is in your new
 genome, but not the reference genome.
 
-TO FIX
+****
+
+In the last section, we're going to align two whole genome sequences. For short reads,
+we used BWA-mem, but for longer sequences we need to use a different program, for example
+minimap2. For this section, we're going to download two different genomes from the 
+Arabidopsis genus. 
+
 ```bash
+cd ~/lab_10
 mkdir genome_comparison
 cd genome_comparison/
 curl --output a_thaliana.zip 'https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCF_000001735.4/download?include_annotation_type=GENOME_FASTA&include_annotation_type=GENOME_GFF&include_annotation_type=RNA_FASTA&include_annotation_type=CDS_FASTA&include_annotation_type=PROT_FASTA&include_annotation_type=SEQUENCE_REPORT&hydrated=FULLY_HYDRATED'
 
 curl --output a_arenosa.zip 'https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/GCA_905216605.1/download?include_annotation_type=GENOME_FASTA&include_annotation_type=GENOME_GFF&include_annotation_type=RNA_FASTA&include_annotation_type=CDS_FASTA&include_annotation_type=PROT_FASTA&include_annotation_type=SEQUENCE_REPORT&hydrated=FULLY_HYDRATED'
-
-module load minimap2
-
 ```
+
+```bash
+module load minimap2
+minimap2 -cx asm20 \
+  ncbi_dataset/data/GCA_905216605.1/GCA_905216605.1_AARE701a_genomic.fna \
+  ncbi_dataset/data/GCF_000001735.4/GCF_000001735.4_TAIR10.1_genomic.fna \
+  > arabidopsis_aligned.paf
+head arabidopsis_aligned.paf | cut -f 1-12
+```
+```output
+NC_003070.9     30427671        302984  342050  -       LR999451.1      25224288        123630  170102  35580   47816   60
+NC_003070.9     30427671        25069147        25095539        +       LR999452.1      14316399        7694740 7721381 24575   27066   60
+NC_003070.9     30427671        5562728 5595170 +       LR999451.1      25224288        6335141 6371781 29511   37557   60
+NC_003070.9     30427671        701442  728409  +       LR999451.1      25224288        820561  849097  25132   29082   60
+NC_003070.9     30427671        27917258        27951438        +       LR999452.1      14316399        11374022        11403129        26332  35248  60
+NC_003070.9     30427671        5224185 5256648 +       LR999451.1      25224288        5964211 5997757 29202   34577   60
+NC_003070.9     30427671        11246938        11276499        -       LR999451.1      25224288        15608823        15639766        26174  32415  60
+NC_003070.9     30427671        17732524        17756114        +       LR999451.1      25224288        18733693        18757375        21903  24129  60
+NC_003070.9     30427671        5733060 5756911 +       LR999451.1      25224288        6524999 6548507 21628   24502   60
+NC_003070.9     30427671        29038801        29064917        +       LR999452.1      14316399        12577980        12605368        23429  28506  60
+```
+
+This produces a .paf file, or paired mapping format file. The alignment is in many small pieces, representing
+small chunks of the genomes where they are aligned. 
+| Column | Name    | Data Type | Description                                            |
+|--------|---------|-----------|--------------------------------------------------------|
+| 1      | qname   | string    | Query sequence name                                    |
+| 2      | qlen    | int       | Query sequence length                                  |
+| 3      | qstart  | int       | Query start coordinate (0-based)                       |
+| 4      | qend    | int       | Query end coordinate (0-based)                         |
+| 5      | strand  | char      | ‘+’ if query/target on the same strand; ‘-’ if opposite|
+| 6      | tname   | string    | Target sequence name                                   |
+| 7      | tlen    | int       | Target sequence length                                 |
+| 8      | tstart  | int       | Target start coordinate on the original strand         |
+| 9      | tend    | int       | Target end coordinate on the original strand           |
+| 10     | nmatch  | int       | Number of matching bases in the mapping                |
+| 11     | alen    | int       | Number of bases, including gaps, in the mapping        |
+| 12     | mapq    | int       | Mapping quality (0-255, with 255 if missing)           |
+
+By default, it doesn't actually output the 
+aligned sequences (unlike SAM format), it just tells you were the two sequences are aligned. This
+is useful for telling where orthologous sequences are between the two genomes. In almost any case,
+you will also get extra alignment matches between other random chunks of the genome. To understand the
+broad synteny patterns (i.e. which chromosome in A. arenosa is orthologous to which chromosome in A. thaliana)
+you need to visualize the matches.
+
+We're going to the pafr package to show how the two genomes align. Open Rstudio and run the following:
+```R
+install.packages("pafr")
+library(pafr)
+
+ali <- read_paf("/project/ctb-grego/owens/test/lab_10/genome_comparison/arabidopsis_aligned.paf")
+ali
+```
+```output
+pafr object with 17766 alignments (73.9Mb)
+ 7 query seqs
+ 8 target seqs
+ 12 tags: NM, ms, AS, nn, tp, cm, s1, s2, de, zd, rl .
+```
+The pafr package has some tools for visualizing the alignments. First is a dotplot,
+which shows where alignments are relative to each genome.
+```R
+dotplot(ali, label_seqs=TRUE, order_by="qstart") + theme_bw()
+```
+
+![dot plot](../figs/lab_10.3.png)
+
+Another way of representing the alignment is a coverage plot. For this,
+every spot of the target genome is colored by which part of the query genome
+aligns to it. 
+```R
+plot_coverage(ali, fill='qname')  +
+  scale_fill_brewer(palette="Set1")
+```
+![coverage plot](../figs/lab_10.4.png)
+
+We can see that contig LR999451.1 has blue sequences aligning to it, which correspond
+to contig NC_003070.9 in the query genome. There is a fair emount of white spots in this
+plot, suggesting there areas of the genome where nothing aligns. This is likely because these 
+two species are fairly divergent and it is challenging to align. An alternative program
+for more divergent genomes is anchorwave. 
+
+Lastly, since the paf data is being stored as a dataframe, we can use our normal filtering
+and plotting skills.
+
+```R
+library(dplyr)
+ali %>%
+  filter(qname == "NC_003070.9") %>%
+  plot_coverage(., fill='qname')  +
+  scale_fill_brewer(palette="Set1")
+```
+![coverage plot 2](../figs/lab_10.5.png)
+
+
+
 
 
 
