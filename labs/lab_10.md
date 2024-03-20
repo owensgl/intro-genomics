@@ -13,8 +13,8 @@ the assembly portion of this lab, you will need to delete enough files
 so that your directory is less than 1 GB. After you have done that,
 call me over so I can check your directory and approve it.
 
-1) Login to the server. Source the bash.rc file to use modules.
-2) To check how much you are storing using the du command
+1. Login to the server. Source the bash.rc file to use modules.
+2. To check how much you are storing using the du command
 ```bash
 du -h --max-depth=1
 ```
@@ -39,18 +39,18 @@ or just delete all the large files in them. You will probably also
 have a large amount in the .local directory. This contains
 the saved sessions from Rstudio server. Before we clear that,
 we should open Rstudio and save everything you need.
-3) Open Rstudio server. In the top left, you will have
+3. Open Rstudio server. In the top left, you will have
 your scripts. If you have an unsaved scripts, save them to your
 home directory with appropriate names. 
-4) Clear all objects from your workspace using the broom icon (on the right).
-5) Restart your session by going to "Session"->"Quit Session". When prompted,
+4. Clear all objects from your workspace using the broom icon (on the right).
+5. Restart your session by going to "Session"->"Quit Session". When prompted,
 DO NOT save your workspace. It will prompt you to start a new session which 
 should be entirely clean.
-6) You've cleared you Rstudio, but there still might be files saved 
+6. You've cleared you Rstudio, but there still might be files saved 
 from previous suspended sessions. Go into the .local directory and run
 'du -h'. Look through the output for directories with > 1M. If you find any
 call me (Greg) over to delete them (to make sure you don't delete something essential).
-7) Check with Greg to make sure that you've cleared everything you need to.
+7. Check with Greg to make sure that you've cleared everything you need to.
 
 ****
 
