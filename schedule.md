@@ -3,7 +3,7 @@ layout: page
 title: Lab Schedule
 assignments: ['Unix commandline', 'Shell scripting',
 'R and data wrangling', 'Data visualization', 'Sequence data and QC',
-'Alignment', 'Reading Break', 'Variant calling',
+'Alignment', 'Variant calling',
 'Population genetics', 'GWAS', 'Genome assembly', 'Project work', 
 'Project work']
 ---
