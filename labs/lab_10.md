@@ -1,5 +1,5 @@
 ---
-title: AssemblyX
+title: Genome assembly
 element: lab
 layout: default
 ---
