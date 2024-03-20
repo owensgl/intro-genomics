@@ -262,7 +262,7 @@ NC_003070.9     30427671        29038801        29064917        +       LR999452
 This produces a .paf file, or paired mapping format file. The alignment is in many small pieces, representing
 small chunks of the genomes where they are aligned. 
 | Column | Name    | Data Type | Description                                            |
-|--------|---------|-----------|--------------------------------------------------------|
+|:------:|:-------:|:---------:|:------------------------------------------------------:|
 | 1      | qname   | string    | Query sequence name                                    |
 | 2      | qlen    | int       | Query sequence length                                  |
 | 3      | qstart  | int       | Query start coordinate (0-based)                       |
