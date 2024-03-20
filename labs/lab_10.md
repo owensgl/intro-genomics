@@ -142,7 +142,7 @@ quast -o mutant_quast -r wildtype.fna mutant/contigs.fa
 
 The output of QUAST is text files, but it also has HTML reports. Download the entire
 mutant_quast directory to your desktop using scp, and then open icarus.html. 
-In the QUAST report section, it includes some importnat graphs.
+In the QUAST report section, it includes some important graphs.
 
 ![cumulative plot](../figs/lab_10.1.png)
 This graph shows the cumulative length of contigs starting with the longest and moving shorter, in the red line. The grey line is the total length of the reference genome. In an
