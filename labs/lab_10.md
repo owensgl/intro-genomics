@@ -261,20 +261,21 @@ NC_003070.9     30427671        29038801        29064917        +       LR999452
 
 This produces a .paf file, or paired mapping format file. The alignment is in many small pieces, representing
 small chunks of the genomes where they are aligned. 
-| Column | Name    | Data Type | Description                                            |
-|:------:|:-------:|:---------:|:------------------------------------------------------:|
-| 1      | qname   | string    | Query sequence name                                    |
-| 2      | qlen    | int       | Query sequence length                                  |
-| 3      | qstart  | int       | Query start coordinate (0-based)                       |
-| 4      | qend    | int       | Query end coordinate (0-based)                         |
-| 5      | strand  | char      | ‘+’ if query/target on the same strand; ‘-’ if opposite|
-| 6      | tname   | string    | Target sequence name                                   |
-| 7      | tlen    | int       | Target sequence length                                 |
-| 8      | tstart  | int       | Target start coordinate on the original strand         |
-| 9      | tend    | int       | Target end coordinate on the original strand           |
-| 10     | nmatch  | int       | Number of matching bases in the mapping                |
-| 11     | alen    | int       | Number of bases, including gaps, in the mapping        |
-| 12     | mapq    | int       | Mapping quality (0-255, with 255 if missing)           |
+| Column | Name   | Data Type | Description                                           |
+|:------:|:------:|:---------:|:-----------------------------------------------------:|
+|   1    | qname  | string    | Query sequence name                                   |
+|   2    | qlen   | int       | Query sequence length                                 |
+|   3    | qstart | int       | Query start coordinate (0-based)                      |
+|   4    | qend   | int       | Query end coordinate (0-based)                        |
+|   5    | strand | char      | '+' if query/target on the same strand; '-' if opposite |
+|   6    | tname  | string    | Target sequence name                                  |
+|   7    | tlen   | int       | Target sequence length                                |
+|   8    | tstart | int       | Target start coordinate on the original strand        |
+|   9    | tend   | int       | Target end coordinate on the original strand          |
+|  10    | nmatch | int       | Number of matching bases in the mapping               |
+|  11    | alen   | int       | Number of bases, including gaps, in the mapping       |
+|  12    | mapq   | int       | Mapping quality (0-255, with 255 if missing)          |
+
 
 By default, it doesn't actually output the 
 aligned sequences (unlike SAM format), it just tells you were the two sequences are aligned. This
