@@ -194,7 +194,7 @@ Download the hifi_quast directory to your desktop, open icarus.html.
 ### Questions
 - How many contigs are in your assembly?
 - What is the N50 of the assembly? 
-- Qualitatively how does this genome differ from the last one you assembled?
+- Would you say this is a better or worse genome assembly than the velvet assembly?
 
 
 Now that we have a genome the next step is to see where genes are. To do this, we need to annotate the genome.
