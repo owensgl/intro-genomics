@@ -169,7 +169,7 @@ cd ~/lab_10
 cp /project/ctb-grego/sharing/lab_10/ecoli_hifi.fastq.gz ./
 module load StdEnv/2020 hifiasm
 
-hifiasm ecoli_hifi.mini.fastq.gz -l0 -t 10 -o ecoli_hifi
+hifiasm ecoli_hifi.fastq.gz -l0 -t 10 -o ecoli_hifi
 awk '/^S/{print ">"$2;print $3}' ecoli_hifi.bp.p_ctg.gfa > ecoli_hifi.bp.p_ctg.fa
 ```
 Since the hifi reads are so long and accurate, it allows for the independent assembly
