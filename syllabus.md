@@ -3,12 +3,12 @@ layout: page
 title: Syllabus
 catalog: BIO 470
 credits: 1.5
-semester: Spring 2024
+semester: Spring 2025
 professor: Dr. Gregory Owens (he/him)
 office: Cunningham 040
 email: grego@uvic.ca
 schedule: ['Tuesdays, 1:30-2:20 pm PT', 'Wednesdays, 2:30-5:20 pm PT']
-location: ['Cunningham 146 (Tuesday)', 'Clearihue A035 (Wednesday)']
+location: ['Cunningham 146 (Tuesday)', 'Clearihue A103 (Wednesday)']
 ---
 
 ## Course
@@ -31,7 +31,7 @@ Email:
 ### Location
 
 Lecture (Tuesdays): Cunningham 146
-Lab (Wednesdays): Clearihue A035
+Lab (Wednesdays): Clearihue A103
 
 
 ### Times
@@ -92,7 +92,7 @@ techniques and have the skills to visualize the results. You will also have bett
 ideas on how to plan future genomic projects.
 
 
-### Course Expected Learning Outcomes
+### Course Intended Learning Outcomes
 
 Students completing this course will be able to:
 
@@ -103,7 +103,6 @@ Students completing this course will be able to:
 * Explain the principles behind genome assembly and variant detection.
 * Turn sequence data into genetic variation.
 * Run basic population genetic analyses.
-* Explain how and why genomic data is generated.
 * Present scientific analyses in oral and written form.
 
 
@@ -136,14 +135,9 @@ Even when the lab section is missed, the lab assignment is still due the followi
 ### Quiz/Exam Policy
 
 There will be two exams in this course. One on the week of the February 14th, the second 
-on the week of April 3rd. Both exams will be on Brightspace, open-book and will occur outside of 
-class time, with a flexible start time. Exams will not be cumulative, although concepts and material 
-may span both exam periods. **You are not allowed to communicate with others or use AI software 
-during exams**
+on the week of April 3rd. Both exams will be in person during class time and are not open book. Exams will not be cumulative, although concepts and material may span both exam periods. 
 
-Since the midterm exam times will be flexible (i.e. available over a several day period), there
-will not make up exam time slots. If the exam is not completed during the window,
-including in cases of technical issues, then the student will receive 0% on the exam.
+Dr. Owens will talk with each student who has a CAL accommodation to plan an exam that works for them.
 In the case of extended medical issues, the exam will be omitted and the 
 grade point percentages will be put onto on the remaining exam (i.e. the other exam
 will be worth 30% of the final grade). 
@@ -189,11 +183,13 @@ on Brightspace.
 **To pass the course**, students must:
 1. Attend the lab section for at least 11 out of 13 weeks.
 2. Complete and present the final group project.
-3. Score a final grade of 50.0 points for the entire course.
+3. Complete both midterm exams.
+4. Score a final grade of 50.0 points for the entire course.
+  
 
-*If any of 1 through 2 are not completed, the student will automatically fail the course and receive an “N” 
+*If any of 1 through 3 are not completed, the student will automatically fail the course and receive an “N” 
 (‘Incomplete’) on their transcript. If a student successfully completes 1 through 2, 
-but is not successful in 3, they will receive an “F” on their transcript.*
+but is not successful in 4, they will receive an “F” on their transcript.*
 
 
 ### Course Technology
