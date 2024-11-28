@@ -4,8 +4,8 @@ element: lab
 layout: default
 ---
 
-# Introduction 
-## objectives
+# Section 1 
+## Objectives
 
 - Describe key reasons for learning shell.
 - Navigate your file system using the command line.
@@ -14,7 +14,7 @@ layout: default
 
 ***
 
-## questions
+## Questions
 
 - What is a command shell and why would I use one?
 - How can I move around on my computer?
@@ -131,6 +131,25 @@ up until this point.
 >The hot-key combination for clearing the console is `Ctrl+L`. Feel free to try it and see for yourself.
 
 ***
+
+## Downloading files. 
+We first have to download the data files used in this lab. I have put them on a git repository 
+(which you will learn about next lecture) and you download it using this code.
+
+```bash
+[grego@indri ~]$ git clone https://github.com/owensgl/shell_data.git
+```
+
+```output
+Cloning into 'shell_data'...
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 8 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (8/8), 3.71 MiB | 4.38 MiB/s, done.
+```
+
+
 
 ## Navigating your file system
 
@@ -359,9 +378,7 @@ using the command line shell enables us to make our workflow more efficient and 
 - Tab completion can reduce errors from mistyping and make work more efficient in the shell.
 
 ***
-
-# Navigating files and directories
-
+# Section 2
 
 ## Objectives
 
@@ -590,7 +607,7 @@ what will `ls ../backup` display?
 3. `2012-12-01/ 2013-01-08/ 2013-01-27/`
 4. `original pnas_final pnas_sub`
 
-![](figs/filesystem-challenge.svg){alt='File System for Challenge Questions'}
+![](../figs/filesystem-challenge.svg)
 
 
 ### Navigational Shortcuts
@@ -639,7 +656,8 @@ The commands `cd`, and `cd ~` are very useful for quickly navigating back to you
 
 ***
 
-## objectives
+# Section 3
+## Objectives
 
 - View, search within, copy, move, and rename files. Create new directories.
 - Use wildcards (`*`) to perform operations on multiple files.
@@ -648,7 +666,7 @@ The commands `cd`, and `cd ~` are very useful for quickly navigating back to you
 
 ***
 
-## questions
+## Questions
 
 - How can I view and search file contents?
 - How can I create, copy and delete files and directories?
@@ -715,7 +733,6 @@ each result starts with `/`.
 
 ##  Challenge
 
-## Exercise
 
 Do each of the following tasks from your current directory using a single
 `ls` command for each:
@@ -731,11 +748,10 @@ Hint: The bonus question requires a Unix wildcard that we haven't talked about
 yet. Try searching the internet for information about Unix wildcards to find
 what you need to solve the bonus problem.
 
-:::::::::::::::  solution
 
 ##  Challenge
 
-## Exercise
+
 
 `echo` is a built-in shell command that writes its arguments, like a line of text to standard output.
 The `echo` command can also be used with pattern matching characters, such as wildcard characters.
@@ -800,7 +816,7 @@ For more information on advanced usage of `history`, read section 9.3 of
 
 ## Challenge
 
-## Exercise
+
 
 Find the line number in your history for the command that listed all the .sh
 files in `/usr/bin`. Rerun that command.
@@ -838,7 +854,7 @@ $ cat bullkelp_001_R1.fastq
 
 
 
-## Exercise
+## Challenge
 
 1. Print out the contents of the `~/shell_data/untrimmed_fastq/bullkelp_001_R1.fastq` file. 
    What is the last line of the file? What command would only print the last lines of a file?
@@ -846,12 +862,6 @@ $ cat bullkelp_001_R1.fastq
   use one short command to print the contents of all of the files in
   the `~/shell_data/untrimmed_fastq` directory.
 
-
-## Solution
-
-1. The last line of the file is `C:CCC::CCCCCCCC<8?6A:C28C<608'&&&,'$`.
-  `tail` prints the last lines of a file. 
-2. `cat ~/shell_data/untrimmed_fastq/*`
 
 ***
 
@@ -896,7 +906,7 @@ forward to the next instance of this sequence motif. If you instead type `?` and
 return, you will search backwards and move up the file to previous examples of this motif.
 
 
-## Exercise
+## Challenge
 
 What are the next three nucleotides (characters) after the first instance of the sequence quoted above?
 
@@ -1137,7 +1147,7 @@ characters relate to the permissions that the file owner has, the next three rel
 three characters specify what other users outside of your group can do with the file. We're going to concentrate on the three positions
 that deal with your permissions (as the file owner).
 
-![](figs/rwx_figure.svg){alt='Permissions breakdown'}
+![](../figs/rwx_figure.svg)
 
 Here the three positions that relate to the file owner are `rwx`. The `r` means that you have permission to read the file, the `w`
 indicates that you have permission to write to (i.e. make changes to) the file, and the third position is a `x`, indicating that you
@@ -1190,7 +1200,7 @@ you will be asked whether you want to override your permission settings. Be extr
 or with variables (covered later). A mistaken `rm` command can delete things you don't want to be deleted.
 
 
-## Exercise
+## Challenge
 
 Starting in the `shell_data/untrimmed_fastq/` directory, do the following:
 
@@ -1203,7 +1213,7 @@ Starting in the `shell_data/untrimmed_fastq/` directory, do the following:
 
 ***
 
-## keypoints
+## Keypoints
 
 - You can view file contents using `less`, `cat`, `head` or `tail`.
 - The commands `cp`, `mv`, and `mkdir` are useful for manipulating existing files and creating new directories.

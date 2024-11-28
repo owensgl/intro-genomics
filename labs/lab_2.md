@@ -6,19 +6,84 @@ layout: default
 
 # Section 1
 
-## objectives
+## Objectives
 
 - Create a directory hierarchy that matches a given diagram.
 - Create files in that hierarchy using an editor or by copying and renaming existing files.
 - Delete, copy and move specified files and/or directories.
 
 
-## questions
+## Questions
 
 - How can I create, copy, and delete files and directories?
 - How can I edit files?
 
+## How to access the terminal if you're on a windows PC
 
+For mac and linux computers, the terminal program is pre-installed, but 
+for windows users you will need to install it. Follow this [link](https://carpentries.github.io/workshop-template/install_instructions/#shell) and click on the "windows" tab. 
+Then follow the instructions there to download and install
+git for windows, which includes a bash shell. 
+
+## How to access the remote server
+
+All students will be accessing the server using their UVic Netlink ID. You will use the `ssh` or `Secure Shell`
+command to login to the remote server, while logged into the UVic VPN. The VPN is called 
+"Cisco AnyConnect Secure Mobile Client". Open it and fill in "vpn.uvic.ca" into the connection box. 
+It will then tell you to select a group, please select "3 - Student". This will then prompt you
+to fill in your netlink ID and then request a Duo Push notification. 
+
+```bash
+ssh your_id@indri.rcs.uvic.ca
+```
+You will be prompted to use Duo, two-factor authentication before you enter your password. After approving the authentication on your phone,
+you will use your netlink ID to login.
+
+```output
+(base) p165-072:~ gregoryowens$ ssh grego@indri.rcs.uvic.ca
+*
+* Acceptable Use of Electronic Information Resources
+*
+* Access to this system is prohibited except for authorized University of
+* Victoria students, faculty, and staff.
+*
+* All activity may be logged/monitored and unauthorized access will be handled
+* per the provisions of UVic's Policy IM7200: Acceptable Use of Electronic
+* Information Resources.
+*
+* https://www.uvic.ca/universitysecretary/assets/docs/policies/IM7200_6030_.pdf
+*
+(grego@fossa.rcs.uvic.ca) Duo two-factor login for grego
+
+Enter a passcode or select one of the following options:
+
+ 1. Duo Push to XXX-XXX-XXXX
+
+Passcode or option (1-1):
+```
+
+
+After logging in, you will see a screen showing something like this:
+
+```output
+To access CVMFS modules please source the appropriate profile.
+For example: 'source /cvmfs/soft.computecanada.ca/config/profile/bash.sh'
+
+Last failed login: Thu Oct  5 10:44:07 PDT 2023 from 142.104.165.72 on ssh:notty
+There was 1 failed login attempt since the last successful login.
+Last login: Thu Oct  5 09:48:45 2023 from 142.104.165.72
+```
+
+## Sourcing our programs
+
+We want to access a variety of programs on the server. To do that, 
+we are going to source a file to bring it into our profile. This will
+tell the computer where all your programs are stored. NOTE:
+You have to run this command whenever you login.
+
+```bash
+source /cvmfs/soft.computecanada.ca/config/profile/bash.sh
+```
 
 ## Creating directories
 
@@ -26,14 +91,20 @@ We now know how to explore files and directories,
 but how do we create them in the first place?
 
 In this lab we will learn about creating and moving files and directories,
-using the `exercise-data/writing` directory as an example.
+using the `exercise-data/writing` directory as an example. 
+
+We can get this data by downloading it from a git repository:
+
+```bash
+[grego@indri ~]$ git clone https://github.com/owensgl/shell_data.git
+```
 
 ### Step one: see where we are and what we already have
 
 First we should return to the home directory:
 
 ```bash
-$ cd ~
+$ cd ~/shell_data
 ```
 
 Then enter the `lab_2_data` directory:
@@ -173,7 +244,7 @@ another directory the first time you 'Save As...'
 
 Let's type in a few lines of text.
 
-![](figs/nano-screenshot.png){alt="screenshot of nano text editor in action with the text It's not publish or perish any more, it's share and thrive"}
+![](../figs/nano-screenshot.png)
 
 Once we're happy with our text, we can press <kbd>Ctrl</kbd>\+<kbd>O</kbd>
 (press the <kbd>Ctrl</kbd> or <kbd>Control</kbd> key and, while
@@ -275,10 +346,10 @@ attempt to open the `whale.mp3` file.
 
 ## Moving files and directories
 
-Returning to the `shell-lesson-data/exercise-data/writing` directory,
+Returning to the `shell-data/lab_2_data/exercise-data/writing` directory,
 
 ```bash
-$ cd ~/Desktop/shell-lesson-data/exercise-data/writing
+$ cd ~shell_data/exercise-data/writing
 ```
 
 In our `thesis` directory we have a file `draft.txt`
@@ -469,7 +540,7 @@ $ ls
 
 ## Removing files and directories
 
-Returning to the `shell-lesson-data/exercise-data/writing` directory,
+Returning to the `shell-data/lab_2_data/exercise-data/writing` directory,
 let's tidy up this directory by removing the `quotes.txt` file we created.
 The Unix command we'll use for this is `rm` (short for 'remove'):
 
@@ -541,7 +612,7 @@ or sets of characters when navigating the Unix file system.
 
 ## Challenge: Copy with Multiple Filenames
 
-For this exercise, you can test the commands in the `shell-lesson-data/exercise-data` directory.
+For this exercise, you can test the commands in the `shell-data/lab_2_data/exercise-data` directory.
 
 In the example below, what does `cp` do when given several filenames and a directory name?
 
@@ -570,7 +641,7 @@ $ cp minotaur.dat unicorn.dat basilisk.dat
 ## Wildcards
 
 `*` is a **wildcard**, which represents zero or more other characters.
-Let's consider the `shell-lesson-data/exercise-data/alkanes` directory:
+Let's consider the `shell-data/lab_2_data/exercise-data/alkanes` directory:
 `*.pdb` represents `ethane.pdb`, `propane.pdb`, and every
 file that ends with '.pdb'. On the other hand, `p*.pdb` only represents
 `pentane.pdb` and `propane.pdb`, because the 'p' at the front can only
@@ -786,26 +857,9 @@ $ mkdir data
 $ mkdir raw processed
 ```
 
-## Solution
-
-The first two sets of commands achieve this objective.
-The first set uses relative paths to create the top-level directory before
-the subdirectories.
-
-The third set of commands will give an error because the default behavior of `mkdir`
-won't create a subdirectory of a non-existent directory:
-the intermediate level folders must be created first.
-
-The fourth set of commands achieve this objective. Remember, the `-p` option,
-followed by a path of one or more
-directories, will cause `mkdir` to create any intermediate subdirectories as required.
-
-The final set of commands generates the 'raw' and 'processed' directories at the same level
-as the 'data' directory.
-
 ***
 
-## keypoints
+## Keypoints
 
 - `cp [old] [new]` copies a file.
 - `mkdir [path]` creates a new directory.
@@ -825,14 +879,14 @@ as the 'data' directory.
 
 # Section 2
 
-## objectives
+## Objectives
 
 - Redirect a command's output to a file.
 - Construct command pipelines with two or more stages.
 - Explain what usually happens if a program or pipeline isn't given any input to process.
 - Explain the advantage of linking commands with pipes and filters.
 
-## questions
+## Questions
 
 - How can I combine existing commands to do new things?
 
@@ -841,7 +895,7 @@ as the 'data' directory.
 Now that we know a few basic commands,
 we can finally look at the shell's most powerful feature:
 the ease with which it lets us combine existing programs in new ways.
-We'll start with the directory `shell-lesson-data/exercise-data/alkanes`
+We'll start with the directory `shell-data/lab_2_data/exercise-data/alkanes`
 that contains six files describing some simple organic molecules.
 The `.pdb` extension indicates that these files are in Protein Data Bank format,
 a simple text format that specifies the type and position of each atom in the molecule.
@@ -1000,7 +1054,7 @@ But first we'll do an exercise to learn a little about the sort command:
 
 ## Challenge: What Does `sort -n` Do?
 
-The file `shell-lesson-data/exercise-data/numbers.txt` contains the following lines:
+The file `shell-data/lab_2_data/exercise-data/numbers.txt` contains the following lines:
 
 ```source
 10
@@ -1126,7 +1180,7 @@ Hint: Try executing each command twice in a row and then examining the output fi
 ## Challenge: Appending Data
 
 
-Consider the file `shell-lesson-data/exercise-data/animal-counts/animals.csv`.
+Consider the file `shell-data/lab_2_data/exercise-data/animal-counts/animals.csv`.
 After these commands, select the answer that
 corresponds to the file `animals-subset.csv`:
 
@@ -1207,7 +1261,7 @@ the algorithm is 'head of sort of line count of `*.pdb`'.
 
 The redirection and pipes used in the last few commands are illustrated below:
 
-![](figs/redirects-and-pipes.svg){alt='Redirects and Pipes of different commands: "wc -l \*.pdb" will direct theoutput to the shell. "wc -l \*.pdb > lengths" will direct output to the file"lengths". "wc -l \*.pdb | sort -n | head -n 1" will build a pipeline where theoutput of the "wc" command is the input to the "sort" command, the output ofthe "sort" command is the input to the "head" command and the output of the"head" command is directed to the shell'}
+![](../figs/redirects-and-pipes.svg)
 
 
 ## Challenge: Piping Commands Together
@@ -1247,7 +1301,7 @@ so that you and other people can put those programs into pipes to multiply their
 
 ## Challenge: Pipe Reading Comprehension
 
-A file called `animals.csv` (in the `shell-lesson-data/exercise-data/animal-counts` folder)
+A file called `animals.csv` (in the `shell-data/lab_2_data/exercise-data/animal-counts` folder)
 contains the following data:
 
 ```source
@@ -1319,7 +1373,7 @@ The file `animals.csv` contains 8 lines of data formatted as follows:
 
 The `uniq` command has a `-c` option which gives a count of the
 number of times a line occurs in its input.  Assuming your current
-directory is `shell-lesson-data/exercise-data/animal-counts`,
+directory is `shell-data/lab_2_data/exercise-data/animal-counts`,
 what command would you use to produce a table that shows
 the total count of each type of animal in the file?
 
@@ -1335,7 +1389,7 @@ the total count of each type of animal in the file?
 
 Nelle has run her samples through the assay machines
 and created 17 files in the `north-pacific-gyre` directory described earlier.
-As a quick check, starting from the `shell-lesson-data` directory, Nelle types:
+As a quick check, starting from the `shell-data/lab_2_data` directory, Nelle types:
 
 ```bash
 $ cd north-pacific-gyre
@@ -1432,7 +1486,7 @@ and *only* the processed data files?
 
 
 
-## keypoints
+## Keypoints
 
 - `wc` counts lines, words, and characters in its inputs.
 - `cat` displays the contents of its inputs.
@@ -1449,7 +1503,7 @@ and *only* the processed data files?
 ***
 
 # Section 3
-## objectives
+## Objectives
 
 - Write a loop that applies one or more commands separately to each file in a set of files.
 - Trace the values taken on by a loop variable during execution of the loop.
@@ -1458,7 +1512,7 @@ and *only* the processed data files?
 - Demonstrate how to see what commands have recently been executed.
 - Re-run recently executed commands without retyping them.
 
-## questions
+## Questions
 
 - How can I perform the same actions on many different files?
 
@@ -1625,7 +1679,7 @@ How would you write a loop that echoes all 10 numbers from 0 to 9?
 
 ## Challenge: Variables in Loops
 
-This exercise refers to the `shell-lesson-data/exercise-data/alkanes` directory.
+This exercise refers to the `shell-data/lab_2_data/exercise-data/alkanes` directory.
 `ls *.pdb` gives the following output:
 
 ```output
@@ -1657,7 +1711,7 @@ Why do these two loops give different outputs?
 ## Challenge: Limiting Sets of Files
 
 What would be the output of running the following loop in the
-`shell-lesson-data/exercise-data/alkanes` directory?
+`shell-data/lab_2_data/exercise-data/alkanes` directory?
 
 ```bash
 $ for filename in c*
@@ -1690,7 +1744,7 @@ $ for filename in *c*
 
 ## Challenge: Saving to a File in a Loop - Part One
 
-In the `shell-lesson-data/exercise-data/alkanes` directory, what is the effect of this loop?
+In the `shell-data/lab_2_data/exercise-data/alkanes` directory, what is the effect of this loop?
 
 ```bash
 for alkanes in *.pdb
@@ -1713,7 +1767,7 @@ done
 
 ## Challenge: Saving to a File in a Loop - Part Two
 
-Also in the `shell-lesson-data/exercise-data/alkanes` directory,
+Also in the `shell-data/lab_2_data/exercise-data/alkanes` directory,
 what would be the output of the following loop?
 
 ```bash
@@ -1733,7 +1787,7 @@ done
 
 ***
 
-Let's continue with our example in the `shell-lesson-data/exercise-data/creatures` directory.
+Let's continue with our example in the `shell-data/lab_2_data/exercise-data/creatures` directory.
 Here's a slightly more complicated loop:
 
 ```bash
@@ -1831,7 +1885,7 @@ CAAGTGTTCC
 
 ***
 
-We would like to modify each of the files in `shell-lesson-data/exercise-data/creatures`,
+We would like to modify each of the files in `shell-data/lab_2_data/exercise-data/creatures`,
 but also save a version of the original files. We want to copy the original files to new
 files named `original-basilisk.dat` and `original-unicorn.dat`, for example. We can't use:
 
@@ -1895,7 +1949,7 @@ The following diagram
 shows what happens when the modified loop is executed and demonstrates how the
 judicious use of `echo` is a good debugging technique.
 
-![](fig/shell_script_for_loop_flow_chart.svg){alt='The for loop "for filename in .dat; do echo cp $filename original-$filename;done" will successively assign the names of all ".dat" files in your currentdirectory to the variable "$filename" and then execute the command. With thefiles "basilisk.dat", "minotaur.dat" and "unicorn.dat" in the current directorythe loop will successively call the echo command three times and print threelines: "cp basislisk.dat original-basilisk.dat", then "cp minotaur.datoriginal-minotaur.dat" and finally "cp unicorn.datoriginal-unicorn.dat"'}
+![](../fig/shell_script_for_loop_flow_chart.svg)
 
 ## Nelle's Pipeline: Processing Files
 
@@ -1914,7 +1968,7 @@ Moving to the `north-pacific-gyre` directory, Nelle types:
 
 ```bash
 $ cd
-$ cd Desktop/shell-lesson-data/north-pacific-gyre
+$ cd shell-data/lab_2_data/north-pacific-gyre
 $ for datafile in NENE*A.txt NENE*B.txt
 > do
 >     echo $datafile
