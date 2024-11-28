@@ -201,6 +201,23 @@ be used in the library. Windows computers can complete the lab assignments
 but the file system differences between operating systems can cause problems and 
 complexity. 
 
+### Use of AI in the course
+
+AI use is a challenging topic. In the future, much of the code in genomics
+will be written by AI so understanding how to use AI effectively is important.
+That being said, the course is designed to teach you genomics and programming
+skills, not chatGPT. Here is my general policy:
+1) For in case activities, *do not* use AI to directly answer the questions. 
+The effort to figure out these problems is part of the learning activity. 
+2) *Do* use AI to better understand parts of the course material. For example,
+you could ask it to explain what each part of an example script does. 
+3) *Do not* use AI to write your assignments. Consider AI as a friend who 
+has already graduated and knows the material. You wouldn't ask your friend 
+to write your assignments, that would be academically dishonest. You can use
+AI to ask background questions around the assignment topic. 
+
+Ultimately, you need to write all of the text and code you hand in for assignments
+and projects.
 
 ### Materials and Supplies Fees
 
