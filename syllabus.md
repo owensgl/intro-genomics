@@ -138,8 +138,7 @@ There will be two exams in this course. One on the week of the February 14th, th
 on the week of April 3rd. Both exams will be in person during class time and are not open book. Exams will not be cumulative, although concepts and material may span both exam periods. 
 
 Dr. Owens will talk with each student who has a CAL accommodation to plan an exam that works for them.
-In the case of extended medical issues, the exam will be omitted and the 
-grade point percentages will be put onto on the remaining exam. 
+
 
 
 ### Make-up policy
