@@ -206,16 +206,16 @@ AI use is a challenging topic. In the future, much of the code in genomics
 may be written by AI so understanding how to use AI effectively is important.
 That being said, the course is designed to teach you genomics and programming
 skills, not chatGPT. Here is my general policy:
-1) For in class activities, *do not* use AI to directly answer the questions. 
+1. For in class activities, *do not* use AI to directly answer the questions. 
 The effort to figure out these problems is part of the learning activity. 
-2) *Do* use AI to better understand parts of the course material. For example,
+2. *Do* use AI to better understand parts of the course material. For example,
 you could ask it to explain what each part of an example script does. 
-3) *Do not* use AI to write your assignments or projects. All material handed in needs to be written by you.
+3. *Do not* use AI to write your assignments or projects. All material handed in needs to be written by you.
  Consider AI as a friend who 
 has already graduated and knows the material. You wouldn't ask your friend 
 to write your assignments, that would be academically dishonest. You can use
 AI to ask background questions around the assignment topic. 
-4) *Do not* use AI to edit your assignments or projects. This would be considered
+4. *Do not* use AI to edit your assignments or projects. This would be considered
 the same as AI writing your assignment.
 
 Ultimately, you need to write all of the text and code you hand in for assignments
