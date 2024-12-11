@@ -103,7 +103,7 @@ Students completing this course will be able to:
 * Explain the principles behind genome assembly and variant detection.
 * Turn sequence data into genetic variation.
 * Run basic population genetic analyses.
-* Present scientific analyses in oral and written form.
+* Present scientific analyses.
 
 
 
@@ -139,8 +139,7 @@ on the week of April 3rd. Both exams will be in person during class time and are
 
 Dr. Owens will talk with each student who has a CAL accommodation to plan an exam that works for them.
 In the case of extended medical issues, the exam will be omitted and the 
-grade point percentages will be put onto on the remaining exam (i.e. the other exam
-will be worth 30% of the final grade). 
+grade point percentages will be put onto on the remaining exam. 
 
 
 ### Make-up policy
@@ -182,7 +181,7 @@ on Brightspace.
 
 **To pass the course**, students must:
 1. Attend the lab section for at least 11 out of 13 weeks.
-2. Complete and present the final group project.
+2. Complete the final group project.
 3. Complete both midterm exams.
 4. Score a final grade of 50.0 points for the entire course.
   
@@ -211,7 +210,8 @@ skills, not chatGPT. Here is my general policy:
 The effort to figure out these problems is part of the learning activity. 
 2) *Do* use AI to better understand parts of the course material. For example,
 you could ask it to explain what each part of an example script does. 
-3) *Do not* use AI to write your assignments. Consider AI as a friend who 
+3) *Do not* use AI to write your assignments. All material handed in needs to be written by you.
+ Consider AI as a friend who 
 has already graduated and knows the material. You wouldn't ask your friend 
 to write your assignments, that would be academically dishonest. You can use
 AI to ask background questions around the assignment topic. 
@@ -247,14 +247,14 @@ and the Songhees, Esquimalt and WSÁNEĆ peoples whose historical relationships 
 ### Important Dates
 
 Note these important dates:  
-* Last day for 100% reduction of tuition fees for standard courses – Sun. Jan. 21  
-* Last day for adding second term courses  – Wed. Jan 24 
-* Last day for 50% reduction of tuition fees for standard courses – Sun. Feb. 11  
-* Last day for withdrawing from 2nd term courses without penalty of failure – Tues. Feb. 29 
+* Last day for 100% reduction of tuition fees for standard courses – Jan. 19  
+* Last day for adding second term courses  – Jan 22 
+* Last day for 50% reduction of tuition fees for standard courses – Feb. 9  
+* Last day for withdrawing from 2nd term courses without penalty of failure –  Feb. 28 
 
 Holidays (no class):
-Tues. Feb 20 – Reading Break
-Wed. Feb. 21 – Reading Break
+Tues. Feb 18 – Reading Break
+Wed. Feb. 19 – Reading Break
 
 
 ### Medical documentation
