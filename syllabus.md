@@ -125,7 +125,8 @@ are attempting to solve.
 
 ### Attendance Policy
 
-Attendance to the lecture portion is highly encouraged. Given the central importance of 
+Attendance to the lecture portion is highly encouraged. Lectures will be recorded and 
+posted on Brightspace. Given the central importance of 
 the lab exercises, attendance for the lab portion is mandatory and recorded. Missing more than 
 two (2) lab sections will result in an incomplete grade in the course. For missed lab section,
 the student should complete the tutorial on their own time. 
@@ -202,18 +203,20 @@ complexity.
 ### Use of AI in the course
 
 AI use is a challenging topic. In the future, much of the code in genomics
-will be written by AI so understanding how to use AI effectively is important.
+may be written by AI so understanding how to use AI effectively is important.
 That being said, the course is designed to teach you genomics and programming
 skills, not chatGPT. Here is my general policy:
-1) For in case activities, *do not* use AI to directly answer the questions. 
+1) For in class activities, *do not* use AI to directly answer the questions. 
 The effort to figure out these problems is part of the learning activity. 
 2) *Do* use AI to better understand parts of the course material. For example,
 you could ask it to explain what each part of an example script does. 
-3) *Do not* use AI to write your assignments. All material handed in needs to be written by you.
+3) *Do not* use AI to write your assignments or projects. All material handed in needs to be written by you.
  Consider AI as a friend who 
 has already graduated and knows the material. You wouldn't ask your friend 
 to write your assignments, that would be academically dishonest. You can use
 AI to ask background questions around the assignment topic. 
+4) *Do not* use AI to edit your assignments or projects. This would be considered
+the same as AI writing your assignment.
 
 Ultimately, you need to write all of the text and code you hand in for assignments
 and projects.
