@@ -139,7 +139,7 @@ unless we explicitly specify something else. For example, I could ran a command 
 Lets try to run `pwd` to see where we are:
 
 ```bash
-$ pwd
+pwd
 ```
 
 ```output
@@ -153,7 +153,7 @@ Many times in this course you will try to run a command on a file and if the fil
 work is to use `ls` to see what files are there.
 
 ```bash
-$ ls
+ls
 ```
 
 ```output
@@ -293,7 +293,7 @@ For example, if we now try to list the files which names start with `P`
 by using tab complete:
 
 ```bash
-$ ls p<tab>
+ls p<tab>
 ```
 
 When you hit
@@ -309,7 +309,7 @@ Tab completion can also fill in the names of programs, which can be useful if yo
 remember the beginning of a program name.
 
 ```bash
-$ pw<tab><tab>
+pw<tab><tab>
 ```
 
 ```output
@@ -716,7 +716,7 @@ For example, if your history looked like this:
 then you could repeat command #260 by entering:
 
 ```bash
-$ !260
+!260
 ```
 
 Type `!` (exclamation point) and then the number of the command from your history.
@@ -743,7 +743,7 @@ One way to examine a file is to print out all the text using the program `cat`.
 Enter the following command from within the `creatures` directory:
 
 ```bash
-$ cat unicorn.dat
+cat unicorn.dat
 ```
 
 
@@ -764,7 +764,7 @@ case. `less` opens the file as read only, and lets you navigate through it.
 Enter the following command:
 
 ```bash
-$ less unicorn.dat
+less unicorn.dat
 ```
 
 Some navigation commands in `less`:
@@ -856,9 +856,9 @@ unicorn_copy.dat
 The `mv` command is also how you rename files. Let's rename this file to make it clear that this is a backup:
 
 ```bash
-$ cd backup
-$ mv unicorn_copy.dat unicorn_copy_newname.dat
-$ ls
+cd backup
+mv unicorn_copy.dat unicorn_copy_newname.dat
+ls
 ```
 
 ```output
