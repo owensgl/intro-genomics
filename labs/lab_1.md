@@ -641,51 +641,27 @@ to look at the data in a raw format. Sometimes you can catch problems
 
 ### Wildcards
 
-Navigate to your `untrimmed_fastq` directory:
+Often we want to refer to multiple different files, for example if you wanted to do a task on all of them. 
+One way we can use that is the asterisk or `*` character.
 
 ```bash
-$ cd ~/shell_data/untrimmed_fastq
-```
-
-We are interested in looking at the FASTQ files in this directory. We can list
-all files with the .fastq extension using the command:
-
-```bash
-$ ls *.fastq.gz
+ls *.dat
 ```
 
 ```output
-bullkelp_001_R1.fastq.gz  bullkelp_001_R2.fastq.gz
+basilisk.dat  minotaur.dat  unicorn.dat
 ```
 
-The `*` character is a special type of character called a wildcard, which can be used to represent any number of any type of character.
-Thus, `*.fastq.gz` matches every file that ends with `.fastq.gz`.
+The `*` character is a special type of character called a wildcard, which can be used to represent any number of any type of character, or no character.
+Thus, `*.dat` matches every file that ends with `.dat`.
 
-This command:
+
+You can have multiple `*` to be more broad or more specific. Try this command:
 
 ```bash
-$ ls *R2.fastq.gz
+ls *o*
 ```
-
-```output
-bullkelp_001_R2.fastq.gz
-```
-
-lists only the file that ends with `R2.fastq.gz`.
-
-This command:
-
-```bash
-$ ls /usr/bin/*.sh
-```
-
-```output
-/usr/bin/gettext.sh  /usr/bin/lesspipe.sh  /usr/bin/rescan-scsi-bus.sh  /usr/bin/setup-nsssysinit.sh
-```
-
-Lists every file in `/usr/bin` that ends in the characters `.sh`.
-Note that the output displays **full** paths to files, since
-each result starts with `/`.
+Here we are asking for any file that has anything, then an o, than anything else. Basically, it finds anything with an o in the name. 
 
 ##  Challenge
 
@@ -693,39 +669,17 @@ each result starts with `/`.
 Do each of the following tasks from your current directory using a single
 `ls` command for each:
 
-1. List all of the files in `/usr/bin` that start with the letter 'c'.
-2. List all of the files in `/usr/bin` that contain the letter 'a'.
-3. List all of the files in `/usr/bin` that end with the letter 'o'.
+1. List all of the files in `/usr/sbin` that start with the letter 'c'.
+2. List all of the files in `/usr/sbin` that contain the letter 'a'.
+3. List all of the files in `/usr/sbin` that end with the letter 'o'.
 
-Bonus: List all of the files in `/usr/bin` that contain the letter 'a' or the
+Bonus: List all of the files in `/usr/sbin` that contain the letter 'a' or the
 letter 'c'.
 
 Hint: The bonus question requires a Unix wildcard that we haven't talked about
 yet. Try searching the internet for information about Unix wildcards to find
 what you need to solve the bonus problem.
 
-
-##  Challenge
-
-
-
-`echo` is a built-in shell command that writes its arguments, like a line of text to standard output.
-The `echo` command can also be used with pattern matching characters, such as wildcard characters.
-Here we will use the `echo` command to see how the wildcard character is interpreted by the shell.
-
-```bash
-$ echo *.fastq.gz
-```
-
-```output
-bullkelp_001_R1.fastq.gz  bullkelp_001_R2.fastq.gz
-```
-
-The `*` is expanded to include any file that ends with `.fastq.gz`. We can see that the output of
-`echo *.fastq.gz` is the same as that of `ls *.fastq.gz`.
-
-What would the output look like if the wildcard could *not* be matched? Compare the outputs of
-`echo *.missing` and `ls *.missing`.
 
 
 ## Command History
@@ -745,18 +699,18 @@ A few more useful shortcuts:
 You can also review your recent commands with the `history` command, by entering:
 
 ```bash
-$ history
+history
 ```
 
-to see a numbered list of recent commands. You can reuse one of these commands
+This shows a numbered list of recent commands. You can reuse one of these commands
 directly by referring to the number of that command.
 
 For example, if your history looked like this:
 
 ```output
 259  ls *
-260  ls /usr/bin/*.sh
-261  ls *R1*fastq
+260  ls /usr/sbin/*.sh
+261  ls *dat
 ```
 
 then you could repeat command #260 by entering:
@@ -775,7 +729,7 @@ For more information on advanced usage of `history`, read section 9.3 of
 
 
 Find the line number in your history for the command that listed all the .sh
-files in `/usr/bin`. Rerun that command.
+files in `/usr/sbin` starting with c. Rerun that command.
 
 
 
@@ -786,50 +740,31 @@ contents of directories, but how do we look at the contents of files?
 
 One way to examine a file is to print out all the text using the program `cat`.
 
-Enter the following command from within the `untrimmed_fastq` directory:
+Enter the following command from within the `creatures` directory:
 
 ```bash
-$ cat bullkelp_001_R1.fastq.gz
+$ cat unicorn.dat
 ```
-
-Notice anything weird? It's all unintelligeble characters. It may take a while, 
-to print all the weird characters so cancel the `cat` command using <kbd>Ctrl</kbd>\+<kbd>C</kbd>. 
-We can't read it because this file is gzipped, which means it is compressed and 
-no longer a normal text file. To convert it into a format you can actually 
-read, first we need to unzip it using `gunzip`.
-
-```bash
-$ gunzip *.fastq.gz
-```
-
-Try again to look at the file using `cat`, now that it is unzipped.
-
-```bash
-$ cat bullkelp_001_R1.fastq
-```
-
 
 
 ## Challenge
 
-1. Print out the contents of the `~/shell_data/untrimmed_fastq/bullkelp_001_R1.fastq` file. 
+1. Print out the contents of the `minotaur.dat` file. 
    What is the last line of the file? What command would only print the last lines of a file?
 2. From your home directory, and without changing directories,
   use one short command to print the contents of all of the files in
-  the `~/shell_data/untrimmed_fastq` directory.
+  the `creatures` directory.
 
 
 ***
 
 `cat` is a terrific program, but when the file is really big, it can
 be annoying to use. The program, `less`, is useful for this
-case. `less` opens the file as read only, and lets you navigate through it. The navigation commands
-are identical to the `man` program.
-
+case. `less` opens the file as read only, and lets you navigate through it. 
 Enter the following command:
 
 ```bash
-$ less bullkelp_001_R1.fastq
+$ less unicorn.dat
 ```
 
 Some navigation commands in `less`:
@@ -847,13 +782,6 @@ Some navigation commands in `less`:
 to search for and press `enter`. The screen will jump to the next location where
 that word is found.
 
-**Shortcut:** If you hit "/" then "enter", `less` will  repeat
-the previous search. `less` searches from the current location and
-works its way forward. Scroll up a couple lines on your terminal to verify
-you are at the beginning of the file. Note, if you are at the end of the file and search
-for the sequence "CAA", `less` will not find it. You either need to go to the
-beginning of the file (by typing `g`) and search again using `/` or you
-can use `?` to search backwards in the same way you used `/` previously.
 
 For instance, let's search forward for the sequence `TTTTT` in our file.
 You can see that we go right to that sequence, what it looks like,
@@ -864,155 +792,7 @@ return, you will search backwards and move up the file to previous examples of t
 
 ## Challenge
 
-What are the next three nucleotides (characters) after the first instance of the sequence quoted above?
-
-
-
-
-Remember, the `man` program actually uses `less` internally and
-therefore uses the same commands, so you can search documentation
-using "/" as well!
-
-If you're using a small terminal window, you may notice that the lines are 
-wrapping. This is fine now, but can be annoying when you're trying to view a
-text file with many columns. You can remove text wrapping in less using the `-S` option.
-
-```bash
-$ less -S bullkelp_001_R1.fastq
-```
-In this, you can now use the left and right arrows to move left and write in the text file.
-
-There's another way that we can look at files, and in this case, just
-look at part of them. This can be particularly useful if we just want
-to see the beginning or end of the file, or see how it's formatted.
-
-The commands are `head` and `tail` and they let you look at
-the beginning and end of a file, respectively.
-
-```bash
-$ head bullkelp_001_R1.fastq
-```
-
-```output
-@A01754:154:HWCGVDSX5:2:1101:4399:1094 1:N:0:ACTCCGAAGC+NCCGTGTTGC
-CNCAGCCGAAACGGGCCAAAACTCGCCATAAACGAGGCTACGCCGAGTTTGCATCAAACCAGGAACTTTCTCAGATAGATATAGATGCGGACGACGATTCCGAAGTGCAGACCACGCTACACATTTTTCAAGTGAAAAACACCCCTAAAGA
-+
-F#FFFFFFF:FFFFFFFF:FFFFF:FFFFFFFFFFFFFFFFFF::FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFF:FFFFFFFFFFFFFFF,FFFFFFF,FFF,
-@A01754:154:HWCGVDSX5:2:1101:5412:1094 1:N:0:ACTCCGAAGC+NCCGTGTTGC
-GNTGGAAACTGCTGTTGGCAGTACTAAAATTGTTGTCAAATAGTTCGAGCCGAACGCTGGACGGACGAATCACACCGACGGGCGAAGGAACGAACGAAGAGCGTTACCGACGGACGAATGGCTTAACGAAGGACGGTGTGCGAGACAAACC
-+
-F#FFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF,FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF,FFFFFFFFFFFFFFFFFFFFF
-@A01754:154:HWCGVDSX5:2:1101:9191:1094 1:N:0:ACTCCGAAGC+NCCGTGTTGC
-GNGTAGTGTCCTGCAATGAGCCCCACGACGTCAACGCACGTCAAACACTCTCATCTCGTTTGTATTCCACGATAAATGCGTCCAGGTAGGGAGGGACCTAGCCTTCAAGGCATTCCTGAAAAAATGCCTGAAGTACTTTTTCTGAAACATG
-```
-
-```bash
-$ tail bullkelp_001_R1.fastq
-```
-
-```output
-+
-FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-@A01754:154:HWCGVDSX5:2:1101:26368:33066 1:N:0:ACTCCGAAGC+TCCGTGTTGC
-TGAATGGGATGAGCAAAAAAAAAAAGTGTGGTAATGACGAAAGTGATAGATCTACTGTGGCACACAGCAAGCAGTGGTCTGCCGCGGGGTTTCTTGACATGTACCAGGTATTGCGCTTGTACGCACGACGGTTACAAAGTAATCAACACTA
-+
-FFFFFFFFFFFFFFFFFFFFFFF,FFF,FF:FFFFFFFFFFF:FFFFF:FF,FFFFFF:F:FFFFFFFFFFFFFFFF,F:FFFFFFFFFFFFF::FFFF,FFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-@A01754:154:HWCGVDSX5:2:1101:27019:33066 1:N:0:ACTCCGAAGC+TCCGTGTTGC
-CTTGAATTGTGTTTGCCTTGCCTTGTCGTCTCTTGTCTTGAATATTGTGTGTTGAATTATCAGAAACGTCATCTCGTTTGTTTTAGTGATTGCTGTAATGTGAGTTTGTATATGGAATATCTAATCAAGTTTTGGAACTTCATGTCATCGT
-+
-FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFFF
-```
-
-The `-n` option to either of these commands can be used to print the
-first or last `n` lines of a file.
-
-```bash
-$ head -n 1 bullkelp_001_R1.fastq
-```
-
-```output
-@A01754:154:HWCGVDSX5:2:1101:4399:1094 1:N:0:ACTCCGAAGC+NCCGTGTTGC
-```
-
-```bash
-$ tail -n 1 bullkelp_001_R1.fastq
-```
-
-```output
-FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFFF
-```
-
-## Details on the FASTQ format
-
-Although it looks complicated (and it is), it's easy to understand the
-[fastq](https://en.wikipedia.org/wiki/FASTQ_format) format with a little decoding. Some rules about the format
-include...
-
-| Line  | Description                                                                                                  | 
-| ----- | ------------------------------------------------------------------------------------------------------------ |
-| 1     | Always begins with '@' and then information about the read                                                   | 
-| 2     | The actual DNA sequence                                                                                      | 
-| 3     | Always begins with a '+' and sometimes the same info in line 1                                               | 
-| 4     | Has a string of characters which represent the quality scores; must have same number of characters as line 2 | 
-
-We can view the first complete read in one of the files in our dataset by using `head` to look at
-the first four lines.
-
-```bash
-$ head -n 4 bullkelp_001_R1.fastq
-```
-
-```output
-@A01754:154:HWCGVDSX5:2:1101:4399:1094 1:N:0:ACTCCGAAGC+NCCGTGTTGC
-CNCAGCCGAAACGGGCCAAAACTCGCCATAAACGAGGCTACGCCGAGTTTGCATCAAACCAGGAACTTTCTCAGATAGATATAGATGCGGACGACGATTCCGAAGTGCAGACCACGCTACACATTTTTCAAGTGAAAAACACCCCTAAAGA
-+
-F#FFFFFFF:FFFFFFFF:FFFFF:FFFFFFFFFFFFFFFFFF::FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFF:FFFFFFFFFFFFFFF,FFFFFFF,FFF,
-```
-
-We can see that the start of the read has an N, which means it's an unknown base, but most of
-it looks reasonable. 
-Line 4 shows the quality for each nucleotide in the read. Quality is interpreted as the
-probability of an incorrect base call (e.g. 1 in 10) or, equivalently, the base call
-accuracy (e.g. 90%). To make it possible to line up each individual nucleotide with its quality
-score, the numerical score is converted into a code where each individual character
-represents the numerical quality score for an individual nucleotide. For example, in the line
-above, the quality score line is:
-
-```output
-F#FFFFFFF:FFFFFFFF:FFFFF:FFFFFFFFFFFFFFFFFF::FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFF:FFFFFFFFFFFFFFF,FFFFFFF,FFF,
-```
-
-The `#` character and each of the `F` and `;` characters represent the encoded quality for an
-individual nucleotide. The numerical value assigned to each of these characters depends on the
-sequencing platform that generated the reads. The sequencing machine used to generate our data
-uses the standard Sanger quality PHRED score encoding, Illumina version 1.8 onwards.
-Each character is assigned a quality score between 0 and 42 as shown in the chart below.
-
-```output
-Quality encoding: !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJK
-                  |         |         |         |         |
-Quality score:    0........10........20........30........40..                          
-```
-
-Each quality score represents the probability that the corresponding nucleotide call is
-incorrect. This quality score is logarithmically based, so a quality score of 10 reflects a
-base call accuracy of 90%, but a quality score of 20 reflects a base call accuracy of 99%.
-These probability values are the results from the base calling algorithm and dependent on how
-much signal was captured for the base incorporation.
-
-Looking back at our read:
-
-```output
-@A01754:154:HWCGVDSX5:2:1101:4399:1094 1:N:0:ACTCCGAAGC+NCCGTGTTGC
-CNCAGCCGAAACGGGCCAAAACTCGCCATAAACGAGGCTACGCCGAGTTTGCATCAAACCAGGAACTTTCTCAGATAGATATAGATGCGGACGACGATTCCGAAGTGCAGACCACGCTACACATTTTTCAAGTGAAAAACACCCCTAAAGA
-+
-F#FFFFFFF:FFFFFFFF:FFFFF:FFFFFFFFFFFFFFFFFF::FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFF:FFFFFFFFFFFFFFF,FFFFFFF,FFF,
-```
-
-We can see that the N base has a quality score of 2, which means a 63% chance of error.
-The program that decoded the signal decided that 63% chance of error was too high, 
-so it replaced the base with N. For the rest of the read, the quality is `F`, which 
-corresponds to a Quality score of 37 or a 0.02% chance of error. 
+Find every instance of 'ACT' in unicorn.dat using less. What is a problem with using less for this search?
 
 
 
@@ -1027,23 +807,27 @@ of those files. In cases like this, it's much faster to do these operations at t
 ### Copying Files
 
 When working with computational data, it's important to keep a safe copy of that data that can't be accidentally overwritten or deleted.
-For this lesson, our raw data is our FASTQ files.  We don't want to accidentally change the original files, so we'll make a copy of them
+For example, when you do sequencing your raw data is represented by a .fastq file  We don't want to accidentally change the original files, so we'll make a copy of them
 and change the file permissions so that we can read from, but not write to, the files.
 
-First, let's make a copy of one of our FASTQ files using the `cp` command.
+First, let's make a copy of one of our .dat files using the `cp` command.
 
-Navigate to the `shell_data/untrimmed_fastq` directory and enter:
+Navigate to the `creatures` directory and enter:
 
 ```bash
-$ cp bullkelp_001_R1.fastq bullkelp_001_R1-copy.fastq
-$ ls -F
+cp unicorn.dat unicorn_copy.dat
+ls -o
 ```
 
 ```output
-bullkelp_001_R1.fastq  bullkelp_001_R1-copy.fastq  bullkelp_001_R2.fastq
+total 10
+-rw-r--r--. 1 jupyter 1838 Mar 12  2023 basilisk.dat
+-rw-r--r--. 1 jupyter 1830 Mar 12  2023 minotaur.dat
+-rw-r--r--. 1 jupyter 1833 Mar 12  2023 unicorn.dat
+-rw-r--r--. 1 jupyter 1833 Dec 19 22:17 unicorn_copy.dat
 ```
 
-We now have two copies of the `bullkelp_001_R1.fastq` file, one of them named `bullkelp_001_R1-copy.fastq`. We'll move this file to a new directory
+We now have two copies of the `unicorn.dat` file, one of them named `unicorn_copy.dat`. We'll move this file to a new directory
 called `backup` where we'll store our backup data files.
 
 ### Creating Directories
@@ -1052,7 +836,7 @@ The `mkdir` command is used to make a directory. Enter `mkdir`
 followed by a space, then the directory name you want to create:
 
 ```bash
-$ mkdir backup
+mkdir backup
 ```
 
 ### Moving / Renaming
@@ -1061,111 +845,76 @@ We can now move our backup file to this directory. We can
 move files around using the command `mv`:
 
 ```bash
-$ mv bullkelp_001_R1-copy.fastq backup
-$ ls backup
+mv unicorn_copy.dat backup
+ls backup
 ```
 
 ```output
-bullkelp_001_R1-copy.fastq
+unicorn_copy.dat
 ```
 
 The `mv` command is also how you rename files. Let's rename this file to make it clear that this is a backup:
 
 ```bash
 $ cd backup
-$ mv bullkelp_001_R1-copy.fastq bullkelp_001_R1-backup.fastq
+$ mv unicorn_copy.dat unicorn_copy_newname.dat
 $ ls
 ```
 
 ```output
-bullkelp_001_R1-backup.fastq
+unicorn_copy_newname.dat
 ```
 
-### File Permissions
+**Important**: It's important to note that if you move a file into a name of a file that already exists, you will overwrite the old file. There is no warning and you cannot reverse this. Unix has no recycle bin that you can rescue things from. Be careful
+when moving or deleting files. 
 
-We've now made a backup copy of our file, but just because we have two copies, it doesn't make us safe. We can still accidentally delete or
-overwrite both copies. To make sure we can't accidentally mess up this backup file, we're going to change the permissions on the file so
-that we're only allowed to read (i.e. view) the file, not write to it (i.e. make new changes).
-
-View the current permissions on a file using the `-l` (long) flag for the `ls` command:
-
-```bash
-$ ls -l
-```
-
-```output
--rwxr-x--- 1 grego grego 43332 Nov 15 23:02 bullkelp_001_R1-backup.fastq
-```
-
-The first part of the output for the `-l` flag gives you information about the file's current permissions. There are ten slots in the
-permissions list. The first character in this list is related to file type, not permissions, so we'll ignore it for now. The next three
-characters relate to the permissions that the file owner has, the next three relate to the permissions for group members, and the final
-three characters specify what other users outside of your group can do with the file. We're going to concentrate on the three positions
-that deal with your permissions (as the file owner).
-
-![](../figs/rwx_figure.svg)
-
-Here the three positions that relate to the file owner are `rwx`. The `r` means that you have permission to read the file, the `w`
-indicates that you have permission to write to (i.e. make changes to) the file, and the third position is a `x`, indicating that you
-have permission to carry out the ability encoded by that space.
-
-Our goal for now is to change permissions on this file so that you no longer have `w` or write permissions. We can do this using the `chmod` (change mode) command and subtracting (`-`) the write permission `-w`.
-
-```bash
-$ chmod -w bullkelp_001_R1-backup.fastq
-$ ls -l 
-```
-
-```output
--r-xr-x---. 1 grego grego 43332 Nov 15 23:02 bullkelp_001_R1-backup.fastq
-```
 
 ### Removing
 
-To prove to ourselves that you no longer have the ability to modify this file, try deleting it with the `rm` command:
+We can delete files with the `rm` command:
 
 ```bash
-$ rm bullkelp_001_R1-backup.fastq
+rm unicorn_copy_newname.dat
 ```
 
-You'll be asked if you want to override your file permissions:
-
-```output
-rm: remove write-protected regular file ‘bullkelp_001_R1-backup.fastq'? 
-```
-
-You should enter `n` for no. If you enter `n` (for no), the file will not be deleted. If you enter `y`, you will delete the file. This gives us an extra
-measure of security, as there is one more step between us and deleting our data files.
 
 **Important**: The `rm` command permanently removes the file. Be careful with this command. It doesn't
 just nicely put the files in the Trash. They're really gone.
 
-By default, `rm` will not delete directories. You can tell `rm` to
-delete a directory using the `-r` (recursive) option. Let's delete the backup directory
-we just made.
+By default, `rm` will not delete directories. The command to remove directories is `rmdir`, and it will only
+remove empty directories. 
 
-Enter the following command:
+
+Lets test that out:
 
 ```bash
-$ cd ..
-$ rm -r backup
+cd ..
+cp unicorn.dat backup/
+rmdir backup
 ```
 
-This will delete not only the directory, but all files within the directory. If you have write-protected files in the directory,
-you will be asked whether you want to override your permission settings. Be extra careful when using `rm` with wildcards,
+```output
+rmdir: failed to remove 'backup': Directory not empty
+```
+
+To actually remove that directory, we need to get rid of the files in it:
+```bash
+rm backup/unicorn.dat
+rmdir backup
+```
+
+Earlier in the lesson we learned about using wildcards to target multiple files at once.
+ Be extra careful when using `rm` with wildcards,
 or with variables (covered later). A mistaken `rm` command can delete things you don't want to be deleted.
 
 
 ## Challenge
 
-Starting in the `shell_data/untrimmed_fastq/` directory, do the following:
+Starting in the `creatures` directory, do the following:
 
 1. Make sure that you have deleted your backup directory and all files it contains.
-2. Create a backup of each of your FASTQ files using `cp`. (Note: You'll need to do this individually for each of the two FASTQ files. We haven't
-  learned yet how to do this
-  with a wildcard.)
+2. Create a backup of each of your .dat files using `cp`. 
 3. Use a wildcard to move all of your backup files to a new backup directory.
-4. Change the permissions on all of your backup files to be write-protected.
 
 ***
 
