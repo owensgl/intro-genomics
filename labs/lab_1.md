@@ -363,83 +363,65 @@ We've also learned how to use `cd` to change locations and `ls` to list the cont
 of a directory. Now we're going to learn some additional commands for moving around
 within our file system.
 
-Use the commands we've learned so far to navigate to the `shell_data/untrimmed_fastq` directory, if
+Use the commands we've learned so far to navigate to the `~/shell-lesson-data/exercise-data` directory, if
 you're not already there.
 
 ```bash
-$ cd
-$ cd shell_data
-$ cd untrimmed_fastq
+cd ~
+cd shell-lesson-data
+cd exercise-data
 ```
 
-What if we want to move back up and out of this directory and to our top level
-directory? Can we type `cd shell_data`? Try it and see what happens.
+What if we want to move back down to the shell-lesson-data directory? Can we type `cd shell-lesson-data`? Try it and see what happens.
 
 ```bash
-$ cd shell_data
+cd shell-lesson-data
 ```
 
 ```output
--bash: cd: shell_data: No such file or directory
+-bash: cd: shell-lesson-data: No such file or directory
 ```
 
-Your computer looked for a directory or file called `shell_data` within the
+Your computer looked for a directory or file called `shell-lesson-data` within the
 directory you were already in. It didn't know you wanted to look at a directory level
-above the one you were located in.
+below the one you were located in.
 
-We have a special command to tell the computer to move us back or up one directory level.
+We have a special command to tell the computer to move us back or down one directory level.
 
 ```bash
-$ cd ..
+cd ..
 ```
 
 Now we can use `pwd` to make sure that we are in the directory we intended to navigate
 to, and `ls` to check that the contents of the directory are correct.
 
 ```bash
-$ pwd
+pwd
 ```
 
 ```output
-/home/grego/shell_data
+/home/jupyter/shell-lesson-data
 ```
 
 ```bash
-$ ls
+ls
 ```
 
 ```output
-untrimmed_fastq
+exercise-data  north-pacific-gyre
 ```
 
 From this output, we can see that `..` did indeed take us back one level in our file system.
 
-You can chain these together like so:
+You can chain these together to target directories back up two layers. Here we show that using the
+`ls` command, which lists the contents of the directory (but doesn't move your current working directory):
 
 ```bash
-$ ls ../../
+ls ../../
 ```
 
-prints the contents of `/home`.
+This is printing the contents of `/home`.
 
-##  Challenge
-
->### Finding hidden directories
->
->First navigate to the `shell_data` directory. There is a hidden directory within this directory. Explore the options for `ls` to
->find out how to see hidden directories. List the contents of the directory and
->identify the name of the text file in that directory.
->
->Hint: hidden files and folders in Unix start with `.`, for example `.my_hidden_directory`
-
-***
-
-In most commands the flags can be combined together in no particular order to obtain the desired results/output.
-
-```
-$ ls -Fa
-$ ls -laF
-```
 
 ## Examining the contents of other directories
 
@@ -450,17 +432,17 @@ give `ls` the names of other directories to view. Navigate to your
 home directory if you are not already there.
 
 ```bash
-$ cd
+cd ~
 ```
 
 Then enter the command:
 
 ```bash
-$ ls shell_data
+ls shell-lesson-data
 ```
 
 ```output
-untrimmed_fastq
+exercise-data  north-pacific-gyre
 ```
 
 This will list the contents of the `shell_data` directory without
@@ -471,78 +453,89 @@ The `cd` command works in a similar way.
 Try entering:
 
 ```bash
-$ cd
-$ cd shell_data/untrimmed_fastq
+cd ~
+cd shell-lesson-data/exercise-data
 ```
 
-This will take you to the `untrimmed_fastq` directory without having to go through
+This will take you to the `exercise-data` directory without having to go through
 the intermediate directory.
+
+You can combine `..` with directories to move down and then up other directory chains. For example:
+
+```bash
+cd ../north-pacific-gyre/
+```
+For this, I'm starting in exercise-data, the '..' tells it to go down a level to shell-lesson-data then 'north-pacific-gyre' tells it to go up a level into that directory. 
 
 ##  Challenge
 
->## Navigating practice
+>### Finding hidden directories
 >
->Navigate to your home directory. From there, list the contents of the `untrimmed_fastq`
->directory.
-
+>1. Find the animal-counts directory and enter it using `cd`.
+>2. Without leaving the animal-counts directory, list the files in the north-pacific-gyre directory.
+>3. You can view the first 10 lines for a file using the `head` command. While still in the animal-counts directory, print the first ten lines for unicorn.dat.
 
 
 ## Full vs. Relative Paths
 
 The `cd` command takes an argument which is a directory
 name. Directories can be specified using either a *relative* path or a
-full *absolute* path. The directories on the computer are arranged into a
-hierarchy. The full path tells you where a directory is in that
-hierarchy. Navigate to the home directory, then enter the `pwd`
+full *absolute* path.  So far we have been using relative paths, which
+tell you where to go, relative to your starting directory. 
+The full path tells you where to go, starting from the root of a computer.
+This means that an absolute path will always get you to the same place, regardless
+of where you're starting from.
+
+Navigate to the home directory, then enter the `pwd`
 command.
 
 ```bash
-$ cd  
-$ pwd  
+cd ~
+pwd  
 ```
 
 You will see:
 
 ```output
-/home/grego
+/home/jupyter
 ```
 
 This is the full name of your home directory. This tells you that you
-are in a directory called `grego`, which sits inside a directory called
+are in a directory called `jupyter`, which sits inside a directory called
 `home` which sits inside the very top directory in the hierarchy. The
 very top of the hierarchy is a directory called `/` which is usually
-referred to as the *root directory*. So, to summarize: `grego` is a
+referred to as the *root directory*. So, to summarize: `jupyter` is a
 directory in `home` which is a directory in `/`. More on `root` and
 `home` in the next section.
 
 Now enter the following command:
 
 ```bash
-$ cd /home/grego/shell_data/.hidden
+cd /home/jupyter/shell-lesson-data/exercise-data/
 ```
 
-This jumps forward multiple levels to the `.hidden` directory.
+This jumps up multiple levels to the `exercise-data` directory.
 Now go back to the home directory.
 
 ```bash
-$ cd
+cd ~
 ```
 
-You can also navigate to the `.hidden` directory using:
+You can also navigate to the `exercise-data` directory using:
 
 ```bash
-$ cd shell_data/.hidden
+cd shell-lesson-data/exercise-data/
 ```
 
-These two commands have the same effect, they both take us to the `.hidden` directory.
+These two commands have the same effect, they both take us to the `exercise-data` directory.
 The first uses the absolute path, giving the full address from the home directory. The
-second uses a relative path, giving only the address from the working directory. A full
+second uses a relative path, giving only the address from the working directory. An absolute or full
 path always starts with a `/`. A relative path does not.
 
 A relative path is like getting directions from someone on the street. They tell you to
 "go right at the stop sign, and then turn left on Main Street". That works great if
-you're standing there together, but not so well if you're trying to tell someone how to
-get there from another country. A full path is like GPS coordinates. It tells you exactly
+you're standing there together, but not so well if you're starting from a different street. 
+A full path is like GPS coordinates. It tells you exactly
 where something is no matter where you are right now.
 
 You can usually use either a full path or a relative path depending on what is most convenient.
@@ -584,33 +577,28 @@ home directory. Dealing with the `home` directory is very common.
 The tilde character, `~`, is a shortcut for your home directory.
 In our case, the `root` directory is **two** levels above our
 `home` directory, so `cd` or `cd ~` will take you to
-`/home/dcuser` and `cd /` will take you to `/`. Navigate to the
-`shell_data` directory:
+`/home/jupyter` and `cd /` will take you to `/`. 
+
+Lets take a look at whats in the root:
 
 ```bash
-$ cd
-$ cd shell_data
-```
-
-Then enter the command:
-
-```bash
-$ ls ~
+cd /
+ls 
 ```
 
 ```output
-shell_data
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 ```
 
-This prints the contents of your home directory, without you needing to
-type the full path.
+These are all the core directories for running the server. In this case, this is a virtual machine just for you,
+so if you mess up something here, it won't affect anyone else and we could just remake it. For your laptop, if you 
+mess up these files you may cause yourself a huge problem. Best practise is to not touch anything outside of your /home 
+directory unless you really know what you're doing.
 
-The commands `cd`, and `cd ~` are very useful for quickly navigating back to your home directory. We will be using the `~` character in later lessons to specify our home directory.
 
 ## Keypoints
 
 - The `/`, `~`, and `..` characters represent important navigational shortcuts.
-- Hidden files and directories start with `.` and can be viewed using `ls -a`.
 - Relative paths specify a location starting from the current location, while absolute paths specify a location from the root of the file system.
 
 ***
@@ -636,11 +624,20 @@ The commands `cd`, and `cd ~` are very useful for quickly navigating back to you
 
 ## Working with Files
 
-### Our data set: FASTQ files
 
 Now that we know how to navigate around our directory structure, let's
-start working with our sequencing files. We did a sequencing experiment and
-have two results files, which are stored in our `untrimmed_fastq` directory.
+start working with files. First go into the creatures directory.
+
+```bash
+cd ~/shell-lesson-data/exercise-data/creatures
+ls
+```
+
+These files have the .dat suffix. Suffixes tell you something about the format
+of the data stored in them. Files can be human readable, which is to say that
+they are made up of characters, or they can be only machine readable. A large
+proportion of data you'll work with are human readable and it's always good practice
+to look at the data in a raw format. Sometimes you can catch problems 
 
 ### Wildcards
 
