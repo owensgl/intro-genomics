@@ -59,16 +59,9 @@ you'll need to download a separate program to access the shell.
 
 In future lessons, we will use an Owens' lab server allowing you to access large computing resources. Today, we are going to use a small virtual machine hosted by UVic. Open a web browser and go to https://uvic.syzygy.ca/jupyter/. Login using your UVic credentials.
 
-When you login, select "Terminal". You should see a blinking cursor and a screen similar to this:
-
-![](../figs/terminal_1.png)
+When you login, select "Terminal". You should see a blinking cursor.
 
 
-
->### Tip
->
->Hot-key combinations are shortcuts for performing common commands.
->The hot-key combination for clearing the console is `Ctrl+L`. Feel free to try it and see for yourself.
 
 ***
 
