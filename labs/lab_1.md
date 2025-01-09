@@ -57,7 +57,7 @@ On a Mac or Linux machine, you can access a shell through a program called "Term
 on your computer. The Terminal is a window into which we will type commands. If you're using Windows,
 you'll need to download a separate program to access the shell.
 
-In future lessons, we will use an Owens' lab server allowing you to access large computing resources. Today, we are going to use a small virtual machine hosted by UVic. Open a web browser and go to https://uvic.syzygy.ca/jupyter/. Login using your UVic credentials. 
+In future lessons, we will use an Owens' lab server allowing you to access large computing resources. Today, we are going to use a small virtual machine hosted by UVic. Open a web browser and go to [UVic Syzygy Jupyter](https://uvic.syzygy.ca/jupyter/). Login using your UVic credentials. 
 
 When you login, select "Terminal". You should see a blinking cursor and a screen similar to this:
 
