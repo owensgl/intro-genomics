@@ -4,7 +4,7 @@ element: lab
 layout: default
 ---
 
-# Section 1 
+# Section 1
 ## Objectives
 
 - Describe key reasons for learning shell.
@@ -36,7 +36,7 @@ There are many reasons to learn about the shell:
   have features and parameter options which are not available in the GUI.
   BLAST is an example. Many of the advanced functions are only accessible
   to users who know how to use a shell.
-- The shell makes your work less boring. In bioinformatics you often need to repeat tasks with a large number of files. 
+- The shell makes your work less boring. In bioinformatics you often need to repeat tasks with a large number of files.
   With the shell, you can automate those repetitive tasks and leave you free to do more exciting things.
 - The shell makes your work less error-prone. When humans do the same thing a hundred different times
   (or even ten times), they're likely to make a mistake. Your computer can do the same thing a thousand times
@@ -57,23 +57,16 @@ On a Mac or Linux machine, you can access a shell through a program called "Term
 on your computer. The Terminal is a window into which we will type commands. If you're using Windows,
 you'll need to download a separate program to access the shell.
 
-In future lessons, we will use an Owens' lab server allowing you to access large computing resources. Today, we are going to use a small virtual machine hosted by UVic. Open a web browser and go to [UVic Syzygy Jupyter](https://uvic.syzygy.ca/jupyter/). Login using your UVic credentials. 
+In future lessons, we will use an Owens' lab server allowing you to access large computing resources. Today, we are going to use a small virtual machine hosted by UVic. Open a web browser and go to https://uvic.syzygy.ca/jupyter/. Login using your UVic credentials.
 
-When you login, select "Terminal". You should see a blinking cursor and a screen similar to this:
-
-![](../figs/terminal_1.png)
+When you login, select "Terminal". You should see a blinking cursor.
 
 
-
->### Tip
->
->Hot-key combinations are shortcuts for performing common commands.
->The hot-key combination for clearing the console is `Ctrl+L`. Feel free to try it and see for yourself.
 
 ***
 
-## Downloading files. 
-We first have to download the data files used in this lab. We are using data files from the software carpentry tutorial on unix shell (also a good resource if you want more practice!). We will be using the command 'wget', which requires a url. 
+## Downloading files.
+We first have to download the data files used in this lab. We are using data files from the software carpentry tutorial on unix shell (also a good resource if you want more practice!). We will be using the command 'wget', which requires a url.
 
 
 ```bash
@@ -93,7 +86,7 @@ shell-lesson-data.z 100%[==================>] 449.50K  --.-KB/s    in 0.01s
 2024-12-17 23:12:39 (36.2 MB/s) - ‘shell-lesson-data.zip’ saved [460289/460289]
 ```
 
-This text is showing us that the .zip file has downloaded successfully. For larger files you'll be able to track how the download is going based on the status bar. 
+This text is showing us that the .zip file has downloaded successfully. For larger files you'll be able to track how the download is going based on the status bar.
 
 
 ## Navigating your file system
@@ -117,16 +110,16 @@ The dollar sign is a **prompt**, which shows us that the shell is waiting for in
 your shell may use a different character as a prompt and may add information before
 the prompt. When typing commands, either from these lessons or from other sources,
 do not type the prompt, only the commands that follow it. In this case, the prompt is
-showing that my username is **jupyter**, and I'm logged into **5ee02e7b87eb**. 
+showing that my username is **jupyter**, and I'm logged into **5ee02e7b87eb**.
 This unintelligble string of characters is the ID for a virtual machine that the server spun up.
 
-For the rest of the lab activities, I will be showing the prompt as only $. 
-Your prompt will be different, depending on which direct you are in, as well 
+For the rest of the lab activities, I will be showing the prompt as only $.
+Your prompt will be different, depending on which direct you are in, as well
 as other factors.
 
 It's important to remember that anytime you are using the terminal, you are in a directory,
 which is in other directories, which are in even more directories until we get the one directory that has everything. We often think of this in terms of a tree structure. When you are entering into
-a directory you are moving upward towards the tips and when you are exiting directories you are moving downward towards the root. 
+a directory you are moving upward towards the tips and when you are exiting directories you are moving downward towards the root.
 
 To  explicitely find out where you are lets run a command called `pwd`
 (which stands for "print working directory").
@@ -134,7 +127,7 @@ At any moment, our **current working directory**
 is the directory where any tasks will be run,
 i.e.,
 the directory that the computer assumes we want to run commands in,
-unless we explicitly specify something else. For example, I could ran a command to print all the files, it would print all of the files **in the directory I am in**. 
+unless we explicitly specify something else. For example, I could ran a command to print all the files, it would print all of the files **in the directory I am in**.
 
 Lets try to run `pwd` to see where we are:
 
@@ -145,10 +138,10 @@ pwd
 ```output
 /home/jupyter
 ```
-We are in the directory jupyter, which is in another directory called home. 
+We are in the directory jupyter, which is in another directory called home.
 
 Before we start movign between directories, another critically important command is `ls`.  
-This command **lists** all the files and directories in your current directory. 
+This command **lists** all the files and directories in your current directory.
 Many times in this course you will try to run a command on a file and if the file is not in your directory, it will not work. Your first reflex when moving between directories or when a command doesn't
 work is to use `ls` to see what files are there.
 
@@ -184,7 +177,7 @@ You can also combine multiple single character flags in once
 ls -lah   # Combines long, all, and human-readable flags
 ```
 
-The argument is used to pass arbitrary information to the command. For example, in ls, the argument tells it which directory to list the output for. 
+The argument is used to pass arbitrary information to the command. For example, in ls, the argument tells it which directory to list the output for.
 
 ```bash
 ls /home       # List contents of /home directory
@@ -343,7 +336,6 @@ using the command line shell enables us to make our workflow more efficient and 
 
 - Use a single command to navigate multiple steps in your directory structure, including moving backwards (one level up).
 - Perform operations on files in directories outside your working directory.
-- Work with hidden directories and hidden files.
 - Interconvert between absolute and relative paths.
 - Employ navigational shortcuts to move around your file system.
 
@@ -465,11 +457,10 @@ You can combine `..` with directories to move down and then up other directory c
 ```bash
 cd ../north-pacific-gyre/
 ```
-For this, I'm starting in exercise-data, the '..' tells it to go down a level to shell-lesson-data then 'north-pacific-gyre' tells it to go up a level into that directory. 
+For this, I'm starting in exercise-data, the '..' tells it to go down a level to shell-lesson-data then 'north-pacific-gyre' tells it to go up a level into that directory.
 
 ##  Challenge
 
->### Finding hidden directories
 >
 >1. Find the animal-counts directory and enter it using `cd`.
 >2. Without leaving the animal-counts directory, list the files in the north-pacific-gyre directory.
@@ -481,7 +472,7 @@ For this, I'm starting in exercise-data, the '..' tells it to go down a level to
 The `cd` command takes an argument which is a directory
 name. Directories can be specified using either a *relative* path or a
 full *absolute* path.  So far we have been using relative paths, which
-tell you where to go, relative to your starting directory. 
+tell you where to go, relative to your starting directory.
 The full path tells you where to go, starting from the root of a computer.
 This means that an absolute path will always get you to the same place, regardless
 of where you're starting from.
@@ -534,7 +525,7 @@ path always starts with a `/`. A relative path does not.
 
 A relative path is like getting directions from someone on the street. They tell you to
 "go right at the stop sign, and then turn left on Main Street". That works great if
-you're standing there together, but not so well if you're starting from a different street. 
+you're standing there together, but not so well if you're starting from a different street.
 A full path is like GPS coordinates. It tells you exactly
 where something is no matter where you are right now.
 
@@ -577,13 +568,13 @@ home directory. Dealing with the `home` directory is very common.
 The tilde character, `~`, is a shortcut for your home directory.
 In our case, the `root` directory is **two** levels above our
 `home` directory, so `cd` or `cd ~` will take you to
-`/home/jupyter` and `cd /` will take you to `/`. 
+`/home/jupyter` and `cd /` will take you to `/`.
 
 Lets take a look at whats in the root:
 
 ```bash
 cd /
-ls 
+ls
 ```
 
 ```output
@@ -591,8 +582,8 @@ bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  roo
 ```
 
 These are all the core directories for running the server. In this case, this is a virtual machine just for you,
-so if you mess up something here, it won't affect anyone else and we could just remake it. For your laptop, if you 
-mess up these files you may cause yourself a huge problem. Best practise is to not touch anything outside of your /home 
+so if you mess up something here, it won't affect anyone else and we could just remake it. For your laptop, if you
+mess up these files you may cause yourself a huge problem. Best practise is to not touch anything outside of your /home
 directory unless you really know what you're doing.
 
 
@@ -637,11 +628,11 @@ These files have the .dat suffix. Suffixes tell you something about the format
 of the data stored in them. Files can be human readable, which is to say that
 they are made up of characters, or they can be only machine readable. A large
 proportion of data you'll work with are human readable and it's always good practice
-to look at the data in a raw format. Sometimes you can catch problems 
+to look at the data in a raw format. Sometimes you can catch problems
 
 ### Wildcards
 
-Often we want to refer to multiple different files, for example if you wanted to do a task on all of them. 
+Often we want to refer to multiple different files, for example if you wanted to do a task on all of them.
 One way we can use that is the asterisk or `*` character.
 
 ```bash
@@ -661,7 +652,7 @@ You can have multiple `*` to be more broad or more specific. Try this command:
 ```bash
 ls *o*
 ```
-Here we are asking for any file that has anything, then an o, than anything else. Basically, it finds anything with an o in the name. 
+Here we are asking for any file that has anything, then an o, than anything else. Basically, it finds anything with an o in the name.
 
 ##  Challenge
 
@@ -749,7 +740,7 @@ cat unicorn.dat
 
 ## Challenge
 
-1. Print out the contents of the `minotaur.dat` file. 
+1. Print out the contents of the `minotaur.dat` file.
    What is the last line of the file? What command would only print the last lines of a file?
 2. From your home directory, and without changing directories,
   use one short command to print the contents of all of the files in
@@ -760,7 +751,7 @@ cat unicorn.dat
 
 `cat` is a terrific program, but when the file is really big, it can
 be annoying to use. The program, `less`, is useful for this
-case. `less` opens the file as read only, and lets you navigate through it. 
+case. `less` opens the file as read only, and lets you navigate through it.
 Enter the following command:
 
 ```bash
@@ -769,13 +760,13 @@ less unicorn.dat
 
 Some navigation commands in `less`:
 
-| key   | action                                                                                                       | 
+| key   | action                                                                                                       |
 | ----- | ------------------------------------------------------------------------------------------------------------ |
-| <kbd>Space</kbd> | to go forward                                                                                                | 
-| <kbd>b</kbd>     | to go backward                                                                                               | 
-| <kbd>g</kbd>     | to go to the beginning                                                                                       | 
-| <kbd>G</kbd>     | to go to the end                                                                                             | 
-| <kbd>q</kbd>     | to quit                                                                                                      | 
+| <kbd>Space</kbd> | to go forward                                                                                                |
+| <kbd>b</kbd>     | to go backward                                                                                               |
+| <kbd>g</kbd>     | to go to the beginning                                                                                       |
+| <kbd>G</kbd>     | to go to the end                                                                                             |
+| <kbd>q</kbd>     | to quit                                                                                                      |
 
 `less` also gives you a way of searching through files. Use the
 "/" key to begin a search. Enter the word you would like
@@ -866,7 +857,7 @@ unicorn_copy_newname.dat
 ```
 
 **Important**: It's important to note that if you move a file into a name of a file that already exists, you will overwrite the old file. There is no warning and you cannot reverse this. Unix has no recycle bin that you can rescue things from. Be careful
-when moving or deleting files. 
+when moving or deleting files.
 
 
 ### Removing
@@ -882,7 +873,7 @@ rm unicorn_copy_newname.dat
 just nicely put the files in the Trash. They're really gone.
 
 By default, `rm` will not delete directories. The command to remove directories is `rmdir`, and it will only
-remove empty directories. 
+remove empty directories.
 
 
 Lets test that out:
@@ -913,7 +904,7 @@ or with variables (covered later). A mistaken `rm` command can delete things you
 Starting in the `creatures` directory, do the following:
 
 1. Make sure that you have deleted your backup directory and all files it contains.
-2. Create a backup of each of your .dat files using `cp`. 
+2. Create a backup of each of your .dat files using `cp`.
 3. Use a wildcard to move all of your backup files to a new backup directory.
 
 ***
@@ -928,8 +919,6 @@ Starting in the `creatures` directory, do the following:
 ***
 
 ## Credit
-This material is adapted from Becker et al. 2019, under CC-BY 4.0 licence. 
+This material is adapted from Becker et al. 2019, under CC-BY 4.0 licence.
 
 Erin Alison Becker, Anita Schürch, Tracy Teal, Sheldon John McKay, Jessica Elizabeth Mizzi, François Michonneau, et al. (2019, June). datacarpentry/shell-genomics: Data Carpentry: Introduction to the shell for genomics data, June 2019 (Version v2019.06.1). Zenodo. http://doi.org/10.5281/zenodo.3260560
-
-
