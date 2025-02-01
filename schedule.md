@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Lab Schedule
-assignments: ['Unix commandline', 'Shell scripting','R and data wrangling', 'Data visualization']
+assignments: ['Unix commandline', 'Shell scripting','R and data wrangling', 'Data visualization', 'Sequence data and QC']
 
 
 #assignments: ['Unix commandline', 'Shell scripting',
