@@ -87,8 +87,9 @@ source /cvmfs/soft.computecanada.ca/config/profile/bash.sh
 #Then we go into our working directory
 cd /project/biol470-grego
 
-#Next make a directory for your own testing
+#Next make a directory for your own testing and enter it
 mkdir YOUR_NAME
+cd YOUR_NAME
 
 #Then we load the sra-toolkit, which has fasterq-dump
 module load StdEnv/2023 gcc/12.3 sra-toolkit/3.0.9
@@ -112,7 +113,7 @@ fastqc DRR053219_1.fastq DRR053219_2.fastq
 It will produce an html report for each sample titled DRR053219_1_fastqc.html and DRR053219_2_fastqc.html.
 To view those, you'll need to download them to your desktop. Open a new terminal and run scp.
 ```bash
-scp grego@fossa.rcs.uvic.ca:/project/biol470-grego/YOUR_NAME/DRR*html Desktop/
+scp YOUR_NAME@fossa.rcs.uvic.ca:/project/biol470-grego/YOUR_NAME/DRR*html Desktop/
 ```
 
 Take a look at the output and answer the following questions
@@ -286,19 +287,20 @@ NC_001133.9     RefSeq  exon    2480    2707    .       +       .       ID=exon-
 NC_001133.9     RefSeq  CDS     2480    2707    .       +       0       ID=cds-NP_878038.1;Parent=rna-NM_001184582.1;Db>
 NC_001133.9     RefSeq  gene    7235    9016    .       -       .       ID=gene-YAL067C;Dbxref=GeneID:851230;Name=SEO1;>
 ```
-
 The start of the gff is a header, marked by the "#". It tells you which specific gff version you have and where it came from.
 The first few columns tell us:
-1) Chromosome or contig
-2) Source of the feature
-3) What type of feature
-4) The start of the feature
-5) The end of the feature
-6) The score for the feature (in this case blank)
-7) The strand the feature is on
-8) The phase of the feature (in this case, what codon frame the CDS is in)
-9) Additional info
-You can read more about how gff format works here: https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
+
+1. Chromosome or contig
+2. Source of the feature
+3. What type of feature
+4. The start of the feature
+5. The end of the feature
+6. The score for the feature (in this case blank)
+7. The strand the feature is on
+8. The phase of the feature (in this case, what codon frame the CDS is in)
+9. Additional info
+
+You can read more about how gff format works here: [GFF3 Specification](https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md)
 
 In many cases, you'll want to know which features are in a particular part of the genome. Since a gff file is 
 actually just text, we can use some basic unix tools to filter it. A convenient option is "awk".
