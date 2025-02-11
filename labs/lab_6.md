@@ -361,7 +361,7 @@ By default, a variable name doesn't expect to have a "." in it. So $y.txt will t
 
 For the lab questions, you'll be working on a small set of real data. Lets copy that into your directory
 ```bash
-cd ~
+cd /project/biol470-grego/YOUR_NAME
 mkdir lab_6_questions
 cd lab_6_questions
 cp /project/ctb-grego/sharing/lab_6/* ./
