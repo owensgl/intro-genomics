@@ -159,6 +159,7 @@ module load picard/3.1.0
 java -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
   I=bam/sample_0.bam \
   O=bam/sample_0.rg.bam \
+  RGID=sample_O \
   RGSM=sample_0 \
   RGLB=sample_0 \
   RGPL=Illumina \
@@ -237,6 +238,9 @@ Side Note: The most common program for variant calling
 is GATK, which is a spiritual successor for freebayes but has grown into a huge set of programs.
 If you use human data, GATK is awesome, but if you're working on other organisms the quirks of GATK
 are sometimes not worth the effort to make it work. 
+
+
+
 
 ```bash
 module load StdEnv/2020 freebayes/1.3.6
