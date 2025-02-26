@@ -2,7 +2,7 @@
 layout: page
 title: Lab Schedule
 assignments: ['Unix commandline', 'Shell scripting','R and data wrangling', 'Data visualization', 
-'Sequence data and QC', "Alignment", "Variant calling"]
+'Sequence data and QC', 'Alignment', 'Variant calling', 'Population genetics']
 
 
 #assignments: ['Unix commandline', 'Shell scripting',
