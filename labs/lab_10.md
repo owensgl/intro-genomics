@@ -193,6 +193,8 @@ unzip a_thaliana.zip
 
 ```bash
 module load minimap2
+#Now we're using minimap to align one genome to the other. We use minimap2 instead of bwa2 because minimap is better designed for aligning long sequences (like chromosomes),
+#We use the -cx asm20 flag because we are aligning whole genomes of two different species. There are other presets if you're aligning reads instead of contigs, or if you're aligning to the same species.
 minimap2 -cx asm20 \
   ncbi_dataset/data/GCA_905216605.1/GCA_905216605.1_AARE701a_genomic.fna \
   ncbi_dataset/data/GCF_000001735.4/GCF_000001735.4_TAIR10.1_genomic.fna \
@@ -225,7 +227,7 @@ you will also get extra alignment matches between other random chunks of the gen
 broad synteny patterns (i.e. which chromosome in A. arenosa is orthologous to which chromosome in A. thaliana)
 you need to visualize the matches.
 
-We're going to the pafr package to show how the two genomes align. Open Rstudio and run the following:
+We're going to the pafr package to show how the two genomes align. Download the paf file and open R.
 ```R
 install.packages("pafr")
 library(pafr)
@@ -257,13 +259,13 @@ plot_coverage(ali, fill='qname')  +
 ![coverage plot](../figs/lab_10.4.png)
 
 We can see that contig LR999451.1 has blue sequences aligning to it, which correspond
-to contig NC_003070.9 in the query genome. There is a fair emount of white spots in this
-plot, suggesting there areas of the genome where nothing aligns. This is likely because these 
+to contig NC_003070.9 in the query genome. There is a fair amount of white spots in this
+plot, suggesting there areas of the reference genome where nothing aligns. This is likely because these 
 two species are fairly divergent and it is challenging to align. An alternative program
 for more divergent genomes is anchorwave. 
 
 Lastly, since the paf data is being stored as a dataframe, we can use our normal filtering
-and plotting skills.
+and plotting skills. Here we filter down to one chromosome in the query genome. 
 
 ```R
 library(dplyr)
