@@ -31,7 +31,7 @@ Email:
 ### Location
 
 Lecture (Tuesdays): Cunningham 146
-Lab (Wednesdays): Clearihue A103
+Lab (Wednesdays): Clearihue A035
 
 
 ### Times
@@ -111,9 +111,8 @@ Students completing this course will be able to:
 ### Instructional Methods
 
 Class is divided into lectures on Tuesday and labs on Wednesday. The lecture will
-cover fundamental and technical aspects of genomic methods and analyses. Before each 
-lecture students will be required to read a primary literature article on the topic 
-and submit answers to questions on Brightspace. The lab will involve demonstrations by 
+cover fundamental and technical aspects of genomic methods and analyses.
+The lab will involve demonstrations by 
 the instructor, code along sections and independent or group work. While students are working on exercises the
 instructor will actively engage with students to help them understand material
 they find confusing, explain misunderstandings and help identify mistakes that
@@ -135,8 +134,9 @@ Even when the lab section is missed, the lab assignment is still due the followi
 
 ### Quiz/Exam Policy
 
-There will be two exams in this course. One on the week of the February 14th, the second 
-on the week of April 3rd. Both exams will be in person during class time and are not open book. Exams will not be cumulative, although concepts and material may span both exam periods. 
+There will be two exams in this course. One on February 17th, the second 
+on March 31st. Both exams will be in person during class time and are not open book. 
+Exams will not be cumulative, although concepts and material may span both exam periods. 
 
 Dr. Owens will talk with each student who has a CAL accommodation to plan an exam that works for them.
 
@@ -219,7 +219,8 @@ AI to ask background questions around the assignment topic.
 the same as AI writing your assignment.
 
 Ultimately, you need to write all of the text and code you hand in for assignments
-and projects.
+and projects. You may be asked to verbally explain how code you have written works. Failure
+to verbally explain code will result in a zero on the question.
 
 ### Materials and Supplies Fees
 
@@ -249,14 +250,14 @@ and the Songhees, Esquimalt and WSÁNEĆ peoples whose historical relationships 
 ### Important Dates
 
 Note these important dates:  
-* Last day for 100% reduction of tuition fees for standard courses – Jan. 19  
-* Last day for adding second term courses  – Jan 22 
-* Last day for 50% reduction of tuition fees for standard courses – Feb. 9  
+* Last day for 100% reduction of tuition fees for standard courses – Jan. 18  
+* Last day for adding second term courses  – Jan 21 
+* Last day for 50% reduction of tuition fees for standard courses – Feb. 8  
 * Last day for withdrawing from 2nd term courses without penalty of failure –  Feb. 28 
 
 Holidays (no class):
-Tues. Feb 18 – Reading Break
-Wed. Feb. 19 – Reading Break
+Tues. Feb 17 – Reading Break
+Wed. Feb. 18 – Reading Break
 
 
 ### Medical documentation
@@ -281,16 +282,7 @@ I reserve the right to use plagiarism detection software or other platforms to a
 Please see read UVic’s Student code of conduct and standards for professional behaviour: https://www.uvic.ca/services/advising/advice-support/academic-units/student-codeof-conduct/index.php 
 
 
-## Grading Policies
 
-In lab assignments will be graded as follows for coding based questions:
-
-* Produces the correct answer using the requested approach: 100%
-* Generally uses the right approach, but a minor mistake results in an incorrect
-    answer: 90%
-* Attempts to solve the problem and makes some progress using the core concept, but returns the wrong answer and does not demonstrate comfort with the core concept:
-    50%
-* Answer demonstrates a lack of understanding of the core concept: 0%
 
 
 ### Grading scale
